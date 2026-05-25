@@ -1,0 +1,13 @@
+/* Design Tokens for Shakti */
+
+:root {
+  /* Colors */
+  --color-primary: rose;
+  --color-secondary: amber;
+  --color-neutral: stone;
+
+  /* Typography */
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Poppins', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}

@@ -1,0 +1,19 @@
+# # onlyBuiltDependencies is a deny-by-default allowlist.
+# # Only packages listed here may run lifecycle scripts (preinstall / postinstall / install).
+# # Any new dependency that ships a build script is silently blocked unless explicitly added.
+# # This is the primary defence against supply chain attacks via malicious postinstall scripts.
+# #
+# # To add a package: verify it is a legitimate native module that requires compilation,
+# # check its source, then append its exact name below.
+# onlyBuiltDependencies:
+#   - "@img/sharp-linux-x64"
+#   - lightningcss
+#   - sharp
+#   - unrs-resolver
+
+allowBuilds:
+  '@firebase/util': set this to true or false
+  esbuild: set this to true or false
+  protobufjs: set this to true or false
+  sharp: false
+  unrs-resolver: false

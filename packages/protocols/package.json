@@ -1,0 +1,7 @@
+{
+  "name": "@shakthi/protocols",
+  "version": "1.0.0",
+  "private": true,
+  "main": "./generated-ts/index.js",
+  "types": "./generated-ts/index.d.ts"
+}

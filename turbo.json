@@ -1,0 +1,47 @@
+{
+  "$schema": "https://turbo.build",
+  "tasks": {
+    "proto:generate": {
+      "inputs": [
+        "packages/protocols/proto/**/*.proto",
+        "packages/protocols/buf.gen.yaml"
+      ],
+      "outputs": [
+        "packages/protocols/generated-ts/**",
+        "packages/protocols/generated-dart/**",
+        "packages/protocols/generated-rust/**"
+      ]
+    },
+    "build": {
+      "dependsOn": [
+        "^proto:generate",
+        "^build"
+      ],
+      "inputs": [
+        "src/**/*.tsx",
+        "src/**/*.ts",
+        "next.config.js"
+      ],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**"
+      ]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "mobile:build": {
+      "dependsOn": [
+        "proto:generate"
+      ],
+      "cache": true
+    },
+    "rust:build": {
+      "dependsOn": [
+        "proto:generate"
+      ],
+      "cache": true
+    }
+  }
+}
