@@ -176,6 +176,7 @@ export function SkillDiscovery({
           <div className="flex gap-2">
             <button
               onClick={onStartAIConversation}
+              aria-label="AI Chat"
               className="flex items-center gap-2 px-4 py-3 rounded-xl bg-rose-600 text-white font-medium hover:bg-rose-700 transition-colors shadow-lg shadow-rose-500/25"
             >
               <MessageCircle className="w-5 h-5" />
@@ -184,6 +185,7 @@ export function SkillDiscovery({
 
             <button
               onClick={() => setShowCategories(true)}
+              aria-label="Browse"
               className="flex items-center gap-2 px-4 py-3 rounded-xl bg-white dark:bg-stone-800 text-stone-700 dark:text-stone-300 font-medium border border-stone-200 dark:border-stone-700 hover:border-rose-300 dark:hover:border-rose-700 transition-colors"
             >
               <Plus className="w-5 h-5" />
@@ -237,6 +239,7 @@ export function SkillDiscovery({
                 </button>
                 <button
                   onClick={() => setSuggestionTab('trending')}
+                  aria-label="Trending"
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
                     suggestionTab === 'trending'
                       ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/50 dark:text-amber-400'
@@ -250,14 +253,20 @@ export function SkillDiscovery({
             </div>
 
             <div className="p-4 space-y-4">
-              {displayedSuggestions.map((suggestion) => (
-                <SkillSuggestionCard
-                  key={suggestion.id}
-                  suggestion={suggestion}
-                  onAdd={() => onAddSuggestion?.(suggestion.id)}
-                  onDismiss={() => onDismissSuggestion?.(suggestion.id)}
-                />
-              ))}
+              {displayedSuggestions.length === 0 ? (
+                <p className="text-sm text-stone-500 dark:text-stone-400 text-center py-4">
+                  No suggestions yet — keep building your profile!
+                </p>
+              ) : (
+                displayedSuggestions.map((suggestion) => (
+                  <SkillSuggestionCard
+                    key={suggestion.id}
+                    suggestion={suggestion}
+                    onAdd={() => onAddSuggestion?.(suggestion.id)}
+                    onDismiss={() => onDismissSuggestion?.(suggestion.id)}
+                  />
+                ))
+              )}
             </div>
           </div>
 

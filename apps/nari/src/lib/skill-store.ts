@@ -85,3 +85,27 @@ export function addSkill(skillName: string, categoryId: string): Skill {
 export function removeSkill(skillId: string) {
   skills = skills.filter((s) => s.id !== skillId)
 }
+
+export function updateSkill(
+  skillId: string,
+  updates: Partial<Pick<Skill, 'proficiencyLevel' | 'yearsOfExperience' | 'description'>>
+): Skill | null {
+  const idx = skills.findIndex((s) => s.id === skillId)
+  if (idx === -1) return null
+  skills[idx] = { ...skills[idx], ...updates }
+  return structuredClone(skills[idx])
+}
+
+export function startValidation(
+  skillId: string,
+  methodType: 'ai-assessment' | 'document' | 'video'
+): Skill | null {
+  const idx = skills.findIndex((s) => s.id === skillId)
+  if (idx === -1) return null
+  skills[idx] = {
+    ...skills[idx],
+    validationStatus: 'pending',
+    validationType: methodType,
+  }
+  return structuredClone(skills[idx])
+}

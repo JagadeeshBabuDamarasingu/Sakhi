@@ -3,9 +3,18 @@
 import { useState, useCallback, useRef, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { SkillDiscovery } from './SkillDiscovery'
-import type { Skill, SkillCategory, SkillSuggestion, RelatedCourse, ValidationMethod } from './types'
+import type { Skill, SkillCategory, SkillSuggestion, RelatedCourse, ValidationMethod, ValidationType, ProficiencyLevel } from './types'
 import type { AiToolCall } from '@/lib/ai/types'
-import { HiOutlineSparkles, HiOutlinePaperAirplane, HiOutlineXMark, HiOutlineCheckCircle, HiOutlineExclamationCircle } from 'react-icons/hi2'
+import {
+  HiOutlineSparkles,
+  HiOutlinePaperAirplane,
+  HiOutlineXMark,
+  HiOutlineCheckCircle,
+  HiOutlineExclamationCircle,
+  HiOutlineDocumentText,
+  HiOutlineVideoCamera,
+  HiOutlineCloudArrowUp,
+} from 'react-icons/hi2'
 
 interface SkillDiscoveryData {
   skills: Skill[]
@@ -20,10 +29,22 @@ interface AIMessage {
   content: string
 }
 
+type ValidationStep = 'select-method' | 'complete' | 'success'
+
+const PROFICIENCY_LEVELS: ProficiencyLevel[] = ['beginner', 'intermediate', 'advanced', 'expert']
+
+const methodIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+  'ai-assessment': HiOutlineSparkles,
+  document: HiOutlineDocumentText,
+  video: HiOutlineVideoCamera,
+}
+
 export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
   const router = useRouter()
   const [skills, setSkills] = useState(data.skills)
   const [skillSuggestions, setSkillSuggestions] = useState(data.skillSuggestions)
+
+  // AI chat state
   const [aiOpen, setAiOpen] = useState(false)
   const [messages, setMessages] = useState<AIMessage[]>([])
   const [input, setInput] = useState('')
@@ -34,9 +55,30 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
   const [addedSkillName, setAddedSkillName] = useState<string | null>(null)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
+  // Validation wizard state
+  const [validatingSkillId, setValidatingSkillId] = useState<string | null>(null)
+  const [validationStep, setValidationStep] = useState<ValidationStep>('select-method')
+  const [selectedMethod, setSelectedMethod] = useState<ValidationMethod | null>(null)
+  const [validationLoading, setValidationLoading] = useState(false)
+  const [aiAnswers, setAiAnswers] = useState<string[]>(['', '', ''])
+  const [docFile, setDocFile] = useState<File | null>(null)
+  const [videoUrl, setVideoUrl] = useState('')
+
+  // Edit skill state
+  const [editingSkillId, setEditingSkillId] = useState<string | null>(null)
+  const [editProficiency, setEditProficiency] = useState<ProficiencyLevel>('beginner')
+  const [editYears, setEditYears] = useState(0)
+  const [editDescription, setEditDescription] = useState('')
+  const [editLoading, setEditLoading] = useState(false)
+
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages, loading])
+
+  const validatingSkill = skills.find((s) => s.id === validatingSkillId) ?? null
+  const editingSkill = skills.find((s) => s.id === editingSkillId) ?? null
+
+  // === AI Chat ===
 
   const handleStartAIConversation = useCallback(() => {
     setAiOpen(true)
@@ -99,6 +141,8 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
       setLoading(false)
     }
   }, [input, loading])
+
+  // === Suggestion Management ===
 
   const handleAddSuggestion = useCallback(
     async (suggestionId: string) => {
@@ -190,6 +234,103 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
     setPendingToolCall(null)
   }, [pendingToolCall])
 
+  // === Delete Skill ===
+
+  const handleDeleteSkill = useCallback(async (skillId: string) => {
+    setSkills((prev) => prev.filter((s) => s.id !== skillId))
+    await fetch(`/api/skills/${skillId}`, { method: 'DELETE' }).catch(() => {})
+  }, [])
+
+  // === Validation Wizard ===
+
+  const handleOpenValidation = useCallback((skillId: string) => {
+    setValidatingSkillId(skillId)
+    setValidationStep('select-method')
+    setSelectedMethod(null)
+    setAiAnswers(['', '', ''])
+    setDocFile(null)
+    setVideoUrl('')
+  }, [])
+
+  const handleSelectMethod = useCallback((method: ValidationMethod) => {
+    setSelectedMethod(method)
+    setValidationStep('complete')
+  }, [])
+
+  const handleSubmitValidation = useCallback(async () => {
+    if (!validatingSkillId || !selectedMethod) return
+    setValidationLoading(true)
+
+    try {
+      const res = await fetch(`/api/skills/${validatingSkillId}/validate`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: selectedMethod.type }),
+      })
+      if (!res.ok) throw new Error('Validation failed')
+      const updated: Skill = await res.json()
+      setSkills((prev) => prev.map((s) => (s.id === updated.id ? updated : s)))
+      setValidationStep('success')
+    } catch {
+      // stay on step so user can retry
+    } finally {
+      setValidationLoading(false)
+    }
+  }, [validatingSkillId, selectedMethod])
+
+  const handleCloseValidation = useCallback(() => {
+    setValidatingSkillId(null)
+    setValidationStep('select-method')
+    setSelectedMethod(null)
+  }, [])
+
+  // === Edit Skill ===
+
+  const handleOpenEdit = useCallback(
+    (skillId: string) => {
+      const skill = skills.find((s) => s.id === skillId)
+      if (!skill) return
+      setEditingSkillId(skillId)
+      setEditProficiency(skill.proficiencyLevel)
+      setEditYears(skill.yearsOfExperience)
+      setEditDescription(skill.description)
+    },
+    [skills]
+  )
+
+  const handleSaveEdit = useCallback(async () => {
+    if (!editingSkillId) return
+    setEditLoading(true)
+
+    try {
+      const res = await fetch(`/api/skills/${editingSkillId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          proficiencyLevel: editProficiency,
+          yearsOfExperience: editYears,
+          description: editDescription,
+        }),
+      })
+      if (!res.ok) throw new Error('Update failed')
+      const updated: Skill = await res.json()
+      setSkills((prev) => prev.map((s) => (s.id === updated.id ? updated : s)))
+      setEditingSkillId(null)
+    } catch {
+      // keep modal open so user can retry
+    } finally {
+      setEditLoading(false)
+    }
+  }, [editingSkillId, editProficiency, editYears, editDescription])
+
+  const aiAssessmentQuestions = validatingSkill
+    ? [
+        `How long have you been practicing ${validatingSkill.name}?`,
+        `Describe a recent project where you used ${validatingSkill.name}.`,
+        `What makes your ${validatingSkill.name} skill stand out in the market?`,
+      ]
+    : []
+
   return (
     <>
       <SkillDiscovery
@@ -207,7 +348,9 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
         onViewCourse={(id) => router.push(`/elearning/courses/${id}`)}
         onViewListing={(id) => router.push(`/marketplace/listings/${id}`)}
         onViewSkill={(id) => router.push(`/skill-discovery/${id}`)}
-        onDeleteSkill={(id) => setSkills((prev) => prev.filter((s) => s.id !== id))}
+        onDeleteSkill={handleDeleteSkill}
+        onValidateSkill={handleOpenValidation}
+        onEditSkill={handleOpenEdit}
         onAddSkill={(name, catId) => {
           const category = data.skillCategories.find((c) => c.id === catId)
           const newSkill: Skill = {
@@ -234,11 +377,10 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
         onSearchSkill={(q) => router.push(`/skill-discovery?q=${encodeURIComponent(q)}`)}
       />
 
-      {/* AI Chat Modal */}
+      {/* ──────────────── AI Chat Modal ──────────────── */}
       {aiOpen && (
         <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 backdrop-blur-[2px] p-4">
           <div className="w-full max-w-md bg-white dark:bg-stone-900 rounded-2xl shadow-2xl flex flex-col max-h-[85vh]">
-            {/* Header */}
             <div className="flex items-center gap-3 px-4 py-3 border-b border-stone-200 dark:border-stone-800">
               <span className="w-8 h-8 rounded-xl bg-rose-50 dark:bg-rose-950/60 flex items-center justify-center">
                 <HiOutlineSparkles className="w-4 h-4 text-rose-500" />
@@ -255,7 +397,6 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
               </button>
             </div>
 
-            {/* Messages */}
             <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
               {messages.map((msg, i) => (
                 <div
@@ -285,7 +426,6 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Input */}
             <div className="px-3 py-3 border-t border-stone-200 dark:border-stone-800">
               <div className="flex items-center gap-2 bg-stone-100 dark:bg-stone-800 rounded-xl px-3 py-2">
                 <input
@@ -314,7 +454,7 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
         </div>
       )}
 
-      {/* Confirmation Modal for add_skill */}
+      {/* ──────────────── AI Confirmation Modal ──────────────── */}
       {pendingToolCall && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-[2px] p-4">
           <div className="w-full max-w-sm bg-white dark:bg-stone-900 rounded-2xl shadow-2xl p-6">
@@ -366,7 +506,269 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
         </div>
       )}
 
-      {/* Success toast */}
+      {/* ──────────────── Validation Wizard ──────────────── */}
+      {validatingSkillId && validatingSkill && (
+        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 backdrop-blur-[2px] p-4">
+          <div className="w-full max-w-md bg-white dark:bg-stone-900 rounded-2xl shadow-2xl overflow-hidden">
+            {/* Header */}
+            <div className="flex items-center gap-3 px-5 py-4 border-b border-stone-200 dark:border-stone-800">
+              <div className="flex-1">
+                <p className="text-xs text-stone-500 dark:text-stone-400 uppercase tracking-wide font-medium">
+                  Validate Skill
+                </p>
+                <p className="font-semibold text-stone-900 dark:text-stone-100">
+                  {validatingSkill.name}
+                </p>
+              </div>
+              <button
+                onClick={handleCloseValidation}
+                aria-label="Close validation wizard"
+                className="p-1.5 rounded-lg text-stone-400 hover:text-stone-600 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+              >
+                <HiOutlineXMark className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Step: select method */}
+            {validationStep === 'select-method' && (
+              <div className="p-5">
+                <p className="text-sm text-stone-600 dark:text-stone-400 mb-4">
+                  Choose how you'd like to verify this skill:
+                </p>
+                <div className="space-y-3">
+                  {data.validationMethods.map((method) => {
+                    const Icon = methodIcons[method.type ?? ''] ?? HiOutlineDocumentText
+                    return (
+                      <button
+                        key={method.id}
+                        onClick={() => handleSelectMethod(method)}
+                        className="w-full flex items-center gap-4 p-4 rounded-xl border border-stone-200 dark:border-stone-700 hover:border-rose-300 dark:hover:border-rose-700 hover:bg-rose-50 dark:hover:bg-rose-900/20 transition-all text-left group"
+                      >
+                        <span className="w-10 h-10 rounded-lg bg-stone-100 dark:bg-stone-800 flex items-center justify-center group-hover:bg-rose-100 dark:group-hover:bg-rose-900/40 transition-colors">
+                          <Icon className="w-5 h-5 text-stone-600 dark:text-stone-400 group-hover:text-rose-600 dark:group-hover:text-rose-400" />
+                        </span>
+                        <div className="flex-1 min-w-0">
+                          <p className="font-medium text-stone-900 dark:text-stone-100">
+                            {method.name}
+                          </p>
+                          <p className="text-sm text-stone-500 dark:text-stone-400">
+                            {method.description} · {method.duration}
+                          </p>
+                        </div>
+                      </button>
+                    )
+                  })}
+                </div>
+              </div>
+            )}
+
+            {/* Step: complete validation */}
+            {validationStep === 'complete' && selectedMethod && (
+              <div className="p-5">
+                <button
+                  onClick={() => setValidationStep('select-method')}
+                  className="text-xs text-stone-500 hover:text-stone-700 dark:hover:text-stone-300 mb-4 flex items-center gap-1"
+                >
+                  ← Back
+                </button>
+
+                <p className="font-medium text-stone-900 dark:text-stone-100 mb-4">
+                  {selectedMethod.name}
+                </p>
+
+                {selectedMethod.type === 'ai-assessment' && (
+                  <div className="space-y-4">
+                    {aiAssessmentQuestions.map((question, i) => (
+                      <div key={i}>
+                        <label className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-1.5">
+                          {i + 1}. {question}
+                        </label>
+                        <textarea
+                          rows={2}
+                          value={aiAnswers[i]}
+                          onChange={(e) => {
+                            const next = [...aiAnswers]
+                            next[i] = e.target.value
+                            setAiAnswers(next)
+                          }}
+                          placeholder="Your answer…"
+                          className="w-full px-3 py-2 rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-900 dark:text-stone-100 text-sm placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-rose-500/50 resize-none"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {selectedMethod.type === 'document' && (
+                  <div>
+                    <label
+                      htmlFor="doc-upload"
+                      className="flex flex-col items-center justify-center w-full h-32 rounded-xl border-2 border-dashed border-stone-300 dark:border-stone-700 hover:border-rose-400 dark:hover:border-rose-600 cursor-pointer transition-colors bg-stone-50 dark:bg-stone-800/50"
+                    >
+                      <HiOutlineCloudArrowUp className="w-8 h-8 text-stone-400 mb-2" />
+                      <span className="text-sm text-stone-600 dark:text-stone-400">
+                        {docFile ? docFile.name : 'Click to upload certificate or portfolio'}
+                      </span>
+                      <span className="text-xs text-stone-400 mt-1">PDF, JPG, PNG up to 10 MB</span>
+                    </label>
+                    <input
+                      id="doc-upload"
+                      type="file"
+                      accept=".pdf,.jpg,.jpeg,.png"
+                      className="sr-only"
+                      onChange={(e) => setDocFile(e.target.files?.[0] ?? null)}
+                    />
+                  </div>
+                )}
+
+                {selectedMethod.type === 'video' && (
+                  <div>
+                    <label className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-1.5">
+                      Video URL
+                    </label>
+                    <input
+                      type="url"
+                      value={videoUrl}
+                      onChange={(e) => setVideoUrl(e.target.value)}
+                      placeholder="https://youtube.com/..."
+                      className="w-full px-3 py-2.5 rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-900 dark:text-stone-100 text-sm placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-rose-500/50"
+                    />
+                    <p className="text-xs text-stone-500 mt-1.5">
+                      Link a short video (YouTube, Drive, or direct URL) showing your work.
+                    </p>
+                  </div>
+                )}
+
+                <button
+                  onClick={handleSubmitValidation}
+                  disabled={validationLoading}
+                  className="w-full mt-6 py-2.5 px-4 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-sm font-medium disabled:opacity-50 transition-colors flex items-center justify-center gap-2"
+                >
+                  {validationLoading ? (
+                    <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
+                  ) : (
+                    'Submit for Review'
+                  )}
+                </button>
+              </div>
+            )}
+
+            {/* Step: success */}
+            {validationStep === 'success' && (
+              <div className="p-8 text-center">
+                <div className="w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center mx-auto mb-4">
+                  <HiOutlineCheckCircle className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />
+                </div>
+                <h3 className="font-semibold text-stone-900 dark:text-stone-100 mb-2">
+                  Submitted for Review
+                </h3>
+                <p className="text-sm text-stone-600 dark:text-stone-400 mb-6">
+                  Your {validatingSkill.name} skill is now <strong>Pending</strong> review. You'll
+                  be notified once it's verified.
+                </p>
+                <button
+                  onClick={handleCloseValidation}
+                  className="px-6 py-2.5 rounded-xl bg-stone-900 dark:bg-stone-100 text-white dark:text-stone-900 text-sm font-medium hover:opacity-90 transition-opacity"
+                >
+                  Done
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* ──────────────── Edit Skill Modal ──────────────── */}
+      {editingSkillId && editingSkill && (
+        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 backdrop-blur-[2px] p-4">
+          <div className="w-full max-w-sm bg-white dark:bg-stone-900 rounded-2xl shadow-2xl overflow-hidden">
+            <div className="flex items-center gap-3 px-5 py-4 border-b border-stone-200 dark:border-stone-800">
+              <div className="flex-1">
+                <p className="text-xs text-stone-500 dark:text-stone-400 uppercase tracking-wide font-medium">
+                  Edit Skill
+                </p>
+                <p className="font-semibold text-stone-900 dark:text-stone-100">
+                  {editingSkill.name}
+                </p>
+              </div>
+              <button
+                onClick={() => setEditingSkillId(null)}
+                aria-label="Close edit"
+                className="p-1.5 rounded-lg text-stone-400 hover:text-stone-600 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+              >
+                <HiOutlineXMark className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="p-5 space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-1.5">
+                  Proficiency Level
+                </label>
+                <select
+                  value={editProficiency}
+                  onChange={(e) => setEditProficiency(e.target.value as ProficiencyLevel)}
+                  className="w-full px-3 py-2.5 rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-900 dark:text-stone-100 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500/50 capitalize"
+                >
+                  {PROFICIENCY_LEVELS.map((level) => (
+                    <option key={level} value={level} className="capitalize">
+                      {level.charAt(0).toUpperCase() + level.slice(1)}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-1.5">
+                  Years of Experience
+                </label>
+                <input
+                  type="number"
+                  min={0}
+                  max={50}
+                  value={editYears}
+                  onChange={(e) => setEditYears(Number(e.target.value))}
+                  className="w-full px-3 py-2.5 rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-900 dark:text-stone-100 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500/50"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-1.5">
+                  Description
+                </label>
+                <textarea
+                  rows={3}
+                  value={editDescription}
+                  onChange={(e) => setEditDescription(e.target.value)}
+                  className="w-full px-3 py-2 rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-900 dark:text-stone-100 text-sm placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-rose-500/50 resize-none"
+                />
+              </div>
+            </div>
+
+            <div className="px-5 pb-5 flex gap-3">
+              <button
+                onClick={() => setEditingSkillId(null)}
+                className="flex-1 px-4 py-2.5 rounded-xl border border-stone-200 dark:border-stone-700 text-sm font-medium text-stone-700 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleSaveEdit}
+                disabled={editLoading}
+                className="flex-1 px-4 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-sm font-medium disabled:opacity-50 transition-colors flex items-center justify-center gap-2"
+              >
+                {editLoading ? (
+                  <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
+                ) : (
+                  'Save Changes'
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ──────────────── Success Toast ──────────────── */}
       {addedSkillName && (
         <div
           className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 px-4 py-3 bg-emerald-600 text-white rounded-xl shadow-lg text-sm font-medium animate-in fade-in slide-in-from-bottom-4"

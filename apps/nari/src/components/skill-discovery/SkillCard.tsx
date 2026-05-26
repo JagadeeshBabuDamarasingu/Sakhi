@@ -127,6 +127,7 @@ export function SkillCard({
                 e.stopPropagation()
                 setShowMenu(!showMenu)
               }}
+              aria-label="More options"
               className="p-1.5 rounded-lg text-stone-400 hover:text-stone-600 hover:bg-stone-100 dark:hover:bg-stone-800 dark:hover:text-stone-300 transition-colors"
             >
               <MoreVertical className="w-5 h-5" />

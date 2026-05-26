@@ -1,0 +1,7 @@
+import { NextResponse } from 'next/server'
+import { getSkillDiscoveryData } from '@/lib/skill-store'
+
+export async function GET() {
+  const { skillSuggestions } = getSkillDiscoveryData()
+  return NextResponse.json(skillSuggestions)
+}

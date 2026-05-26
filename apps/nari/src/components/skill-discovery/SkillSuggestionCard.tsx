@@ -32,6 +32,7 @@ export function SkillSuggestionCard({ suggestion, onAdd, onDismiss }: SkillSugge
       {/* Dismiss button */}
       <button
         onClick={onDismiss}
+        aria-label={`Dismiss ${suggestion.skillName}`}
         className="absolute top-2 right-2 p-1 rounded-full text-stone-400 hover:text-stone-600 hover:bg-stone-100 dark:hover:bg-stone-800 dark:hover:text-stone-300 opacity-0 group-hover:opacity-100 transition-all"
       >
         <X className="w-4 h-4" />
