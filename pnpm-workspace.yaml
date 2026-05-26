@@ -1,3 +1,11 @@
 packages:
   - "apps/*"
   - "packages/*"
+  - "functions"
+
+allowBuilds:
+  '@firebase/util': true   # Firebase internals
+  esbuild: true            # Required by Next.js / Turbopack
+  protobufjs: true         # Required by @shakthi/protocols
+  sharp: true              # Required by Next.js image optimization
+  unrs-resolver: true      # Required by Rust-based bundler resolver

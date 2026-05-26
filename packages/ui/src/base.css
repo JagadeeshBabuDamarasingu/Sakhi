@@ -1,0 +1,10 @@
+/* Class-based dark mode — all apps set .dark on <html> via ThemeProvider */
+@variant dark (&:where(.dark, .dark *));
+
+body {
+  font-family: var(--font-sans);
+}
+
+code, pre, .mono {
+  font-family: var(--font-mono);
+}

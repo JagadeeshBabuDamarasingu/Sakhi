@@ -1,5 +1,5 @@
 {
-  "$schema": "https://turbo.build",
+  "$schema": "https://turbo.build/schema.json",
   "tasks": {
     "proto:generate": {
       "inputs": [
@@ -18,9 +18,11 @@
         "^build"
       ],
       "inputs": [
-        "src/**/*.tsx",
-        "src/**/*.ts",
-        "next.config.js"
+        "src/**/*.{ts,tsx,css}",
+        "next.config.ts",
+        "postcss.config.mjs",
+        "tsconfig.json",
+        "public/**"
       ],
       "outputs": [
         ".next/**",
@@ -41,6 +43,15 @@
       "dependsOn": [
         "proto:generate"
       ],
+      "cache": true
+    },
+    "lint": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "outputs": ["coverage/**"],
       "cache": true
     }
   }

@@ -1,0 +1,8 @@
+@import "tailwindcss";
+@plugin "daisyui";
+@import "@shakthi/ui/styles.css";
+
+@theme {
+  --font-sans: var(--font-poppins), 'Noto Sans Devanagari', 'Noto Sans Tamil', 'Noto Sans Telugu', sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), monospace;
+}

@@ -1,0 +1,21 @@
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up   { animation: fade-up 0.55s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-fade-up-1 { animation: fade-up 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both; }
+.animate-fade-up-2 { animation: fade-up 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.16s both; }
+.animate-fade-up-3 { animation: fade-up 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.24s both; }
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1;    transform: scale(1); }
+  50%       { opacity: 0.45; transform: scale(0.75); }
+}
+
+.animate-pulse-dot   { animation: pulse-dot 2.2s ease-in-out infinite; }
+.animate-pulse-dot-1 { animation: pulse-dot 2.2s ease-in-out 0.0s  infinite; }
+.animate-pulse-dot-2 { animation: pulse-dot 2.2s ease-in-out 0.44s infinite; }
+.animate-pulse-dot-3 { animation: pulse-dot 2.2s ease-in-out 0.88s infinite; }
+.animate-pulse-dot-4 { animation: pulse-dot 2.2s ease-in-out 1.32s infinite; }
+.animate-pulse-dot-5 { animation: pulse-dot 2.2s ease-in-out 1.76s infinite; }

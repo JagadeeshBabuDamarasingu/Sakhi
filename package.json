@@ -1,21 +1,24 @@
 {
   "name": "shakthi",
   "private": true,
+  "packageManager": "pnpm@11.3.0",
   "scripts": {
-    "dev:marketplace": "pnpm --filter web-marketplace dev",
-    "dev:admin": "pnpm --filter web-admin dev",
-    "dev:nari": "pnpm --filter .web/nari dev",
-    "proto:generate": "cd packages/protocols && buf generate",
-    "build:all": "pnpm --filter ./apps/* build",
+    "dev:nari": "pnpm --filter \"./apps/nari\" dev",
+    "dev:marketplace": "pnpm --filter \"./apps/marketplace\" dev",
+    "dev:admin": "pnpm --filter \"./apps/admin\" dev",
+    "dev:apps": "turbo run dev --filter=./apps/*",
+    "build": "turbo run build",
+    "build:apps": "turbo run build --filter=./apps/*",
+    "build:mobile": "turbo run mobile:build",
+    "build:rust": "turbo run rust:build",
     "codegen": "turbo run proto:generate",
-    "dev:web": "turbo run dev --filter=web-*",
-    "build:all-web": "turbo run build",
-    "build:all-mobile": "turbo run mobile:build",
-    "build:all-rust": "turbo run rust:build"
+    "proto:generate": "cd packages/protocols && buf generate",
+    "lint": "turbo run lint",
+    "test": "turbo run test"
   },
   "devDependencies": {
     "cross-env": "^10.1.0",
     "turbo": "^2.9.14",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.0"
   }
 }

@@ -1,0 +1,8 @@
+@import "tailwindcss";
+@plugin "daisyui";
+@import "@shakthi/ui/styles.css";
+
+@theme {
+  --font-sans: var(--font-geist-sans), sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+}

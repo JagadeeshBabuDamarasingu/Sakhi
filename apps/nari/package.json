@@ -1,5 +1,5 @@
 {
-  "name": "sakhi-portal",
+  "name": "web-nari",
   "version": "0.1.0",
   "private": true,
   "packageManager": "pnpm@11.3.0",
@@ -20,6 +20,8 @@
     "react-icons": "^5.6.0"
   },
   "devDependencies": {
+    "@shakthi/tsconfig": "workspace:*",
+    "@shakthi/ui": "workspace:*",
     "@tailwindcss/postcss": "^4.3.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
@@ -34,7 +36,7 @@
     "eslint-config-next": "16.2.6",
     "jsdom": "^25.0.1",
     "tailwindcss": "^4.3.0",
-    "typescript": "^5",
+    "typescript": "^6.0.0",
     "vitest": "^3.0.0"
   }
 }

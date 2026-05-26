@@ -1,18 +1,66 @@
 {
-  "apphosting": {
-    "backendId": "nari-web-dev",
-    "rootDir": "web/nari/",
-    "ignore": [
-      "node_modules",
-      ".git",
-      "firebase-debug.log",
-      "firebase-debug.*.log",
-      "functions",
-      "mobile",
-      "ai",
-      "web/admin",
-      "web/marketplace",
-      ".agents/"
-    ]
+  "apphosting": [
+    {
+      "backendId": "nari-web-dev",
+      "rootDir": "apps/nari",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "functions",
+        "mobile",
+        "ai",
+        "apps/admin",
+        "apps/marketplace",
+        ".agents/"
+      ]
+    },
+    {
+      "backendId": "admin-web-dev",
+      "rootDir": "apps/admin",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "functions",
+        "mobile",
+        "ai",
+        "apps/nari",
+        "apps/marketplace",
+        ".agents/"
+      ]
+    },
+    {
+      "backendId": "marketplace-web-dev",
+      "rootDir": "apps/marketplace",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "functions",
+        "mobile",
+        "ai",
+        "apps/nari",
+        "apps/admin",
+        ".agents/"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": ["node_modules", "lib", ".git"]
+    }
+  ],
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "storage": {
+    "rules": "storage.rules"
   }
 }
