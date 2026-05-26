@@ -32,7 +32,9 @@ const themeScript = `
       var saved = localStorage.getItem('sakhi_theme');
       var preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       var theme = saved || preferred;
-      if (theme === 'dark') document.documentElement.classList.add('dark');
+      var html = document.documentElement;
+      html.setAttribute('data-theme', theme === 'dark' ? 'dark' : 'bumblebee');
+      if (theme === 'dark') html.classList.add('dark');
     } catch(e) {}
   })();
 `
@@ -45,7 +47,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-theme="bumblebee"
       className={`${poppins.variable} ${ibmPlexMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />

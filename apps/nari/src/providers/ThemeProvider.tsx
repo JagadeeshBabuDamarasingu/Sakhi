@@ -4,6 +4,12 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from '
 
 type Theme = 'light' | 'dark'
 
+function applyTheme(theme: Theme) {
+  const html = document.documentElement
+  html.setAttribute('data-theme', theme === 'dark' ? 'dark' : 'bumblebee')
+  html.classList.toggle('dark', theme === 'dark')
+}
+
 interface ThemeContextValue {
   theme: Theme
   toggleTheme: () => void
@@ -22,14 +28,14 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
     const initial = saved ?? preferred
     setTheme(initial)
-    document.documentElement.classList.toggle('dark', initial === 'dark')
+    applyTheme(initial)
   }, [])
 
   const toggleTheme = () => {
     setTheme((prev) => {
       const next: Theme = prev === 'light' ? 'dark' : 'light'
       localStorage.setItem('sakhi_theme', next)
-      document.documentElement.classList.toggle('dark', next === 'dark')
+      applyTheme(next)
       return next
     })
   }

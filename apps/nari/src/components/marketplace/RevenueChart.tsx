@@ -49,7 +49,7 @@ export function RevenueChart({ data }: RevenueChartProps) {
         </div>
 
         {/* Bars */}
-        <div className="relative h-full flex items-end justify-between gap-2 sm:gap-4 px-1">
+        <div className="relative h-full flex items-end gap-0.5 sm:gap-1 px-1">
           {data.length === 0 && (
             <div className="absolute inset-0 flex items-center justify-center text-sm text-stone-500 dark:text-stone-400">
               No revenue data yet
@@ -58,9 +58,10 @@ export function RevenueChart({ data }: RevenueChartProps) {
           {data.map((day, index) => {
             const height = getBarHeight(day.revenue)
             const isHighest = day.revenue === maxRevenue
+            const showLabel = index === 0 || (index + 1) % 5 === 0 || index === data.length - 1
 
             return (
-              <div key={day.date} className="flex-1 flex flex-col items-center gap-2 group">
+              <div key={day.date} className="flex-1 min-w-0 flex flex-col items-center gap-2 group">
                 {/* Tooltip */}
                 <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-2 transform -translate-y-full bg-stone-900 dark:bg-stone-100 text-white dark:text-stone-900 text-xs font-medium px-2.5 py-1.5 rounded-lg shadow-lg z-10 whitespace-nowrap pointer-events-none">
                   {formatCurrency(day.revenue)}
@@ -73,7 +74,7 @@ export function RevenueChart({ data }: RevenueChartProps) {
                 <div className="w-full relative">
                   <div
                     data-testid="revenue-bar"
-                    className={`w-full rounded-t-lg transition-all duration-500 ease-out ${
+                    className={`w-full rounded-t-sm transition-all duration-500 ease-out ${
                       isHighest
                         ? 'bg-gradient-to-t from-rose-500 to-rose-400 dark:from-rose-600 dark:to-rose-500'
                         : 'bg-gradient-to-t from-stone-300 to-stone-200 dark:from-stone-700 dark:to-stone-600 group-hover:from-rose-300 group-hover:to-rose-200 dark:group-hover:from-rose-800 dark:group-hover:to-rose-700'
@@ -86,8 +87,8 @@ export function RevenueChart({ data }: RevenueChartProps) {
                   />
                 </div>
 
-                {/* Date label */}
-                <span className="text-xs text-stone-500 dark:text-stone-400 font-medium whitespace-nowrap">
+                {/* Date label — only shown for first, every 5th, and last entry */}
+                <span className={`text-xs text-stone-500 dark:text-stone-400 font-medium whitespace-nowrap ${showLabel ? '' : 'invisible'}`}>
                   {formatDate(day.date)}
                 </span>
               </div>
