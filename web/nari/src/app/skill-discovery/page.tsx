@@ -1,8 +1,15 @@
-export default function SkillDiscoveryPage() {
-  return (
-    <div className="px-4 sm:px-6 lg:px-8 py-8">
-      <h1 className="text-2xl font-bold text-stone-900 dark:text-stone-100">Skill Discovery</h1>
-      <p className="mt-2 text-stone-600 dark:text-stone-400">Discover your marketable skills with AI.</p>
-    </div>
+import { SkillDiscoveryClient } from '@/components/skill-discovery/SkillDiscoveryClient'
+
+async function getSkillData() {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:3000'}/api/skills`,
+    { cache: 'no-store' }
   )
+  if (!res.ok) throw new Error('Failed to fetch skill data')
+  return res.json()
+}
+
+export default async function SkillDiscoveryPage() {
+  const data = await getSkillData()
+  return <SkillDiscoveryClient data={data} />
 }

@@ -40,6 +40,7 @@ export function AIChatSidebar({ isOpen, onClose }: AIChatSidebarProps) {
   const [pendingImages, setPendingImages] = useState<string[]>([])
   const [isListening, setIsListening] = useState(false)
   const [isTyping, setIsTyping] = useState(false)
+  const [sessionId, setSessionId] = useState<string | null>(null)
 
   const fileInputRef = useRef<HTMLInputElement>(null)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
@@ -58,7 +59,7 @@ export function AIChatSidebar({ isOpen, onClose }: AIChatSidebarProps) {
     ta.style.height = Math.min(ta.scrollHeight, 128) + 'px'
   }, [input])
 
-  const handleSend = useCallback(() => {
+  const handleSend = useCallback(async () => {
     if (!input.trim() && pendingImages.length === 0) return
 
     const userMsg: Message = {
@@ -74,20 +75,52 @@ export function AIChatSidebar({ isOpen, onClose }: AIChatSidebarProps) {
     setPendingImages([])
     setIsTyping(true)
 
-    setTimeout(() => {
+    try {
+      let activeSessionId = sessionId
+      if (!activeSessionId) {
+        const sessionRes = await fetch('/api/ai/sessions', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ purpose: 'chat' }),
+        })
+        if (!sessionRes.ok) throw new Error('Could not start AI session')
+        const session = await sessionRes.json()
+        activeSessionId = session.id
+        setSessionId(activeSessionId)
+      }
+
+      const messageRes = await fetch(`/api/ai/sessions/${activeSessionId}/messages`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ content: userMsg.content }),
+      })
+      if (!messageRes.ok) throw new Error('Could not send AI message')
+      const response = await messageRes.json()
+
+      setMessages(prev => [
+        ...prev,
+        {
+          id: (Date.now() + 1).toString(),
+          role: 'assistant',
+          content: response.assistantMessage.content,
+          timestamp: new Date(),
+        },
+      ])
+    } catch {
       const model = MODELS.find(m => m.id === selectedModel)
       setMessages(prev => [
         ...prev,
         {
           id: (Date.now() + 1).toString(),
           role: 'assistant',
-          content: `I'm ${model?.label}. I can help you explore skills, courses, marketplace listings, and financing options. What would you like to know?`,
+          content: `I'm ${model?.label}. I could not reach the AI service right now. Please try again.`,
           timestamp: new Date(),
         },
       ])
+    } finally {
       setIsTyping(false)
-    }, 1400)
-  }, [input, pendingImages, selectedModel])
+    }
+  }, [input, pendingImages, selectedModel, sessionId])
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     Array.from(e.target.files ?? []).forEach(file => {

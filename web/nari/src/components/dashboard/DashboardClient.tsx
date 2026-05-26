@@ -1,14 +1,45 @@
 'use client'
 
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Dashboard } from './Dashboard'
-import type { DashboardData } from './types'
+import type { AgentAction, DashboardData, Recommendation } from './types'
 
 export function DashboardClient({ data }: { data: DashboardData }) {
   const router = useRouter()
   const [announcements, setAnnouncements] = useState(data.announcements)
   const [onboardingSteps, setOnboardingSteps] = useState(data.onboardingSteps)
+  const [agentActions, setAgentActions] = useState(data.agentActions)
+  const [recommendations, setRecommendations] = useState(data.recommendations)
+
+  useEffect(() => {
+    let cancelled = false
+
+    async function loadAiFeeds() {
+      const [actionsRes, recommendationsRes] = await Promise.all([
+        fetch('/api/ai/actions'),
+        fetch('/api/ai/recommendations'),
+      ])
+
+      if (cancelled) return
+
+      if (actionsRes.ok) {
+        const nextActions = (await actionsRes.json()) as AgentAction[]
+        if (nextActions.length > 0) setAgentActions(nextActions)
+      }
+
+      if (recommendationsRes.ok) {
+        const nextRecommendations = (await recommendationsRes.json()) as Recommendation[]
+        if (nextRecommendations.length > 0) setRecommendations(nextRecommendations)
+      }
+    }
+
+    loadAiFeeds().catch(() => {})
+
+    return () => {
+      cancelled = true
+    }
+  }, [])
 
   const handleNavigateTo = useCallback(
     (section: string) => {
@@ -48,8 +79,8 @@ export function DashboardClient({ data }: { data: DashboardData }) {
       streak={data.streak}
       milestones={data.milestones}
       nextGoal={data.nextGoal}
-      agentActions={data.agentActions}
-      recommendations={data.recommendations}
+      agentActions={agentActions}
+      recommendations={recommendations}
       announcements={announcements}
       onNavigateTo={handleNavigateTo}
       onCompleteOnboardingStep={handleCompleteOnboardingStep}
