@@ -4,7 +4,7 @@
   "scripts": {
     "dev:marketplace": "pnpm --filter web-marketplace dev",
     "dev:admin": "pnpm --filter web-admin dev",
-    "dev:vendor": "cd web/nari && pnpm dev",
+    "dev:nari": "pnpm --filter .web/nari dev",
     "proto:generate": "cd packages/protocols && buf generate",
     "build:all": "pnpm --filter ./apps/* build",
     "codegen": "turbo run proto:generate",
@@ -14,7 +14,8 @@
     "build:all-rust": "turbo run rust:build"
   },
   "devDependencies": {
+    "cross-env": "^10.1.0",
     "turbo": "^2.9.14",
-    "typescript": "^5.0.0"
+    "typescript": "^6.0.3"
   }
 }
