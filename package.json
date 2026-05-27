@@ -1,7 +1,7 @@
 {
   "name": "shakthi",
   "private": true,
-  "packageManager": "pnpm@11.3.0",
+  "packageManager": "pnpm@11.1.0",
   "scripts": {
     "dev:nari": "pnpm --filter \"./apps/nari\" dev",
     "dev:marketplace": "pnpm --filter \"./apps/marketplace\" dev",

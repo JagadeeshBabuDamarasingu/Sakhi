@@ -1,6 +1,6 @@
 {
   "name": "functions",
-  "packageManager": "pnpm@11.3.0",
+  "packageManager": "pnpm@11.1.0",
   "scripts": {
     "lint": "eslint src",
     "build": "tsc",
