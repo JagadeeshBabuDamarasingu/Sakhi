@@ -19,28 +19,28 @@ env:
       - BUILD
       - RUNTIME
 
-  # Set secrets with: firebase apphosting:secrets:set <VAR_NAME> --backend marketplace-web-dev
-  - variable: NEXT_PUBLIC_FIREBASE_API_KEY
-    secret: NEXT_PUBLIC_FIREBASE_API_KEY
-    availability:
-      - BUILD
-  - variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
-    secret: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
-    availability:
-      - BUILD
-  - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
-    secret: NEXT_PUBLIC_FIREBASE_PROJECT_ID
-    availability:
-      - BUILD
-  - variable: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
-    secret: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
-    availability:
-      - BUILD
-  - variable: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
-    secret: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
-    availability:
-      - BUILD
-  - variable: NEXT_PUBLIC_FIREBASE_APP_ID
-    secret: NEXT_PUBLIC_FIREBASE_APP_ID
-    availability:
-      - BUILD
+  # # Set secrets with: firebase apphosting:secrets:set <VAR_NAME> --backend marketplace-web-dev
+  # - variable: NEXT_PUBLIC_FIREBASE_API_KEY
+  #   secret: NEXT_PUBLIC_FIREBASE_API_KEY
+  #   availability:
+  #     - BUILD
+  # - variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+  #   secret: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+  #   availability:
+  #     - BUILD
+  # - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
+  #   secret: NEXT_PUBLIC_FIREBASE_PROJECT_ID
+  #   availability:
+  #     - BUILD
+  # - variable: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+  #   secret: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+  #   availability:
+  #     - BUILD
+  # - variable: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+  #   secret: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+  #   availability:
+  #     - BUILD
+  # - variable: NEXT_PUBLIC_FIREBASE_APP_ID
+  #   secret: NEXT_PUBLIC_FIREBASE_APP_ID
+  #   availability:
+  #     - BUILD
