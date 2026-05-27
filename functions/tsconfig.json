@@ -1,9 +1,0 @@
-{
-  "extends": "@shakthi/tsconfig/node.json",
-  "compilerOptions": {
-    "outDir": "lib",
-    "rootDir": "src"
-  },
-  "compileOnSave": true,
-  "include": ["src"]
-}

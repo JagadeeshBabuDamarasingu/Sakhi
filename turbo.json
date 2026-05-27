@@ -34,23 +34,23 @@
       "persistent": true
     },
     "mobile:build": {
-      "dependsOn": [
-        "proto:generate"
-      ],
+      "dependsOn": ["proto:generate"],
+      "inputs": ["mobile/**"],
+      "outputs": ["mobile/**/build/**"],
       "cache": true
     },
     "rust:build": {
-      "dependsOn": [
-        "proto:generate"
-      ],
+      "dependsOn": ["proto:generate"],
+      "inputs": ["**/*.rs", "Cargo.toml", "Cargo.lock"],
+      "outputs": ["target/release/**"],
       "cache": true
     },
     "lint": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^lint"],
       "outputs": []
     },
     "test": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^test"],
       "outputs": ["coverage/**"],
       "cache": true
     }

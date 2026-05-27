@@ -2,5 +2,30 @@
   "name": "@shakthi/ui",
   "version": "0.1.0",
   "private": true,
-  "description": "Shared design language — Tailwind v4 + DaisyUI tokens, utilities, and animations"
+  "description": "Shared design language — Tailwind v4 + DaisyUI tokens, utilities, and animations",
+  "exports": {
+    "./styles.css": {
+      "style": "./src/base.css",
+      "default": "./src/base.css"
+    },
+    "./globals.css": {
+      "style": "./src/base.css",
+      "default": "./src/base.css"
+    },
+    "./themes.css": {
+      "style": "./src/themes.css",
+      "default": "./src/themes.css"
+    },
+    "./utilities.css": {
+      "style": "./src/utilities.css",
+      "default": "./src/utilities.css"
+    },
+    "./animations.css": {
+      "style": "./src/animations.css",
+      "default": "./src/animations.css"
+    }
+  },
+  "scripts": {
+    "lint": "eslint src"
+  }
 }

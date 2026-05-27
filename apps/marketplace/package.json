@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "packageManager": "pnpm@11.3.0",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "dev": "cross-env NODE_OPTIONS='--no-deprecation' next dev --turbo",
     "build": "next build",
@@ -10,6 +13,8 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@shakthi/firebase": "workspace:*",
+    "firebase": "^12.13.0",
     "next": "16.2.6",
     "react": "19.2.4",
     "react-dom": "19.2.4"
@@ -19,10 +24,11 @@
     "@shakthi/ui": "workspace:*",
     "daisyui": "^5.5.20",
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
+    "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
+    "cross-env": "^10.1.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
     "tailwindcss": "^4",

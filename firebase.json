@@ -8,9 +8,8 @@
         ".git",
         "firebase-debug.log",
         "firebase-debug.*.log",
-        "functions",
+        "services",
         "mobile",
-        "ai",
         "apps/admin",
         "apps/marketplace",
         ".agents/"
@@ -24,9 +23,8 @@
         ".git",
         "firebase-debug.log",
         "firebase-debug.*.log",
-        "functions",
+        "services",
         "mobile",
-        "ai",
         "apps/nari",
         "apps/marketplace",
         ".agents/"
@@ -40,9 +38,8 @@
         ".git",
         "firebase-debug.log",
         "firebase-debug.*.log",
-        "functions",
+        "services",
         "mobile",
-        "ai",
         "apps/nari",
         "apps/admin",
         ".agents/"
@@ -51,7 +48,7 @@
   ],
   "functions": [
     {
-      "source": "functions",
+      "source": "services/functions",
       "codebase": "default",
       "ignore": ["node_modules", "lib", ".git"]
     }

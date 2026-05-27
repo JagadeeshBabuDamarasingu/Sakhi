@@ -3,7 +3,7 @@
   "display": "Node.js",
   "extends": "./base.json",
   "compilerOptions": {
-    "target": "es2017",
+    "target": "ES2022",
     "module": "NodeNext",
     "moduleResolution": "nodenext",
     "noImplicitReturns": true,

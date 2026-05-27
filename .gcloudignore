@@ -1,0 +1,11 @@
+# Inherit all .gitignore rules
+#!include:.gitignore
+
+# Documentation / planning — not needed for builds
+apps/nari/product-plan/
+
+# Flutter mobile apps — not deployed via App Hosting
+mobile/
+
+# Local agent skills and Claude memory
+.agents/

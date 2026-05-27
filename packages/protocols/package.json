@@ -3,5 +3,15 @@
   "version": "1.0.0",
   "private": true,
   "main": "./generated-ts/index.js",
-  "types": "./generated-ts/index.d.ts"
+  "types": "./generated-ts/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./generated-ts/index.d.ts",
+      "import": "./generated-ts/index.js",
+      "require": "./generated-ts/index.js"
+    }
+  },
+  "scripts": {
+    "proto:generate": "buf generate"
+  }
 }
