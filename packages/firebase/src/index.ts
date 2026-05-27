@@ -1,17 +1,17 @@
-// import { getApp, getApps, initializeApp } from "firebase/app";
+import { getApp, getApps, initializeApp } from "firebase/app";
 
-// const firebaseConfig = {
-//   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY!,
-//   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN!,
-//   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID!,
-//   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET!,
-//   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID!,
-//   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID!,
-//   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
-// };
+const firebaseConfig = {
+  apiKey: "AIzaSyBkmcVQsgTXcC5Emf0OH9gNvBsKcWcYOCE",
+  authDomain: "nari-shakthi-dev.firebaseapp.com",
+  projectId: "nari-shakthi-dev",
+  storageBucket: "nari-shakthi-dev.firebasestorage.app",
+  messagingSenderId: "504626026587",
+  appId: "1:504626026587:web:ae495a9885b64e22b7477e",
+  measurementId: "G-HLLT09BMB5",
+};
 
-// export const firebaseApp = getApps().length ? getApp() : initializeApp(firebaseConfig);
+export const firebaseApp = getApps().length ? getApp() : initializeApp(firebaseConfig);
 
-// export { getAuth } from "firebase/auth";
-// export { getFirestore } from "firebase/firestore";
-// export { getStorage } from "firebase/storage";
+export { getAuth } from "firebase/auth";
+export { getFirestore } from "firebase/firestore";
+export { getStorage } from "firebase/storage";

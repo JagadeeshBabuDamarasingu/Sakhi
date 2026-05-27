@@ -19,32 +19,38 @@ env:
       - BUILD
       - RUNTIME
 
-  # Set secrets with: firebase apphosting:secrets:set <VAR_NAME> --backend nari-web-dev
-  # - variable: NEXT_PUBLIC_FIREBASE_API_KEY
-  #   secret: NEXT_PUBLIC_FIREBASE_API_KEY
-  #   availability:
-  #     - BUILD
-  # - variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
-  #   secret: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
-  #   availability:
-  #     - BUILD
-  # - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
-  #   secret: NEXT_PUBLIC_FIREBASE_PROJECT_ID
-  #   availability:
-  #     - BUILD
-  # - variable: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
-  #   secret: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
-  #   availability:
-  #     - BUILD
-  # - variable: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
-  #   secret: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
-  #   availability:
-  #     - BUILD
-  # - variable: NEXT_PUBLIC_FIREBASE_APP_ID
-  #   secret: NEXT_PUBLIC_FIREBASE_APP_ID
-  #   availability:
-  #     - BUILD
-  # - variable: NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
-  #   secret: NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
-  #   availability:
-  #     - BUILD
+  - variable: NEXT_PUBLIC_FIREBASE_API_KEY
+    value: "AIzaSyBkmcVQsgTXcC5Emf0OH9gNvBsKcWcYOCE"
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+    value: "nari-shakthi-dev.firebaseapp.com"
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
+    value: "nari-shakthi-dev"
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+    value: "nari-shakthi-dev.firebasestorage.app"
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+    value: "504626026587"
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_APP_ID
+    value: "1:504626026587:web:ae495a9885b64e22b7477e"
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
+    value: "G-HLLT09BMB5"
+    availability:
+      - BUILD
+      - RUNTIME
