@@ -45,50 +45,50 @@ export function UserMenu({ user, onLogout }: UserMenuProps) {
     <div className="relative" ref={menuRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+        className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-base-200 transition-colors"
       >
         {user?.avatarUrl ? (
           <img
             src={user.avatarUrl}
             alt={user.name}
-            className="w-8 h-8 rounded-full object-cover ring-2 ring-rose-200 dark:ring-rose-800"
+            className="w-8 h-8 rounded-full object-cover ring-2 ring-primary/30"
           />
         ) : (
-          <div className="w-8 h-8 rounded-full bg-rose-100 dark:bg-rose-900 flex items-center justify-center ring-2 ring-rose-200 dark:ring-rose-800">
+          <div className="w-8 h-8 rounded-full bg-primary/15 flex items-center justify-center ring-2 ring-primary/30">
             {user ? (
-              <span className="text-sm font-medium text-rose-600 dark:text-rose-400">
+              <span className="text-sm font-medium text-primary">
                 {getInitials(user.name)}
               </span>
             ) : (
-              <HiOutlineUser className="w-4 h-4 text-rose-600 dark:text-rose-400" />
+              <HiOutlineUser className="w-4 h-4 text-primary" />
             )}
           </div>
         )}
 
-        <span className="hidden sm:block text-sm font-medium text-stone-700 dark:text-stone-300 max-w-[120px] truncate">
+        <span className="hidden sm:block text-sm font-medium text-base-content max-w-[120px] truncate">
           {user?.name || t('user.guest')}
         </span>
 
         <HiOutlineChevronDown
-          className={`w-4 h-4 text-stone-400 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+          className={`w-4 h-4 text-base-content/40 transition-transform ${isOpen ? 'rotate-180' : ''}`}
         />
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-56 bg-white dark:bg-stone-900 rounded-xl shadow-lg border border-stone-200 dark:border-stone-700 py-2 z-50">
+        <div className="absolute right-0 mt-2 w-56 bg-base-100 rounded-xl shadow-lg border border-base-300 py-2 z-50">
           {user && (
-            <div className="px-4 py-3 border-b border-stone-200 dark:border-stone-700">
-              <p className="text-sm font-medium text-stone-900 dark:text-stone-100">
+            <div className="px-4 py-3 border-b border-base-300">
+              <p className="text-sm font-medium text-base-content">
                 {user.name}
               </p>
-              <p className="text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+              <p className="text-xs text-base-content/60 mt-0.5">
                 {t('user.view-profile')}
               </p>
             </div>
           )}
 
-          <div className="px-2 py-2 border-b border-stone-200 dark:border-stone-700">
-            <div className="px-2 py-1.5 text-xs font-medium text-stone-500 dark:text-stone-400 uppercase tracking-wider">
+          <div className="px-2 py-2 border-b border-base-300">
+            <div className="px-2 py-1.5 text-xs font-medium text-base-content/60 uppercase tracking-wider">
               {t('menu.language')}
             </div>
             <div className="grid grid-cols-2 gap-1">
@@ -104,8 +104,8 @@ export function UserMenu({ user, onLogout }: UserMenuProps) {
                     transition-colors
                     ${
                       language === lang.code
-                        ? 'bg-rose-50 dark:bg-rose-950/50 text-rose-600 dark:text-rose-400'
-                        : 'text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800'
+                        ? 'bg-primary/10 text-primary'
+                        : 'text-base-content/70 hover:bg-base-200'
                     }
                   `}
                 >
@@ -118,7 +118,7 @@ export function UserMenu({ user, onLogout }: UserMenuProps) {
           <div className="py-1">
             <button
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-3 w-full px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+              className="flex items-center gap-3 w-full px-4 py-2 text-sm text-base-content hover:bg-base-200 transition-colors"
             >
               <HiOutlineCog6Tooth className="w-4 h-4" />
               {t('menu.settings')}
@@ -130,7 +130,7 @@ export function UserMenu({ user, onLogout }: UserMenuProps) {
                   onLogout()
                   setIsOpen(false)
                 }}
-                className="flex items-center gap-3 w-full px-4 py-2 text-sm text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/50 transition-colors"
+                className="flex items-center gap-3 w-full px-4 py-2 text-sm text-primary hover:bg-primary/10 transition-colors"
               >
                 <HiOutlineArrowRightOnRectangle className="w-4 h-4" />
                 {t('menu.logout')}

@@ -7,41 +7,41 @@ interface TrafficSourcesChartProps {
 
 const sourceColors: Record<string, { bg: string; text: string; ring: string }> = {
   'ONDC Network': {
-    bg: 'bg-rose-500 dark:bg-rose-600',
-    text: 'text-rose-600 dark:text-rose-400',
-    ring: 'ring-rose-200 dark:ring-rose-900/50',
+    bg: 'bg-primary',
+    text: 'text-primary',
+    ring: 'ring-primary/20',
   },
   Direct: {
-    bg: 'bg-amber-500 dark:bg-amber-600',
-    text: 'text-amber-600 dark:text-amber-400',
-    ring: 'ring-amber-200 dark:ring-amber-900/50',
+    bg: 'bg-secondary',
+    text: 'text-secondary',
+    ring: 'ring-secondary/20',
   },
   'Social Media': {
-    bg: 'bg-emerald-500 dark:bg-emerald-600',
-    text: 'text-emerald-600 dark:text-emerald-400',
-    ring: 'ring-emerald-200 dark:ring-emerald-900/50',
+    bg: 'bg-success',
+    text: 'text-success',
+    ring: 'ring-success/20',
   },
   Search: {
-    bg: 'bg-blue-500 dark:bg-blue-600',
-    text: 'text-blue-600 dark:text-blue-400',
-    ring: 'ring-blue-200 dark:ring-blue-900/50',
+    bg: 'bg-info',
+    text: 'text-info',
+    ring: 'ring-info/20',
   },
 }
 
 const defaultColor = {
-  bg: 'bg-stone-400 dark:bg-stone-600',
-  text: 'text-stone-600 dark:text-stone-400',
-  ring: 'ring-stone-200 dark:ring-stone-800',
+  bg: 'bg-neutral',
+  text: 'text-base-content/70',
+  ring: 'ring-base-300',
 }
 
 export function TrafficSourcesChart({ data }: TrafficSourcesChartProps) {
   const sortedData = [...data].sort((a, b) => b.percentage - a.percentage)
 
   return (
-    <div className="bg-white dark:bg-stone-900 rounded-2xl border border-stone-200 dark:border-stone-800 p-5 sm:p-6 h-full flex flex-col">
+    <div className="bg-base-100 rounded-2xl border border-base-300 p-5 sm:p-6 h-full flex flex-col">
       <div className="mb-6">
-        <h3 className="text-lg font-semibold text-stone-900 dark:text-stone-50">Traffic Sources</h3>
-        <p className="text-sm text-stone-500 dark:text-stone-400 mt-0.5">Where your visitors come from</p>
+        <h3 className="text-lg font-semibold text-base-content">Traffic Sources</h3>
+        <p className="text-sm text-base-content/60 mt-0.5">Where your visitors come from</p>
       </div>
 
       {/* Donut Chart Visual */}
@@ -80,10 +80,10 @@ export function TrafficSourcesChart({ data }: TrafficSourcesChartProps) {
 
           {/* Center Text */}
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-2xl sm:text-3xl font-bold text-stone-900 dark:text-stone-50">
+            <span className="text-2xl sm:text-3xl font-bold text-base-content">
               {sortedData[0]?.percentage}%
             </span>
-            <span className="text-xs text-stone-500 dark:text-stone-400 text-center px-2">
+            <span className="text-xs text-base-content/60 text-center px-2">
               {sortedData[0]?.source}
             </span>
           </div>
@@ -98,7 +98,7 @@ export function TrafficSourcesChart({ data }: TrafficSourcesChartProps) {
             <div key={source.source} className="flex items-center justify-between group">
               <div className="flex items-center gap-3">
                 <div className={`w-3 h-3 rounded-full ${color.bg} ring-4 ${color.ring}`} />
-                <span className="text-sm text-stone-700 dark:text-stone-300 group-hover:text-stone-900 dark:group-hover:text-stone-100 transition-colors">
+                <span className="text-sm text-base-content/80 group-hover:text-base-content transition-colors">
                   {source.source}
                 </span>
               </div>

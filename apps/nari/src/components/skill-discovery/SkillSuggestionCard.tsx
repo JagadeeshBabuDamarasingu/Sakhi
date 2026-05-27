@@ -10,10 +10,10 @@ interface SkillSuggestionCardProps {
 }
 
 const demandConfig = {
-  low: { label: 'Low', className: 'text-stone-500' },
-  medium: { label: 'Medium', className: 'text-amber-600 dark:text-amber-400' },
-  high: { label: 'High', className: 'text-emerald-600 dark:text-emerald-400' },
-  'very-high': { label: 'Very High', className: 'text-rose-600 dark:text-rose-400' },
+  low: { label: 'Low', className: 'text-base-content/60' },
+  medium: { label: 'Medium', className: 'text-secondary' },
+  high: { label: 'High', className: 'text-success' },
+  'very-high': { label: 'Very High', className: 'text-primary' },
 }
 
 export function SkillSuggestionCard({ suggestion, onAdd, onDismiss }: SkillSuggestionCardProps) {
@@ -28,12 +28,12 @@ export function SkillSuggestionCard({ suggestion, onAdd, onDismiss }: SkillSugge
   }
 
   return (
-    <div className="relative group bg-white dark:bg-stone-900 rounded-xl border border-stone-200 dark:border-stone-800 p-4 transition-all duration-200 hover:border-rose-200 dark:hover:border-rose-800/50 hover:shadow-md">
+    <div className="relative group bg-base-100 rounded-xl border border-base-300 p-4 transition-all duration-200 hover:border-primary/20 hover:shadow-md">
       {/* Dismiss button */}
       <button
         onClick={onDismiss}
         aria-label={`Dismiss ${suggestion.skillName}`}
-        className="absolute top-2 right-2 p-1 rounded-full text-stone-400 hover:text-stone-600 hover:bg-stone-100 dark:hover:bg-stone-800 dark:hover:text-stone-300 opacity-0 group-hover:opacity-100 transition-all"
+        className="absolute top-2 right-2 p-1 rounded-full text-base-content/40 hover:text-base-content hover:bg-base-200 opacity-0 group-hover:opacity-100 transition-all"
       >
         <X className="w-4 h-4" />
       </button>
@@ -45,11 +45,11 @@ export function SkillSuggestionCard({ suggestion, onAdd, onDismiss }: SkillSugge
             <Sparkles className="w-3 h-3" />
             AI Pick
             {suggestion.matchScore && (
-              <span className="ml-1 text-rose-600 dark:text-rose-400">{suggestion.matchScore}%</span>
+              <span className="ml-1 text-primary">{suggestion.matchScore}%</span>
             )}
           </span>
         ) : (
-          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-700 dark:bg-amber-900/50 dark:text-amber-400">
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-secondary/20 text-secondary">
             <TrendingUp className="w-3 h-3" />
             #{suggestion.trendingRank} Trending
           </span>
@@ -57,20 +57,20 @@ export function SkillSuggestionCard({ suggestion, onAdd, onDismiss }: SkillSugge
       </div>
 
       {/* Skill Name */}
-      <h4 className="font-semibold text-stone-900 dark:text-stone-100 mb-1">
+      <h4 className="font-semibold text-base-content mb-1">
         {suggestion.skillName}
       </h4>
-      <p className="text-xs text-stone-500 dark:text-stone-400 mb-2">{suggestion.category}</p>
+      <p className="text-xs text-base-content/60 mb-2">{suggestion.category}</p>
 
       {/* Reason */}
-      <p className="text-sm text-stone-600 dark:text-stone-400 mb-3 line-clamp-2">
+      <p className="text-sm text-base-content/70 mb-3 line-clamp-2">
         {suggestion.reason}
       </p>
 
       {/* Stats */}
       <div className="flex items-center justify-between text-xs mb-3">
         <span className={`font-medium ${demand.className}`}>{demand.label} Demand</span>
-        <span className="text-stone-600 dark:text-stone-400 flex items-center">
+        <span className="text-base-content/70 flex items-center">
           <IndianRupee className="w-3 h-3" />
           {formatEarning(suggestion.earningPotential.min)}-{formatEarning(suggestion.earningPotential.max)}/mo
         </span>
@@ -79,7 +79,7 @@ export function SkillSuggestionCard({ suggestion, onAdd, onDismiss }: SkillSugge
       {/* Add Button */}
       <button
         onClick={onAdd}
-        className="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-rose-50 text-rose-600 font-medium text-sm hover:bg-rose-100 dark:bg-rose-900/30 dark:text-rose-400 dark:hover:bg-rose-900/50 transition-colors"
+        className="btn btn-primary btn-sm w-full gap-2"
       >
         <Plus className="w-4 h-4" />
         Add This Skill

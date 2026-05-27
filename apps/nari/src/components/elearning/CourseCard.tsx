@@ -52,16 +52,16 @@ export function CourseCard({
 
   return (
     <div
-      className="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-stone-100 transition-all hover:shadow-lg hover:ring-rose-200 dark:bg-stone-900 dark:ring-stone-800 dark:hover:ring-rose-700"
+      className="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl bg-base-100 shadow-sm ring-1 ring-base-300 transition-all hover:shadow-lg hover:ring-primary/20"
       onClick={onView}
     >
       {/* Thumbnail */}
-      <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-rose-100 to-amber-50 dark:from-rose-900/30 dark:to-amber-900/20">
+      <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-primary/10 to-secondary/10">
         <div className="absolute inset-0 opacity-30">
           <svg className="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
             <defs>
               <pattern id={`grid-${course.id}`} width="10" height="10" patternUnits="userSpaceOnUse">
-                <circle cx="1" cy="1" r="1" fill="currentColor" className="text-rose-300 dark:text-rose-700" />
+                <circle cx="1" cy="1" r="1" fill="currentColor" className="text-primary/40" />
               </pattern>
             </defs>
             <rect width="100" height="100" fill={`url(#grid-${course.id})`} />
@@ -69,7 +69,7 @@ export function CourseCard({
         </div>
 
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/80 text-rose-600 shadow-lg backdrop-blur-sm dark:bg-stone-800/80 dark:text-rose-400">
+          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-base-100/80 text-primary shadow-lg backdrop-blur-sm">
             <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
             </svg>
@@ -79,12 +79,12 @@ export function CourseCard({
         {/* Badges */}
         <div className="absolute left-3 top-3 flex flex-wrap gap-1.5">
           {course.isMandatory && (
-            <span className="rounded-full bg-amber-500 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white shadow-sm">
+            <span className="rounded-full bg-secondary px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-secondary-content shadow-sm">
               Required
             </span>
           )}
           {course.isTrending && !course.isMandatory && (
-            <span className="rounded-full bg-rose-500 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white shadow-sm">
+            <span className="rounded-full bg-primary px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-primary-content shadow-sm">
               Trending
             </span>
           )}
@@ -100,7 +100,7 @@ export function CourseCard({
 
         {/* Progress bar overlay */}
         {isInProgress && progress && (
-          <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-stone-200/50 backdrop-blur-sm dark:bg-stone-700/50">
+          <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-base-300/50 backdrop-blur-sm">
             <div
               className="h-full bg-gradient-to-r from-rose-500 to-amber-500 transition-all"
               style={{ width: `${progress.percentComplete}%` }}
@@ -112,17 +112,17 @@ export function CourseCard({
       {/* Content */}
       <div className="flex flex-1 flex-col p-4">
         <div className="flex items-start justify-between gap-2">
-          <h3 className="font-semibold leading-tight text-stone-900 line-clamp-2 group-hover:text-rose-700 dark:text-white dark:group-hover:text-rose-400">
+          <h3 className="font-semibold leading-tight text-base-content line-clamp-2 group-hover:text-primary">
             {course.title}
           </h3>
         </div>
 
-        <p className="mt-2 text-sm text-stone-600 line-clamp-2 dark:text-stone-400">
+        <p className="mt-2 text-sm text-base-content/70 line-clamp-2">
           {course.description}
         </p>
 
         {/* Meta info */}
-        <div className="mt-auto flex flex-wrap items-center gap-3 pt-4 text-xs text-stone-500 dark:text-stone-400">
+        <div className="mt-auto flex flex-wrap items-center gap-3 pt-4 text-xs text-base-content/60">
           <span className="flex items-center gap-1">
             <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -143,7 +143,7 @@ export function CourseCard({
 
         {/* Progress text */}
         {isInProgress && progress && (
-          <p className="mt-2 text-xs font-medium text-rose-600 dark:text-rose-400">
+          <p className="mt-2 text-xs font-medium text-primary">
             {progress.percentComplete}% complete &bull; {progress.completedModules}/{course.totalModules} modules
           </p>
         )}
@@ -160,7 +160,7 @@ export function CourseCard({
           ) : isCompleted ? (
             <button
               onClick={onView}
-              className="w-full rounded-xl bg-stone-100 px-4 py-2.5 text-sm font-semibold text-stone-700 transition-all hover:bg-stone-200 dark:bg-stone-800 dark:text-stone-300 dark:hover:bg-stone-700"
+              className="w-full rounded-xl bg-base-200 px-4 py-2.5 text-sm font-semibold text-base-content/80 transition-all hover:bg-base-300"
             >
               Review Course
             </button>
@@ -174,7 +174,7 @@ export function CourseCard({
           ) : (
             <button
               onClick={onEnroll}
-              className="w-full rounded-xl bg-stone-100 px-4 py-2.5 text-sm font-semibold text-stone-900 transition-all hover:bg-rose-50 hover:text-rose-700 dark:bg-stone-800 dark:text-white dark:hover:bg-rose-900/30 dark:hover:text-rose-400"
+              className="w-full rounded-xl bg-base-200 px-4 py-2.5 text-sm font-semibold text-base-content transition-all hover:bg-primary/10 hover:text-primary"
             >
               Enroll Free
             </button>

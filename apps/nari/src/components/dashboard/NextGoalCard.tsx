@@ -12,16 +12,16 @@ export function NextGoalCard({ nextGoal, onNavigateTo }: NextGoalCardProps) {
   const offset = circumference * (1 - nextGoal.progressPercent / 100)
 
   return (
-    <div className="bg-white dark:bg-stone-900 rounded-2xl border border-stone-200 dark:border-stone-800 p-5 shadow-sm dark:shadow-none">
+    <div className="bg-base-100 rounded-2xl border border-base-300 p-5 shadow-sm dark:shadow-none">
       <div className="flex items-start gap-4">
         <div className="flex-1 min-w-0">
-          <p className="text-[11px] font-semibold text-rose-500 uppercase tracking-widest mb-1">
+          <p className="text-[11px] font-semibold text-primary uppercase tracking-widest mb-1">
             Next goal
           </p>
-          <p className="text-sm font-semibold text-stone-800 dark:text-stone-100 leading-snug">
+          <p className="text-sm font-semibold text-base-content leading-snug">
             {nextGoal.title}
           </p>
-          <p className="text-xs text-stone-500 dark:text-stone-400 mt-1.5 leading-relaxed">
+          <p className="text-xs text-base-content/60 mt-1.5 leading-relaxed">
             {nextGoal.description}
           </p>
         </div>
@@ -34,7 +34,7 @@ export function NextGoalCard({ nextGoal, onNavigateTo }: NextGoalCardProps) {
               fill="none"
               stroke="currentColor"
               strokeWidth="4"
-              className="text-stone-100 dark:text-stone-800"
+              className="text-base-content/10"
             />
             <circle
               cx="28"
@@ -46,17 +46,17 @@ export function NextGoalCard({ nextGoal, onNavigateTo }: NextGoalCardProps) {
               strokeDasharray={circumference}
               strokeDashoffset={offset}
               strokeLinecap="round"
-              className="text-rose-500 transition-all duration-700"
+              className="text-primary transition-all duration-700"
             />
           </svg>
-          <span className="absolute inset-0 flex items-center justify-center text-xs font-bold text-rose-600 dark:text-rose-400">
+          <span className="absolute inset-0 flex items-center justify-center text-xs font-bold text-primary">
             {nextGoal.progressPercent}%
           </span>
         </div>
       </div>
       <button
         onClick={() => onNavigateTo?.(nextGoal.targetSection)}
-        className="mt-4 w-full flex items-center justify-center gap-2 bg-rose-500 hover:bg-rose-600 active:bg-rose-700 text-white text-sm font-semibold rounded-xl py-2.5 transition-colors"
+        className="btn btn-primary mt-4 w-full rounded-xl py-2.5 text-sm"
       >
         {nextGoal.targetLabel}
         <LuArrowRight className="w-4 h-4" />

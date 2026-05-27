@@ -64,8 +64,8 @@ export function CategoryPills({
         onClick={() => onSelect?.('digital-literacy')}
         className={`flex flex-shrink-0 items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all ${
           !activeCategory
-            ? 'bg-rose-500 text-white shadow-md'
-            : 'bg-stone-100 text-stone-600 hover:bg-stone-200 dark:bg-stone-800 dark:text-stone-300 dark:hover:bg-stone-700'
+            ? 'bg-primary text-primary-content shadow-md'
+            : 'bg-base-200 text-base-content/70 hover:bg-base-300'
         }`}
       >
         <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -82,8 +82,8 @@ export function CategoryPills({
             onClick={() => onSelect?.(category.id)}
             className={`flex flex-shrink-0 items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all ${
               isActive
-                ? 'bg-rose-500 text-white shadow-md'
-                : 'bg-stone-100 text-stone-600 hover:bg-stone-200 dark:bg-stone-800 dark:text-stone-300 dark:hover:bg-stone-700'
+                ? 'bg-primary text-primary-content shadow-md'
+                : 'bg-base-200 text-base-content/70 hover:bg-base-300'
             }`}
           >
             {getIcon(category.icon)}

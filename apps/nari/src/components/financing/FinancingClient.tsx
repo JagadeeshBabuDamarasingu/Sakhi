@@ -106,21 +106,21 @@ export function FinancingClient({ data }: { data: FinancingData }) {
   return (
     <>
       {coachResult && !coachDismissed && (
-        <div className="mx-4 sm:mx-6 lg:mx-8 mt-6 flex items-start gap-3 px-4 py-3.5 bg-gradient-to-r from-rose-50 to-amber-50 dark:from-rose-950/30 dark:to-amber-950/20 border border-rose-200 dark:border-rose-800/50 rounded-2xl">
-          <span className="flex-shrink-0 w-8 h-8 rounded-lg bg-rose-100 dark:bg-rose-900/50 flex items-center justify-center mt-0.5">
-            <HiOutlineSparkles className="w-4 h-4 text-rose-500" />
+        <div className="mx-4 sm:mx-6 lg:mx-8 mt-6 flex items-start gap-3 px-4 py-3.5 bg-primary/5 border border-primary/20 rounded-2xl">
+          <span className="flex-shrink-0 w-8 h-8 rounded-lg bg-primary/15 flex items-center justify-center mt-0.5">
+            <HiOutlineSparkles className="w-4 h-4 text-primary" />
           </span>
           <div className="flex-1 min-w-0">
-            <p className="text-xs font-semibold text-rose-600 dark:text-rose-400 uppercase tracking-wide mb-0.5">
+            <p className="text-xs font-semibold text-primary uppercase tracking-wide mb-0.5">
               AI Financing Advisor
             </p>
-            <p className="text-sm text-stone-700 dark:text-stone-300 leading-relaxed">
+            <p className="text-sm text-base-content/80 leading-relaxed">
               {coachResult.message}
             </p>
             {coachResult.nextStep?.requiresConfirmation && (
               <button
                 onClick={handleCoachStartLoan}
-                className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-rose-600 dark:text-rose-400 hover:text-rose-700 dark:hover:text-rose-300 transition-colors"
+                className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
               >
                 <HiOutlineCheckCircle className="w-4 h-4" />
                 Review{' '}
@@ -133,7 +133,7 @@ export function FinancingClient({ data }: { data: FinancingData }) {
           </div>
           <button
             onClick={() => setCoachDismissed(true)}
-            className="flex-shrink-0 p-1 rounded-lg text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 hover:bg-white/60 dark:hover:bg-stone-800/60 transition-colors"
+            className="flex-shrink-0 p-1 rounded-lg text-base-content/50 hover:text-base-content/80 hover:bg-base-200 transition-colors"
             aria-label="Dismiss"
           >
             <HiOutlineXMark className="w-4 h-4" />
@@ -155,37 +155,37 @@ export function FinancingClient({ data }: { data: FinancingData }) {
       {/* Confirmation modal for AI-suggested loan start */}
       {pendingLoanType && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-[2px] p-4">
-          <div className="w-full max-w-sm bg-white dark:bg-stone-900 rounded-2xl shadow-2xl p-6">
+          <div className="w-full max-w-sm bg-base-100 rounded-2xl shadow-2xl p-6">
             <div className="flex items-center gap-3 mb-4">
-              <span className="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-950/50 flex items-center justify-center">
+              <span className="w-10 h-10 rounded-xl bg-warning/15 flex items-center justify-center">
                 <HiOutlineExclamationCircle className="w-5 h-5 text-amber-500" />
               </span>
               <div>
-                <p className="text-xs font-medium text-amber-600 dark:text-amber-400 uppercase tracking-wide">
+                <p className="text-xs font-medium text-warning uppercase tracking-wide">
                   AI Action · High Risk · Needs Confirmation
                 </p>
-                <p className="font-semibold text-stone-900 dark:text-stone-100 mt-0.5">
+                <p className="font-semibold text-base-content mt-0.5">
                   Start Loan Application
                 </p>
               </div>
             </div>
 
-            <p className="text-sm text-stone-600 dark:text-stone-400 mb-2">
+            <p className="text-sm text-base-content/70 mb-2">
               This will start a{' '}
-              <strong className="text-stone-900 dark:text-stone-100">
+              <strong className="text-base-content">
                 {pendingLoanType.replace(/-/g, ' ')}
               </strong>{' '}
               application flow. No loan will be submitted or accepted until you review and confirm
               each step yourself.
             </p>
-            <p className="text-xs text-stone-500 dark:text-stone-500 mb-5">
+            <p className="text-xs text-base-content/50 mb-5">
               The AI advisor does not guarantee approval, income, or specific loan terms.
             </p>
 
             <div className="flex gap-3">
               <button
                 onClick={() => setPendingLoanType(null)}
-                className="flex-1 px-4 py-2.5 rounded-xl border border-stone-200 dark:border-stone-700 text-sm font-medium text-stone-700 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors"
+                className="flex-1 px-4 py-2.5 rounded-xl border border-base-300 text-sm font-medium text-base-content/80 hover:bg-base-200 transition-colors"
               >
                 Cancel
               </button>

@@ -29,7 +29,7 @@ export function Dashboard({
   const allOnboardingComplete = onboardingSteps.every((s) => s.completed)
 
   return (
-    <div className="min-h-screen bg-stone-50 dark:bg-stone-950">
+    <div className="min-h-screen bg-base-200">
       <div className="bg-gradient-to-br from-rose-500 via-rose-400 to-amber-400 px-4 pt-6 pb-16">
         <div className="max-w-2xl mx-auto">
           <p className="text-rose-100 text-sm font-medium mb-0.5">Welcome back</p>

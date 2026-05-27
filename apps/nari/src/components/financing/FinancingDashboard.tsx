@@ -39,10 +39,10 @@ function LoanCard({ loan, onPayEmi, onEarlyRepayment, onManageMandate, onDownloa
   const progress = (loan.emisPaid / loan.totalEmis) * 100
 
   const statusStyle = {
-    'on-track': { badge: 'text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30', dot: 'bg-emerald-500', bar: 'bg-emerald-500', label: 'On track' },
-    'due-soon': { badge: 'text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/30', dot: 'bg-amber-500', bar: 'bg-amber-500', label: 'Due soon' },
-    'overdue': { badge: 'text-red-700 dark:text-red-400 bg-red-50 dark:bg-red-900/30', dot: 'bg-red-500', bar: 'bg-red-500', label: 'Overdue' },
-    'closed': { badge: 'text-stone-500 dark:text-stone-400 bg-stone-100 dark:bg-stone-800', dot: 'bg-stone-400', bar: 'bg-stone-400', label: 'Closed' },
+    'on-track': { badge: 'text-success bg-success/10', dot: 'bg-success', bar: 'bg-success', label: 'On track' },
+    'due-soon': { badge: 'text-warning bg-warning/15', dot: 'bg-warning', bar: 'bg-warning', label: 'Due soon' },
+    'overdue': { badge: 'text-error bg-error/10', dot: 'bg-error', bar: 'bg-error', label: 'Overdue' },
+    'closed': { badge: 'text-base-content/60 bg-base-200', dot: 'bg-base-content/30', bar: 'bg-base-content/30', label: 'Closed' },
   }[loan.repaymentStatus]
 
   const meta = LOAN_TYPE_META[loan.type]
@@ -50,8 +50,8 @@ function LoanCard({ loan, onPayEmi, onEarlyRepayment, onManageMandate, onDownloa
   return (
     <div className={`rounded-2xl border overflow-hidden transition-all ${
       isClosed
-        ? 'border-stone-200 dark:border-stone-700/50 bg-stone-50 dark:bg-stone-900/40'
-        : 'border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-900 shadow-sm'
+        ? 'border-base-300 bg-base-200'
+        : 'border-base-300 bg-base-100 shadow-sm'
     }`}>
       <div className="p-5">
         {/* Top row */}
@@ -59,8 +59,8 @@ function LoanCard({ loan, onPayEmi, onEarlyRepayment, onManageMandate, onDownloa
           <div className="flex items-start gap-2.5 min-w-0">
             <span className="text-xl mt-0.5 flex-shrink-0">{meta.icon}</span>
             <div className="min-w-0">
-              <p className="text-[10px] font-semibold text-stone-400 dark:text-stone-500 uppercase tracking-widest">{meta.label}</p>
-              <p className="text-sm text-stone-700 dark:text-stone-300 leading-snug">{loan.purpose}</p>
+              <p className="text-[10px] font-semibold text-base-content/50 uppercase tracking-widest">{meta.label}</p>
+              <p className="text-sm text-base-content/80 leading-snug">{loan.purpose}</p>
             </div>
           </div>
           <span className={`flex-shrink-0 flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold ${statusStyle.badge}`}>
@@ -72,26 +72,26 @@ function LoanCard({ loan, onPayEmi, onEarlyRepayment, onManageMandate, onDownloa
         {/* Amount row */}
         <div className="flex items-end justify-between mb-4">
           <div>
-            <p className="text-xs text-stone-400 dark:text-stone-500 mb-0.5">
+            <p className="text-xs text-base-content/50 mb-0.5">
               {isClosed ? 'Total repaid' : 'Outstanding'}
             </p>
-            <p className="text-2xl font-bold tracking-tight text-stone-900 dark:text-white">
+            <p className="text-2xl font-bold tracking-tight text-base-content">
               {isClosed ? formatINR(loan.totalRepayment) : formatINR(loan.outstandingBalance)}
             </p>
           </div>
           <div className="text-right">
-            <p className="text-xs text-stone-400 dark:text-stone-500 mb-0.5">Loan amount</p>
-            <p className="text-sm font-semibold text-stone-500 dark:text-stone-400">{formatINR(loan.amount)}</p>
+            <p className="text-xs text-base-content/50 mb-0.5">Loan amount</p>
+            <p className="text-sm font-semibold text-base-content/60">{formatINR(loan.amount)}</p>
           </div>
         </div>
 
         {/* Progress bar */}
         <div className="mb-4">
           <div className="flex justify-between mb-1.5">
-            <span className="text-xs text-stone-400 dark:text-stone-500">{loan.emisPaid} of {loan.totalEmis} EMIs paid</span>
-            <span className="text-xs font-semibold text-stone-600 dark:text-stone-300">{Math.round(progress)}%</span>
+            <span className="text-xs text-base-content/50">{loan.emisPaid} of {loan.totalEmis} EMIs paid</span>
+            <span className="text-xs font-semibold text-base-content/70">{Math.round(progress)}%</span>
           </div>
-          <div className="h-2 bg-stone-100 dark:bg-stone-800 rounded-full overflow-hidden">
+          <div className="h-2 bg-base-200 rounded-full overflow-hidden">
             <div
               className={`h-full rounded-full transition-all duration-700 ${statusStyle.bar}`}
               style={{ width: `${progress}%` }}
@@ -101,13 +101,13 @@ function LoanCard({ loan, onPayEmi, onEarlyRepayment, onManageMandate, onDownloa
 
         {/* Milestone */}
         {loan.milestoneReached === 'halfway' && !isClosed && (
-          <div className="mb-4 flex items-center gap-2 text-xs font-semibold text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-900/20 px-3 py-2 rounded-xl">
+          <div className="mb-4 flex items-center gap-2 text-xs font-semibold text-primary bg-primary/10 px-3 py-2 rounded-xl">
             <span>🎉</span>
             Halfway there! You're doing great.
           </div>
         )}
         {loan.milestoneReached === 'closed' && isClosed && (
-          <div className="mb-4 flex items-center gap-2 text-xs font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-3 py-2 rounded-xl">
+          <div className="mb-4 flex items-center gap-2 text-xs font-semibold text-success bg-success/10 px-3 py-2 rounded-xl">
             <span>✅</span>
             Fully repaid · Great credit history!
           </div>
@@ -117,18 +117,18 @@ function LoanCard({ loan, onPayEmi, onEarlyRepayment, onManageMandate, onDownloa
         {!isClosed && loan.nextEmiDate && (
           <div className={`flex items-center justify-between p-3 rounded-xl ${
             loan.repaymentStatus === 'due-soon'
-              ? 'bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800'
-              : 'bg-stone-50 dark:bg-stone-800/60'
+              ? 'bg-warning/10 border border-warning/30'
+              : 'bg-base-200'
           }`}>
             <div>
-              <p className="text-xs text-stone-400 dark:text-stone-500">Next EMI</p>
-              <p className="text-sm font-semibold text-stone-800 dark:text-white">
+              <p className="text-xs text-base-content/50">Next EMI</p>
+              <p className="text-sm font-semibold text-base-content">
                 {formatINR(loan.nextEmiAmount!)} · {formatDate(loan.nextEmiDate)}
               </p>
             </div>
             <div className="text-right">
-              <p className="text-xs text-stone-400 dark:text-stone-500">Lender</p>
-              <p className="text-xs font-medium text-stone-600 dark:text-stone-400">
+              <p className="text-xs text-base-content/50">Lender</p>
+              <p className="text-xs font-medium text-base-content/70">
                 {loan.lenderName.split(' ').slice(0, 2).join(' ')}
               </p>
             </div>
@@ -137,7 +137,7 @@ function LoanCard({ loan, onPayEmi, onEarlyRepayment, onManageMandate, onDownloa
 
         {/* Closed date */}
         {isClosed && loan.closedAt && (
-          <p className="text-xs text-stone-400 dark:text-stone-500">
+          <p className="text-xs text-base-content/50">
             Closed {formatDate(loan.closedAt)} · {loan.lenderName}
           </p>
         )}
@@ -156,14 +156,14 @@ function LoanCard({ loan, onPayEmi, onEarlyRepayment, onManageMandate, onDownloa
             <button
               onClick={() => setExpanded(v => !v)}
               aria-expanded={expanded}
-              className="px-4 py-2.5 text-sm font-medium text-stone-600 dark:text-stone-300 bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 rounded-xl transition-colors"
+              className="px-4 py-2.5 text-sm font-medium text-base-content/70 bg-base-200 hover:bg-base-300 rounded-xl transition-colors"
             >
               {expanded ? 'Hide' : 'Schedule'}
             </button>
             <button
               onClick={onManageMandate}
               title="Manage UPI Autopay"
-              className="px-3 py-2.5 text-stone-400 dark:text-stone-500 hover:text-rose-500 dark:hover:text-rose-400 transition-colors"
+              className="px-3 py-2.5 text-base-content/50 hover:text-primary transition-colors"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -177,7 +177,7 @@ function LoanCard({ loan, onPayEmi, onEarlyRepayment, onManageMandate, onDownloa
             {loan.nocAvailable && (
               <button
                 onClick={() => onDownloadDocument?.('noc')}
-                className="flex items-center gap-2 px-4 py-2.5 bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 text-sm font-medium rounded-xl transition-colors"
+                className="flex items-center gap-2 px-4 py-2.5 bg-base-200 hover:bg-base-300 text-base-content/80 text-sm font-medium rounded-xl transition-colors"
               >
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -187,7 +187,7 @@ function LoanCard({ loan, onPayEmi, onEarlyRepayment, onManageMandate, onDownloa
             )}
             <button
               onClick={() => onDownloadDocument?.('statement')}
-              className="px-4 py-2.5 text-sm font-medium text-stone-500 dark:text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 transition-colors"
+              className="px-4 py-2.5 text-sm font-medium text-base-content/60 hover:text-base-content transition-colors"
             >
               Statement
             </button>
@@ -197,8 +197,8 @@ function LoanCard({ loan, onPayEmi, onEarlyRepayment, onManageMandate, onDownloa
 
       {/* Expanded EMI schedule */}
       {expanded && !isClosed && (
-        <div className="border-t border-stone-100 dark:border-stone-800 px-5 py-4">
-          <p className="text-[10px] font-semibold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-3">
+        <div className="border-t border-base-200 px-5 py-4">
+          <p className="text-[10px] font-semibold text-base-content/50 uppercase tracking-widest mb-3">
             EMI Schedule
           </p>
           <div className="space-y-2.5">
@@ -212,18 +212,18 @@ function LoanCard({ loan, onPayEmi, onEarlyRepayment, onManageMandate, onDownloa
                     isPaid ? 'bg-emerald-500 text-white' :
                     isDueSoon ? 'bg-amber-500 text-white' :
                     isOverdue ? 'bg-red-500 text-white' :
-                    'border-2 border-stone-200 dark:border-stone-700 text-stone-400 dark:text-stone-500'
+                    'border-2 border-base-300 text-base-content/50'
                   }`}>
                     {isPaid ? '✓' : emi.installmentNumber}
                   </div>
                   <div className="flex-1">
-                    <span className={`text-sm ${isPaid ? 'text-stone-400 dark:text-stone-600 line-through' : 'text-stone-700 dark:text-stone-300'}`}>
+                    <span className={`text-sm ${isPaid ? 'text-base-content/40 line-through' : 'text-base-content/80'}`}>
                       {formatDate(emi.dueDate)}
                     </span>
-                    {isDueSoon && <span className="ml-2 text-xs text-amber-600 dark:text-amber-400 font-medium">Due soon</span>}
-                    {isOverdue && <span className="ml-2 text-xs text-red-600 dark:text-red-400 font-medium">Overdue</span>}
+                    {isDueSoon && <span className="ml-2 text-xs text-warning font-medium">Due soon</span>}
+                    {isOverdue && <span className="ml-2 text-xs text-error font-medium">Overdue</span>}
                   </div>
-                  <span className={`text-sm font-semibold ${isPaid ? 'text-stone-400 dark:text-stone-600' : 'text-stone-800 dark:text-white'}`}>
+                  <span className={`text-sm font-semibold ${isPaid ? 'text-base-content/40' : 'text-base-content'}`}>
                     {formatINR(emi.amount)}
                   </span>
                 </div>
@@ -232,7 +232,7 @@ function LoanCard({ loan, onPayEmi, onEarlyRepayment, onManageMandate, onDownloa
           </div>
           <button
             onClick={onEarlyRepayment}
-            className="mt-4 w-full text-sm font-semibold text-rose-600 dark:text-rose-400 hover:text-rose-700 dark:hover:text-rose-300 py-2 transition-colors"
+            className="mt-4 w-full text-sm font-semibold text-primary hover:text-primary/80 py-2 transition-colors"
           >
             Close loan early →
           </button>
@@ -246,28 +246,28 @@ function LoanCard({ loan, onPayEmi, onEarlyRepayment, onManageMandate, onDownloa
 
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
-    <div className="min-w-[272px] max-w-[272px] bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700 rounded-2xl p-5 flex-shrink-0">
+    <div className="min-w-[272px] max-w-[272px] bg-base-100 border border-base-300 rounded-2xl p-5 flex-shrink-0">
       <div className="flex items-start gap-3 mb-3">
-        <div className="w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/40 flex items-center justify-center text-sm font-bold text-rose-600 dark:text-rose-400 flex-shrink-0">
+        <div className="w-10 h-10 rounded-full bg-primary/15 flex items-center justify-center text-sm font-bold text-primary flex-shrink-0">
           {testimonial.avatarInitials}
         </div>
         <div className="min-w-0">
-          <p className="text-sm font-semibold text-stone-800 dark:text-white truncate">{testimonial.name}</p>
-          <p className="text-xs text-stone-400 dark:text-stone-500 truncate">{testimonial.business}</p>
-          <p className="text-xs text-stone-400 dark:text-stone-500">{testimonial.location}</p>
+          <p className="text-sm font-semibold text-base-content truncate">{testimonial.name}</p>
+          <p className="text-xs text-base-content/50 truncate">{testimonial.business}</p>
+          <p className="text-xs text-base-content/50">{testimonial.location}</p>
         </div>
       </div>
-      <p className="text-sm text-stone-700 dark:text-stone-300 leading-relaxed italic">
+      <p className="text-sm text-base-content/80 leading-relaxed italic">
         "{testimonial.quote}"
       </p>
       {testimonial.quoteTranslation && (
-        <p className="text-xs text-stone-400 dark:text-stone-500 mt-2 leading-relaxed">
+        <p className="text-xs text-base-content/50 mt-2 leading-relaxed">
           ({testimonial.quoteTranslation})
         </p>
       )}
-      <div className="mt-3 inline-flex items-center gap-1.5 bg-stone-100 dark:bg-stone-800 rounded-full px-2.5 py-1">
+      <div className="mt-3 inline-flex items-center gap-1.5 bg-base-200 rounded-full px-2.5 py-1">
         <span className="text-xs">{LOAN_TYPE_META[testimonial.loanType].icon}</span>
-        <span className="text-xs text-stone-500 dark:text-stone-400">
+        <span className="text-xs text-base-content/60">
           {formatShortINR(testimonial.loanAmount)} {LOAN_TYPE_META[testimonial.loanType].label.toLowerCase()}
         </span>
       </div>
@@ -339,11 +339,11 @@ export function FinancingDashboard({
 
       {/* ── Credit ladder banner ── */}
       {userFinancingProfile.creditLadder.active && (
-        <div className="flex items-center gap-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/50 rounded-2xl p-4">
+        <div className="flex items-center gap-4 bg-warning/10 border border-warning/30 rounded-2xl p-4">
           <span className="text-2xl flex-shrink-0">⬆️</span>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold text-amber-800 dark:text-amber-200">Credit upgrade available!</p>
-            <p className="text-xs text-amber-600 dark:text-amber-400 mt-0.5 leading-relaxed">
+            <p className="text-sm font-semibold text-warning-content">Credit upgrade available!</p>
+            <p className="text-xs text-warning mt-0.5 leading-relaxed">
               {userFinancingProfile.creditLadder.message}
             </p>
           </div>
@@ -359,7 +359,7 @@ export function FinancingDashboard({
       {/* ── Active loans ── */}
       {activeLoans.length > 0 && (
         <section>
-          <h2 className="text-xs font-semibold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-3">
+          <h2 className="text-xs font-semibold text-base-content/50 uppercase tracking-widest mb-3">
             Active Loans
           </h2>
           <div className="space-y-4">
@@ -379,7 +379,7 @@ export function FinancingDashboard({
 
       {/* ── Get a new loan ── */}
       <section>
-        <h2 className="text-xs font-semibold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-3">
+        <h2 className="text-xs font-semibold text-base-content/50 uppercase tracking-widest mb-3">
           Get a New Loan
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -387,36 +387,36 @@ export function FinancingDashboard({
             <button
               key={type}
               onClick={() => onApplyForLoan?.(type)}
-              className="text-left p-4 rounded-2xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-900 hover:border-rose-300 dark:hover:border-rose-700 hover:bg-rose-50/40 dark:hover:bg-rose-900/10 transition-all group shadow-sm"
+              className="text-left p-4 rounded-2xl border border-base-300 bg-base-100 hover:border-primary/40 hover:bg-primary/5 transition-all group shadow-sm"
             >
               <span className="text-2xl mb-2 block">{meta.icon}</span>
-              <p className="text-sm font-semibold text-stone-800 dark:text-white group-hover:text-rose-700 dark:group-hover:text-rose-400 transition-colors">
+              <p className="text-sm font-semibold text-base-content group-hover:text-primary transition-colors">
                 {meta.label}
               </p>
-              <p className="text-xs font-semibold text-rose-500 dark:text-rose-400">{meta.sub}</p>
-              <p className="text-xs text-stone-400 dark:text-stone-500 mt-0.5">{meta.desc}</p>
+              <p className="text-xs font-semibold text-primary">{meta.sub}</p>
+              <p className="text-xs text-base-content/50 mt-0.5">{meta.desc}</p>
             </button>
           ))}
         </div>
 
         {/* Trust signals */}
         <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1">
-          <span className="text-xs text-stone-400 dark:text-stone-500 flex items-center gap-1">
+          <span className="text-xs text-base-content/50 flex items-center gap-1">
             🏛️ RBI registered lenders
           </span>
-          <span className="text-xs text-stone-300 dark:text-stone-700">·</span>
-          <span className="text-xs text-stone-400 dark:text-stone-500">No collateral needed</span>
-          <span className="text-xs text-stone-300 dark:text-stone-700">·</span>
-          <span className="text-xs text-stone-400 dark:text-stone-500">Funds in 2–6 hours</span>
-          <span className="text-xs text-stone-300 dark:text-stone-700">·</span>
-          <span className="text-xs text-stone-400 dark:text-stone-500">No hidden charges</span>
+          <span className="text-xs text-base-content/25">·</span>
+          <span className="text-xs text-base-content/50">No collateral needed</span>
+          <span className="text-xs text-base-content/25">·</span>
+          <span className="text-xs text-base-content/50">Funds in 2–6 hours</span>
+          <span className="text-xs text-base-content/25">·</span>
+          <span className="text-xs text-base-content/50">No hidden charges</span>
         </div>
       </section>
 
       {/* ── Past loans ── */}
       {closedLoans.length > 0 && (
         <section>
-          <h2 className="text-xs font-semibold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-3">
+          <h2 className="text-xs font-semibold text-base-content/50 uppercase tracking-widest mb-3">
             Past Loans
           </h2>
           <div className="space-y-3">
@@ -434,7 +434,7 @@ export function FinancingDashboard({
       {/* ── Testimonials ── */}
       {testimonials.length > 0 && (
         <section>
-          <h2 className="text-xs font-semibold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-3">
+          <h2 className="text-xs font-semibold text-base-content/50 uppercase tracking-widest mb-3">
             What women say
           </h2>
           <div className="flex gap-4 overflow-x-auto pb-2 -mx-4 px-4" style={{ scrollbarWidth: 'none' }}>
@@ -446,8 +446,8 @@ export function FinancingDashboard({
       )}
 
       {/* ── Footer ── */}
-      <div className="text-center py-4 border-t border-stone-100 dark:border-stone-800">
-        <p className="text-xs text-stone-400 dark:text-stone-500">
+      <div className="text-center py-4 border-t border-base-200">
+        <p className="text-xs text-base-content/50">
           Powered by OCEN · All lenders are RBI registered · No hidden charges
         </p>
       </div>

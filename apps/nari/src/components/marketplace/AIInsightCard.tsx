@@ -8,28 +8,28 @@ interface AIInsightCardProps {
 
 const typeStyles: Record<InsightType, { bg: string; border: string; iconBg: string; iconColor: string; buttonBg: string; buttonText: string }> = {
   opportunity: {
-    bg: 'bg-emerald-50 dark:bg-emerald-950/30',
-    border: 'border-emerald-200 dark:border-emerald-900/50',
-    iconBg: 'bg-emerald-100 dark:bg-emerald-900/50',
-    iconColor: 'text-emerald-600 dark:text-emerald-400',
-    buttonBg: 'bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-600 dark:hover:bg-emerald-500',
-    buttonText: 'text-white',
+    bg: 'bg-success/15',
+    border: 'border-success/30',
+    iconBg: 'bg-success/15',
+    iconColor: 'text-success',
+    buttonBg: 'bg-success hover:bg-success/90',
+    buttonText: 'text-success-content',
   },
   alert: {
-    bg: 'bg-amber-50 dark:bg-amber-950/30',
-    border: 'border-amber-200 dark:border-amber-900/50',
-    iconBg: 'bg-amber-100 dark:bg-amber-900/50',
-    iconColor: 'text-amber-600 dark:text-amber-400',
-    buttonBg: 'bg-amber-600 hover:bg-amber-700 dark:bg-amber-600 dark:hover:bg-amber-500',
-    buttonText: 'text-white',
+    bg: 'bg-warning/10',
+    border: 'border-warning/30',
+    iconBg: 'bg-warning/20',
+    iconColor: 'text-warning',
+    buttonBg: 'bg-warning hover:bg-warning/90',
+    buttonText: 'text-warning-content',
   },
   suggestion: {
-    bg: 'bg-blue-50 dark:bg-blue-950/30',
-    border: 'border-blue-200 dark:border-blue-900/50',
-    iconBg: 'bg-blue-100 dark:bg-blue-900/50',
-    iconColor: 'text-blue-600 dark:text-blue-400',
-    buttonBg: 'bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500',
-    buttonText: 'text-white',
+    bg: 'bg-info/10',
+    border: 'border-info/30',
+    iconBg: 'bg-info/15',
+    iconColor: 'text-info',
+    buttonBg: 'bg-info hover:bg-info/90',
+    buttonText: 'text-info-content',
   },
 }
 
@@ -90,14 +90,14 @@ export function AIInsightCard({ insight, onAction }: AIInsightCardProps) {
                 {typeLabels[insight.type]}
               </span>
             </div>
-            <h4 className="text-sm font-semibold text-stone-900 dark:text-stone-50 leading-snug">
+            <h4 className="text-sm font-semibold text-base-content leading-snug">
               {insight.title}
             </h4>
           </div>
         </div>
 
         {/* Description */}
-        <p className="text-sm text-stone-600 dark:text-stone-400 mb-4 leading-relaxed">
+        <p className="text-sm text-base-content/70 mb-4 leading-relaxed">
           {insight.description}
         </p>
 

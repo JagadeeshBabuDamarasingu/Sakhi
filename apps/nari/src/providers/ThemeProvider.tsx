@@ -6,7 +6,7 @@ type Theme = 'light' | 'dark'
 
 function applyTheme(theme: Theme) {
   const html = document.documentElement
-  html.setAttribute('data-theme', theme === 'dark' ? 'dark' : 'bumblebee')
+  html.setAttribute('data-theme', theme === 'dark' ? 'shakti-dark' : 'shakti')
   html.classList.toggle('dark', theme === 'dark')
 }
 

@@ -109,20 +109,20 @@ export function ELearningClient({ data }: { data: ELearningData }) {
   return (
     <>
       {coachRec && !coachDismissed && (
-        <div className="mx-4 sm:mx-6 lg:mx-8 mt-6 flex items-start gap-3 px-4 py-3.5 bg-gradient-to-r from-rose-50 to-amber-50 dark:from-rose-950/30 dark:to-amber-950/20 border border-rose-200 dark:border-rose-800/50 rounded-2xl">
-          <span className="flex-shrink-0 w-8 h-8 rounded-lg bg-rose-100 dark:bg-rose-900/50 flex items-center justify-center mt-0.5">
-            <HiOutlineSparkles className="w-4 h-4 text-rose-500" />
+        <div className="mx-4 sm:mx-6 lg:mx-8 mt-6 flex items-start gap-3 px-4 py-3.5 bg-primary/5 border border-primary/20 rounded-2xl">
+          <span className="flex-shrink-0 w-8 h-8 rounded-lg bg-primary/15 flex items-center justify-center mt-0.5">
+            <HiOutlineSparkles className="w-4 h-4 text-primary" />
           </span>
           <div className="flex-1 min-w-0">
-            <p className="text-xs font-semibold text-rose-600 dark:text-rose-400 uppercase tracking-wide mb-0.5">
+            <p className="text-xs font-semibold text-primary uppercase tracking-wide mb-0.5">
               AI Learning Coach
             </p>
-            <p className="text-sm text-stone-700 dark:text-stone-300 leading-relaxed">
+            <p className="text-sm text-base-content/80 leading-relaxed">
               {coachRec.message}
             </p>
             <button
               onClick={() => router.push(`/elearning/courses/${coachRec.courseId}`)}
-              className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-rose-600 dark:text-rose-400 hover:text-rose-700 dark:hover:text-rose-300 transition-colors"
+              className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
             >
               Start {coachRec.title}
               <HiOutlineArrowRight className="w-4 h-4" />
@@ -130,7 +130,7 @@ export function ELearningClient({ data }: { data: ELearningData }) {
           </div>
           <button
             onClick={() => setCoachDismissed(true)}
-            className="flex-shrink-0 p-1 rounded-lg text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 hover:bg-white/60 dark:hover:bg-stone-800/60 transition-colors"
+            className="flex-shrink-0 p-1 rounded-lg text-base-content/50 hover:text-base-content/80 hover:bg-base-200 transition-colors"
             aria-label="Dismiss recommendation"
           >
             <HiOutlineXMark className="w-4 h-4" />

@@ -9,40 +9,40 @@ const ACTIONS = [
     Icon: LuBookOpen,
     label: 'Resume course',
     section: 'elearning',
-    color: 'text-rose-500',
-    bg: 'bg-rose-50 dark:bg-rose-950/40',
-    hoverBg: 'hover:bg-rose-100 dark:hover:bg-rose-950/60',
+    color: 'text-primary',
+    bg: 'bg-primary/10',
+    hoverBg: 'hover:bg-primary/15',
   },
   {
     Icon: LuShoppingBag,
     label: 'Add product',
     section: 'marketplace',
-    color: 'text-amber-500',
-    bg: 'bg-amber-50 dark:bg-amber-950/40',
-    hoverBg: 'hover:bg-amber-100 dark:hover:bg-amber-950/60',
+    color: 'text-secondary',
+    bg: 'bg-secondary/10',
+    hoverBg: 'hover:bg-secondary/20',
   },
   {
     Icon: LuLandmark,
     label: 'Check loan',
     section: 'financing',
-    color: 'text-emerald-500',
-    bg: 'bg-emerald-50 dark:bg-emerald-950/40',
-    hoverBg: 'hover:bg-emerald-100 dark:hover:bg-emerald-950/60',
+    color: 'text-success',
+    bg: 'bg-success/15',
+    hoverBg: 'hover:bg-success/20',
   },
   {
     Icon: LuSparkles,
     label: 'Assess skills',
     section: 'skill-discovery',
-    color: 'text-blue-500',
-    bg: 'bg-blue-50 dark:bg-blue-950/40',
-    hoverBg: 'hover:bg-blue-100 dark:hover:bg-blue-950/60',
+    color: 'text-info',
+    bg: 'bg-info/15',
+    hoverBg: 'hover:bg-info/20',
   },
 ] as const
 
 export function QuickActionsBar({ onNavigateTo }: QuickActionsBarProps) {
   return (
-    <div className="bg-white dark:bg-stone-900 rounded-2xl border border-stone-200 dark:border-stone-800 p-4 shadow-sm dark:shadow-none">
-      <p className="text-[11px] font-semibold text-stone-500 uppercase tracking-widest mb-3">
+    <div className="bg-base-100 rounded-2xl border border-base-300 p-4 shadow-sm dark:shadow-none">
+      <p className="text-[11px] font-semibold text-base-content/60 uppercase tracking-widest mb-3">
         Quick actions
       </p>
       <div className="grid grid-cols-4 gap-2">
@@ -59,7 +59,7 @@ export function QuickActionsBar({ onNavigateTo }: QuickActionsBarProps) {
               >
                 <Icon className={`w-5 h-5 ${action.color}`} />
               </span>
-              <span className="text-[10px] font-medium text-stone-600 dark:text-stone-400 text-center leading-tight">
+              <span className="text-[10px] font-medium text-base-content/70 text-center leading-tight">
                 {action.label}
               </span>
             </button>

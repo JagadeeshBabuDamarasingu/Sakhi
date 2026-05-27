@@ -18,16 +18,16 @@ export function TopProductsTable({ products, onViewProduct, onViewAll }: TopProd
   const maxRevenue = Math.max(...products.map((p) => p.revenue), 0)
 
   return (
-    <div className="bg-white dark:bg-stone-900 rounded-2xl border border-stone-200 dark:border-stone-800 overflow-hidden">
+    <div className="bg-base-100 rounded-2xl border border-base-300 overflow-hidden">
       {/* Header */}
-      <div className="flex items-center justify-between p-5 border-b border-stone-100 dark:border-stone-800">
+      <div className="flex items-center justify-between p-5 border-b border-base-300">
         <div>
-          <h3 className="text-lg font-semibold text-stone-900 dark:text-stone-50">Top Products</h3>
-          <p className="text-sm text-stone-500 dark:text-stone-400 mt-0.5">Best performers this month</p>
+          <h3 className="text-lg font-semibold text-base-content">Top Products</h3>
+          <p className="text-sm text-base-content/60 mt-0.5">Best performers this month</p>
         </div>
         <button
           onClick={onViewAll}
-          className="text-sm font-medium text-rose-600 dark:text-rose-400 hover:text-rose-700 dark:hover:text-rose-300 transition-colors flex items-center gap-1"
+          className="text-sm font-medium text-primary hover:text-primary/80 transition-colors flex items-center gap-1"
         >
           View all
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -37,7 +37,7 @@ export function TopProductsTable({ products, onViewProduct, onViewAll }: TopProd
       </div>
 
       {/* Table */}
-      <div className="divide-y divide-stone-100 dark:divide-stone-800">
+      <div className="divide-y divide-base-300">
         {products.map((product, index) => {
           const progressWidth = maxRevenue === 0 ? 0 : (product.revenue / maxRevenue) * 100
           const isTop = index === 0
@@ -46,14 +46,14 @@ export function TopProductsTable({ products, onViewProduct, onViewAll }: TopProd
             <button
               key={product.listingId}
               onClick={() => onViewProduct?.(product.listingId)}
-              className="w-full flex items-center gap-4 p-4 hover:bg-stone-50 dark:hover:bg-stone-800/50 transition-colors text-left group"
+              className="w-full flex items-center gap-4 p-4 hover:bg-base-200 transition-colors text-left group"
             >
               {/* Rank Badge */}
               <div
                 className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 font-bold text-sm ${
                   isTop
                     ? 'bg-gradient-to-br from-amber-400 to-amber-500 text-white shadow-sm'
-                    : 'bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400'
+                    : 'bg-base-200 text-base-content/70'
                 }`}
               >
                 {index + 1}
@@ -61,20 +61,20 @@ export function TopProductsTable({ products, onViewProduct, onViewAll }: TopProd
 
               {/* Product Info */}
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-stone-900 dark:text-stone-100 truncate group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
+                <p className="text-sm font-medium text-base-content truncate group-hover:text-primary transition-colors">
                   {product.title}
                 </p>
                 <div className="flex items-center gap-4 mt-1.5">
-                  <span className="text-xs text-stone-500 dark:text-stone-400">
+                  <span className="text-xs text-base-content/60">
                     {product.sales} sales
                   </span>
                   {/* Mini progress bar */}
-                  <div className="flex-1 h-1.5 bg-stone-100 dark:bg-stone-800 rounded-full overflow-hidden">
+                  <div className="flex-1 h-1.5 bg-base-200 rounded-full overflow-hidden">
                     <div
                       className={`h-full rounded-full transition-all duration-500 ${
                         isTop
-                          ? 'bg-gradient-to-r from-rose-400 to-amber-400'
-                          : 'bg-stone-300 dark:bg-stone-600'
+                          ? 'bg-gradient-to-r from-primary/80 to-secondary/80'
+                          : 'bg-base-300'
                       }`}
                       style={{ width: `${progressWidth}%` }}
                     />
@@ -84,15 +84,15 @@ export function TopProductsTable({ products, onViewProduct, onViewAll }: TopProd
 
               {/* Revenue */}
               <div className="text-right flex-shrink-0">
-                <p className="text-sm font-semibold text-stone-900 dark:text-stone-100">
+                <p className="text-sm font-semibold text-base-content">
                   {formatCurrency(product.revenue)}
                 </p>
-                <p className="text-xs text-stone-500 dark:text-stone-400">revenue</p>
+                <p className="text-xs text-base-content/60">revenue</p>
               </div>
 
               {/* Arrow */}
               <svg
-                className="w-4 h-4 text-stone-400 dark:text-stone-600 group-hover:text-rose-500 dark:group-hover:text-rose-400 transition-colors flex-shrink-0"
+                className="w-4 h-4 text-base-content/40 group-hover:text-primary transition-colors flex-shrink-0"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"

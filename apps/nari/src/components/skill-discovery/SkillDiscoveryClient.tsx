@@ -380,17 +380,17 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
       {/* ──────────────── AI Chat Modal ──────────────── */}
       {aiOpen && (
         <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 backdrop-blur-[2px] p-4">
-          <div className="w-full max-w-md bg-white dark:bg-stone-900 rounded-2xl shadow-2xl flex flex-col max-h-[85vh]">
-            <div className="flex items-center gap-3 px-4 py-3 border-b border-stone-200 dark:border-stone-800">
-              <span className="w-8 h-8 rounded-xl bg-rose-50 dark:bg-rose-950/60 flex items-center justify-center">
-                <HiOutlineSparkles className="w-4 h-4 text-rose-500" />
+          <div className="w-full max-w-md bg-base-100 rounded-2xl shadow-2xl flex flex-col max-h-[85vh]">
+            <div className="flex items-center gap-3 px-4 py-3 border-b border-base-300">
+              <span className="w-8 h-8 rounded-xl bg-primary/10 flex items-center justify-center">
+                <HiOutlineSparkles className="w-4 h-4 text-primary" />
               </span>
-              <span className="flex-1 font-semibold text-stone-900 dark:text-stone-100 text-sm">
+              <span className="flex-1 font-semibold text-base-content text-sm">
                 Skill Discovery — AI Chat
               </span>
               <button
                 onClick={() => setAiOpen(false)}
-                className="p-1.5 rounded-lg text-stone-400 hover:text-stone-600 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+                className="p-1.5 rounded-lg text-base-content/40 hover:text-base-content hover:bg-base-200 transition-colors"
                 aria-label="Close"
               >
                 <HiOutlineXMark className="w-5 h-5" />
@@ -406,8 +406,8 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
                   <div
                     className={`max-w-[85%] px-3.5 py-2.5 rounded-2xl text-sm leading-relaxed ${
                       msg.role === 'user'
-                        ? 'bg-rose-500 text-white rounded-br-sm'
-                        : 'bg-stone-100 dark:bg-stone-800 text-stone-800 dark:text-stone-200 rounded-bl-sm'
+                        ? 'bg-primary text-primary-content rounded-br-sm'
+                        : 'bg-base-200 text-base-content rounded-bl-sm'
                     }`}
                   >
                     {msg.content}
@@ -416,18 +416,18 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
               ))}
               {loading && (
                 <div className="flex justify-start">
-                  <div className="bg-stone-100 dark:bg-stone-800 rounded-2xl rounded-bl-sm px-4 py-3 flex gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-stone-400 animate-bounce [animation-delay:0ms]" />
-                    <span className="w-1.5 h-1.5 rounded-full bg-stone-400 animate-bounce [animation-delay:120ms]" />
-                    <span className="w-1.5 h-1.5 rounded-full bg-stone-400 animate-bounce [animation-delay:240ms]" />
+                  <div className="bg-base-200 rounded-2xl rounded-bl-sm px-4 py-3 flex gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-base-content/40 animate-bounce [animation-delay:0ms]" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-base-content/40 animate-bounce [animation-delay:120ms]" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-base-content/40 animate-bounce [animation-delay:240ms]" />
                   </div>
                 </div>
               )}
               <div ref={messagesEndRef} />
             </div>
 
-            <div className="px-3 py-3 border-t border-stone-200 dark:border-stone-800">
-              <div className="flex items-center gap-2 bg-stone-100 dark:bg-stone-800 rounded-xl px-3 py-2">
+            <div className="px-3 py-3 border-t border-base-300">
+              <div className="flex items-center gap-2 bg-base-200 rounded-xl px-3 py-2">
                 <input
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
@@ -438,12 +438,12 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
                     }
                   }}
                   placeholder="Tell me about your skills…"
-                  className="flex-1 bg-transparent text-sm text-stone-900 dark:text-stone-100 placeholder-stone-400 focus:outline-none"
+                  className="flex-1 bg-transparent text-sm text-base-content placeholder-base-content/40 focus:outline-none"
                 />
                 <button
                   onClick={handleSend}
                   disabled={!input.trim() || loading}
-                  className="p-1.5 rounded-lg bg-rose-500 hover:bg-rose-600 text-white disabled:opacity-40 transition-colors"
+                  className="p-1.5 rounded-lg bg-primary hover:bg-primary/90 text-primary-content disabled:opacity-40 transition-colors"
                   aria-label="Send"
                 >
                   <HiOutlinePaperAirplane className="w-4 h-4" />
@@ -457,45 +457,45 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
       {/* ──────────────── AI Confirmation Modal ──────────────── */}
       {pendingToolCall && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-[2px] p-4">
-          <div className="w-full max-w-sm bg-white dark:bg-stone-900 rounded-2xl shadow-2xl p-6">
+          <div className="w-full max-w-sm bg-base-100 rounded-2xl shadow-2xl p-6">
             <div className="flex items-center gap-3 mb-4">
-              <span className="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-950/50 flex items-center justify-center">
-                <HiOutlineExclamationCircle className="w-5 h-5 text-amber-500" />
+              <span className="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center">
+                <HiOutlineExclamationCircle className="w-5 h-5 text-secondary" />
               </span>
               <div>
-                <p className="text-xs font-medium text-amber-600 dark:text-amber-400 uppercase tracking-wide">
+                <p className="text-xs font-medium text-secondary uppercase tracking-wide">
                   AI Action · Needs Confirmation
                 </p>
-                <p className="font-semibold text-stone-900 dark:text-stone-100 mt-0.5">
+                <p className="font-semibold text-base-content mt-0.5">
                   Add Skill to Profile
                 </p>
               </div>
             </div>
 
-            <p className="text-sm text-stone-600 dark:text-stone-400 mb-1">
-              <strong className="text-stone-900 dark:text-stone-100">
+            <p className="text-sm text-base-content/70 mb-1">
+              <strong className="text-base-content">
                 {String(pendingToolCall.arguments.skillName ?? '')}
               </strong>{' '}
               will be added to your skill profile. You can edit or remove it later.
             </p>
-            <p className="text-xs text-stone-500 dark:text-stone-500 mb-5">
+            <p className="text-xs text-base-content/60 mb-5">
               This is a medium-risk action. Your profile will be updated.
             </p>
 
             <div className="flex gap-3">
               <button
                 onClick={handleCancelToolCall}
-                className="flex-1 px-4 py-2.5 rounded-xl border border-stone-200 dark:border-stone-700 text-sm font-medium text-stone-700 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors"
+                className="btn btn-outline flex-1"
               >
                 Cancel
               </button>
               <button
                 onClick={handleConfirmAddSkill}
                 disabled={confirmLoading}
-                className="flex-1 px-4 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-sm font-medium disabled:opacity-50 transition-colors flex items-center justify-center gap-2"
+                className="btn btn-primary flex-1"
               >
                 {confirmLoading ? (
-                  <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
+                  <span className="w-4 h-4 border-2 border-primary-content/40 border-t-primary-content rounded-full animate-spin" />
                 ) : (
                   <HiOutlineCheckCircle className="w-4 h-4" />
                 )}
@@ -509,21 +509,21 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
       {/* ──────────────── Validation Wizard ──────────────── */}
       {validatingSkillId && validatingSkill && (
         <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 backdrop-blur-[2px] p-4">
-          <div className="w-full max-w-md bg-white dark:bg-stone-900 rounded-2xl shadow-2xl overflow-hidden">
+          <div className="w-full max-w-md bg-base-100 rounded-2xl shadow-2xl overflow-hidden">
             {/* Header */}
-            <div className="flex items-center gap-3 px-5 py-4 border-b border-stone-200 dark:border-stone-800">
+            <div className="flex items-center gap-3 px-5 py-4 border-b border-base-300">
               <div className="flex-1">
-                <p className="text-xs text-stone-500 dark:text-stone-400 uppercase tracking-wide font-medium">
+                <p className="text-xs text-base-content/60 uppercase tracking-wide font-medium">
                   Validate Skill
                 </p>
-                <p className="font-semibold text-stone-900 dark:text-stone-100">
+                <p className="font-semibold text-base-content">
                   {validatingSkill.name}
                 </p>
               </div>
               <button
                 onClick={handleCloseValidation}
                 aria-label="Close validation wizard"
-                className="p-1.5 rounded-lg text-stone-400 hover:text-stone-600 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+                className="p-1.5 rounded-lg text-base-content/40 hover:text-base-content hover:bg-base-200 transition-colors"
               >
                 <HiOutlineXMark className="w-5 h-5" />
               </button>
@@ -532,7 +532,7 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
             {/* Step: select method */}
             {validationStep === 'select-method' && (
               <div className="p-5">
-                <p className="text-sm text-stone-600 dark:text-stone-400 mb-4">
+                <p className="text-sm text-base-content/70 mb-4">
                   Choose how you'd like to verify this skill:
                 </p>
                 <div className="space-y-3">
@@ -542,16 +542,16 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
                       <button
                         key={method.id}
                         onClick={() => handleSelectMethod(method)}
-                        className="w-full flex items-center gap-4 p-4 rounded-xl border border-stone-200 dark:border-stone-700 hover:border-rose-300 dark:hover:border-rose-700 hover:bg-rose-50 dark:hover:bg-rose-900/20 transition-all text-left group"
+                        className="w-full flex items-center gap-4 p-4 rounded-xl border border-base-300 hover:border-primary/40 hover:bg-primary/10 transition-all text-left group"
                       >
-                        <span className="w-10 h-10 rounded-lg bg-stone-100 dark:bg-stone-800 flex items-center justify-center group-hover:bg-rose-100 dark:group-hover:bg-rose-900/40 transition-colors">
-                          <Icon className="w-5 h-5 text-stone-600 dark:text-stone-400 group-hover:text-rose-600 dark:group-hover:text-rose-400" />
+                        <span className="w-10 h-10 rounded-lg bg-base-200 flex items-center justify-center group-hover:bg-primary/15 transition-colors">
+                          <Icon className="w-5 h-5 text-base-content/70 group-hover:text-primary" />
                         </span>
                         <div className="flex-1 min-w-0">
-                          <p className="font-medium text-stone-900 dark:text-stone-100">
+                          <p className="font-medium text-base-content">
                             {method.name}
                           </p>
-                          <p className="text-sm text-stone-500 dark:text-stone-400">
+                          <p className="text-sm text-base-content/60">
                             {method.description} · {method.duration}
                           </p>
                         </div>
@@ -567,12 +567,12 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
               <div className="p-5">
                 <button
                   onClick={() => setValidationStep('select-method')}
-                  className="text-xs text-stone-500 hover:text-stone-700 dark:hover:text-stone-300 mb-4 flex items-center gap-1"
+                  className="text-xs text-base-content/60 hover:text-base-content mb-4 flex items-center gap-1"
                 >
                   ← Back
                 </button>
 
-                <p className="font-medium text-stone-900 dark:text-stone-100 mb-4">
+                <p className="font-medium text-base-content mb-4">
                   {selectedMethod.name}
                 </p>
 
@@ -580,7 +580,7 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
                   <div className="space-y-4">
                     {aiAssessmentQuestions.map((question, i) => (
                       <div key={i}>
-                        <label className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-1.5">
+                        <label className="block text-sm font-medium text-base-content mb-1.5">
                           {i + 1}. {question}
                         </label>
                         <textarea
@@ -592,7 +592,7 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
                             setAiAnswers(next)
                           }}
                           placeholder="Your answer…"
-                          className="w-full px-3 py-2 rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-900 dark:text-stone-100 text-sm placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-rose-500/50 resize-none"
+                          className="textarea textarea-bordered w-full text-sm placeholder:text-base-content/40 focus:ring-2 focus:ring-primary/50 resize-none"
                         />
                       </div>
                     ))}
@@ -603,13 +603,13 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
                   <div>
                     <label
                       htmlFor="doc-upload"
-                      className="flex flex-col items-center justify-center w-full h-32 rounded-xl border-2 border-dashed border-stone-300 dark:border-stone-700 hover:border-rose-400 dark:hover:border-rose-600 cursor-pointer transition-colors bg-stone-50 dark:bg-stone-800/50"
+                      className="flex flex-col items-center justify-center w-full h-32 rounded-xl border-2 border-dashed border-base-300 hover:border-primary/40 cursor-pointer transition-colors bg-base-200"
                     >
-                      <HiOutlineCloudArrowUp className="w-8 h-8 text-stone-400 mb-2" />
-                      <span className="text-sm text-stone-600 dark:text-stone-400">
+                      <HiOutlineCloudArrowUp className="w-8 h-8 text-base-content/40 mb-2" />
+                      <span className="text-sm text-base-content/70">
                         {docFile ? docFile.name : 'Click to upload certificate or portfolio'}
                       </span>
-                      <span className="text-xs text-stone-400 mt-1">PDF, JPG, PNG up to 10 MB</span>
+                      <span className="text-xs text-base-content/40 mt-1">PDF, JPG, PNG up to 10 MB</span>
                     </label>
                     <input
                       id="doc-upload"
@@ -623,7 +623,7 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
 
                 {selectedMethod.type === 'video' && (
                   <div>
-                    <label className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-1.5">
+                    <label className="block text-sm font-medium text-base-content mb-1.5">
                       Video URL
                     </label>
                     <input
@@ -631,9 +631,9 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
                       value={videoUrl}
                       onChange={(e) => setVideoUrl(e.target.value)}
                       placeholder="https://youtube.com/..."
-                      className="w-full px-3 py-2.5 rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-900 dark:text-stone-100 text-sm placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-rose-500/50"
+                      className="input input-bordered w-full text-sm placeholder:text-base-content/40 focus:ring-2 focus:ring-primary/50"
                     />
-                    <p className="text-xs text-stone-500 mt-1.5">
+                    <p className="text-xs text-base-content/60 mt-1.5">
                       Link a short video (YouTube, Drive, or direct URL) showing your work.
                     </p>
                   </div>
@@ -642,10 +642,10 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
                 <button
                   onClick={handleSubmitValidation}
                   disabled={validationLoading}
-                  className="w-full mt-6 py-2.5 px-4 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-sm font-medium disabled:opacity-50 transition-colors flex items-center justify-center gap-2"
+                  className="btn btn-primary w-full mt-6"
                 >
                   {validationLoading ? (
-                    <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
+                    <span className="w-4 h-4 border-2 border-primary-content/40 border-t-primary-content rounded-full animate-spin" />
                   ) : (
                     'Submit for Review'
                   )}
@@ -656,19 +656,19 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
             {/* Step: success */}
             {validationStep === 'success' && (
               <div className="p-8 text-center">
-                <div className="w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center mx-auto mb-4">
-                  <HiOutlineCheckCircle className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />
+                <div className="w-16 h-16 rounded-full bg-success/15 flex items-center justify-center mx-auto mb-4">
+                  <HiOutlineCheckCircle className="w-8 h-8 text-success" />
                 </div>
-                <h3 className="font-semibold text-stone-900 dark:text-stone-100 mb-2">
+                <h3 className="font-semibold text-base-content mb-2">
                   Submitted for Review
                 </h3>
-                <p className="text-sm text-stone-600 dark:text-stone-400 mb-6">
+                <p className="text-sm text-base-content/70 mb-6">
                   Your {validatingSkill.name} skill is now <strong>Pending</strong> review. You'll
                   be notified once it's verified.
                 </p>
                 <button
                   onClick={handleCloseValidation}
-                  className="px-6 py-2.5 rounded-xl bg-stone-900 dark:bg-stone-100 text-white dark:text-stone-900 text-sm font-medium hover:opacity-90 transition-opacity"
+                  className="btn btn-primary px-6"
                 >
                   Done
                 </button>
@@ -681,20 +681,20 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
       {/* ──────────────── Edit Skill Modal ──────────────── */}
       {editingSkillId && editingSkill && (
         <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 backdrop-blur-[2px] p-4">
-          <div className="w-full max-w-sm bg-white dark:bg-stone-900 rounded-2xl shadow-2xl overflow-hidden">
-            <div className="flex items-center gap-3 px-5 py-4 border-b border-stone-200 dark:border-stone-800">
+          <div className="w-full max-w-sm bg-base-100 rounded-2xl shadow-2xl overflow-hidden">
+            <div className="flex items-center gap-3 px-5 py-4 border-b border-base-300">
               <div className="flex-1">
-                <p className="text-xs text-stone-500 dark:text-stone-400 uppercase tracking-wide font-medium">
+                <p className="text-xs text-base-content/60 uppercase tracking-wide font-medium">
                   Edit Skill
                 </p>
-                <p className="font-semibold text-stone-900 dark:text-stone-100">
+                <p className="font-semibold text-base-content">
                   {editingSkill.name}
                 </p>
               </div>
               <button
                 onClick={() => setEditingSkillId(null)}
                 aria-label="Close edit"
-                className="p-1.5 rounded-lg text-stone-400 hover:text-stone-600 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+                className="p-1.5 rounded-lg text-base-content/40 hover:text-base-content hover:bg-base-200 transition-colors"
               >
                 <HiOutlineXMark className="w-5 h-5" />
               </button>
@@ -702,13 +702,13 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
 
             <div className="p-5 space-y-4">
               <div>
-                <label className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-1.5">
+                <label className="block text-sm font-medium text-base-content mb-1.5">
                   Proficiency Level
                 </label>
                 <select
                   value={editProficiency}
                   onChange={(e) => setEditProficiency(e.target.value as ProficiencyLevel)}
-                  className="w-full px-3 py-2.5 rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-900 dark:text-stone-100 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500/50 capitalize"
+                  className="select select-bordered w-full text-sm focus:ring-2 focus:ring-primary/50 capitalize"
                 >
                   {PROFICIENCY_LEVELS.map((level) => (
                     <option key={level} value={level} className="capitalize">
@@ -719,7 +719,7 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-1.5">
+                <label className="block text-sm font-medium text-base-content mb-1.5">
                   Years of Experience
                 </label>
                 <input
@@ -728,19 +728,19 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
                   max={50}
                   value={editYears}
                   onChange={(e) => setEditYears(Number(e.target.value))}
-                  className="w-full px-3 py-2.5 rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-900 dark:text-stone-100 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500/50"
+                  className="input input-bordered w-full text-sm focus:ring-2 focus:ring-primary/50"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-1.5">
+                <label className="block text-sm font-medium text-base-content mb-1.5">
                   Description
                 </label>
                 <textarea
                   rows={3}
                   value={editDescription}
                   onChange={(e) => setEditDescription(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-900 dark:text-stone-100 text-sm placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-rose-500/50 resize-none"
+                  className="textarea textarea-bordered w-full text-sm placeholder:text-base-content/40 focus:ring-2 focus:ring-primary/50 resize-none"
                 />
               </div>
             </div>
@@ -748,17 +748,17 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
             <div className="px-5 pb-5 flex gap-3">
               <button
                 onClick={() => setEditingSkillId(null)}
-                className="flex-1 px-4 py-2.5 rounded-xl border border-stone-200 dark:border-stone-700 text-sm font-medium text-stone-700 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors"
+                className="btn btn-outline flex-1"
               >
                 Cancel
               </button>
               <button
                 onClick={handleSaveEdit}
                 disabled={editLoading}
-                className="flex-1 px-4 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-sm font-medium disabled:opacity-50 transition-colors flex items-center justify-center gap-2"
+                className="btn btn-primary flex-1"
               >
                 {editLoading ? (
-                  <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
+                  <span className="w-4 h-4 border-2 border-primary-content/40 border-t-primary-content rounded-full animate-spin" />
                 ) : (
                   'Save Changes'
                 )}
@@ -771,7 +771,7 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
       {/* ──────────────── Success Toast ──────────────── */}
       {addedSkillName && (
         <div
-          className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 px-4 py-3 bg-emerald-600 text-white rounded-xl shadow-lg text-sm font-medium animate-in fade-in slide-in-from-bottom-4"
+          className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 px-4 py-3 bg-success text-white rounded-xl shadow-lg text-sm font-medium animate-in fade-in slide-in-from-bottom-4"
           onAnimationEnd={() => setTimeout(() => setAddedSkillName(null), 2500)}
         >
           <HiOutlineCheckCircle className="w-5 h-5" />

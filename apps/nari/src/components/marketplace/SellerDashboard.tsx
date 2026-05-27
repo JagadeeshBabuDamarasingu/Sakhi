@@ -61,22 +61,22 @@ export function SellerDashboard({
   }
 
   return (
-    <div className="min-h-screen bg-stone-50 dark:bg-stone-950">
+    <div className="min-h-screen bg-base-200">
       {/* Decorative gradient header */}
-      <div className="absolute inset-x-0 top-0 h-72 bg-gradient-to-br from-rose-100 via-amber-50 to-stone-100 dark:from-rose-950/40 dark:via-amber-950/20 dark:to-stone-950 -z-10" />
-      <div className="absolute inset-x-0 top-0 h-72 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-amber-200/30 via-transparent to-transparent dark:from-amber-900/20 -z-10" />
+      <div className="absolute inset-x-0 top-0 h-72 bg-gradient-to-br from-primary/10 via-secondary/5 to-base-200 -z-10" />
+      <div className="absolute inset-x-0 top-0 h-72 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-secondary/20 via-transparent to-transparent -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
           <div>
-            <p className="text-sm font-medium text-rose-600 dark:text-rose-400 tracking-wide uppercase">
+            <p className="text-sm font-medium text-primary tracking-wide uppercase">
               Welcome back
             </p>
-            <h1 className="text-2xl sm:text-3xl font-bold text-stone-900 dark:text-stone-50 mt-1">
+            <h1 className="text-2xl sm:text-3xl font-bold text-base-content mt-1">
               {sellerProfile.storeName}
             </h1>
-            <p className="text-stone-600 dark:text-stone-400 mt-1 text-sm sm:text-base">
+            <p className="text-base-content/70 mt-1 text-sm sm:text-base">
               Here&apos;s how your store is performing
             </p>
           </div>
@@ -84,7 +84,7 @@ export function SellerDashboard({
             <button
               onClick={onExportAnalytics}
               aria-label="Export seller analytics"
-              className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-stone-700 dark:text-stone-300 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-xl hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors shadow-sm"
+              className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-base-content/70 bg-base-100 border border-base-300 rounded-xl hover:bg-base-200 transition-colors shadow-sm"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
@@ -96,7 +96,7 @@ export function SellerDashboard({
               </svg>
               Export
             </button>
-            <span className="text-xs text-stone-500 dark:text-stone-500 bg-stone-100 dark:bg-stone-800 px-3 py-2 rounded-lg">
+            <span className="text-xs text-base-content/60 bg-base-200 px-3 py-2 rounded-lg">
               Last 30 days
             </span>
           </div>
@@ -169,7 +169,7 @@ export function SellerDashboard({
                   />
                 </svg>
               </div>
-              <h2 className="text-lg font-semibold text-stone-900 dark:text-stone-50">
+              <h2 className="text-lg font-semibold text-base-content">
                 AI Insights
               </h2>
             </div>
@@ -207,11 +207,11 @@ export function SellerDashboard({
 
         {/* Low Stock Alert */}
         {lowStockListings.length > 0 && (
-          <div className="mt-8 p-4 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 rounded-2xl">
+          <div className="mt-8 p-4 bg-warning/10 border border-warning/30 rounded-2xl">
             <div className="flex items-start gap-3">
-              <div className="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center flex-shrink-0">
+              <div className="w-10 h-10 rounded-xl bg-secondary/20 flex items-center justify-center flex-shrink-0">
                 <svg
-                  className="w-5 h-5 text-amber-600 dark:text-amber-400"
+                  className="w-5 h-5 text-secondary"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -225,10 +225,10 @@ export function SellerDashboard({
                 </svg>
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="text-sm font-semibold text-amber-900 dark:text-amber-100">
+                <h3 className="text-sm font-semibold text-warning-content">
                   Low Stock Alert
                 </h3>
-                <p className="text-sm text-amber-700 dark:text-amber-300 mt-1">
+                <p className="text-sm text-warning mt-1">
                   {lowStockListings.length} product{lowStockListings.length > 1 ? 's are' : ' is'}{' '}
                   running low on inventory
                 </p>
@@ -237,7 +237,7 @@ export function SellerDashboard({
                     <button
                       key={listing.id}
                       onClick={() => onViewListing?.(listing.id)}
-                      className="text-xs font-medium text-amber-800 dark:text-amber-200 bg-amber-100 dark:bg-amber-900/50 px-3 py-1.5 rounded-lg hover:bg-amber-200 dark:hover:bg-amber-900 transition-colors"
+                      className="text-xs font-medium text-warning bg-warning/15 px-3 py-1.5 rounded-lg hover:bg-warning/25 transition-colors"
                     >
                       {listing.title.length > 25
                         ? listing.title.substring(0, 25) + '...'
@@ -245,7 +245,7 @@ export function SellerDashboard({
                     </button>
                   ))}
                   {lowStockListings.length > 3 && (
-                    <span className="text-xs text-amber-600 dark:text-amber-400 px-2 py-1.5">
+                    <span className="text-xs text-secondary px-2 py-1.5">
                       +{lowStockListings.length - 3} more
                     </span>
                   )}

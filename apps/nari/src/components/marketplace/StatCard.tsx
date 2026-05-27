@@ -43,22 +43,22 @@ const iconMap = {
 
 const colorMap = {
   rose: {
-    bg: 'bg-rose-50 dark:bg-rose-950/40',
-    iconBg: 'bg-rose-100 dark:bg-rose-900/50',
-    iconColor: 'text-rose-600 dark:text-rose-400',
-    border: 'border-rose-100 dark:border-rose-900/50',
+    bg: 'bg-primary/10',
+    iconBg: 'bg-primary/15',
+    iconColor: 'text-primary',
+    border: 'border-primary/15',
   },
   amber: {
-    bg: 'bg-amber-50 dark:bg-amber-950/40',
-    iconBg: 'bg-amber-100 dark:bg-amber-900/50',
-    iconColor: 'text-amber-600 dark:text-amber-400',
-    border: 'border-amber-100 dark:border-amber-900/50',
+    bg: 'bg-secondary/20',
+    iconBg: 'bg-secondary/20',
+    iconColor: 'text-secondary',
+    border: 'border-secondary/20',
   },
   stone: {
-    bg: 'bg-stone-50 dark:bg-stone-900/50',
-    iconBg: 'bg-stone-100 dark:bg-stone-800',
-    iconColor: 'text-stone-600 dark:text-stone-400',
-    border: 'border-stone-200 dark:border-stone-800',
+    bg: 'bg-base-200',
+    iconBg: 'bg-base-200',
+    iconColor: 'text-base-content/70',
+    border: 'border-base-300',
   },
 }
 
@@ -83,8 +83,8 @@ export function StatCard({ label, value, change, icon, accentColor }: StatCardPr
           <div
             className={`inline-flex items-center gap-1 text-xs font-semibold px-2 py-1 rounded-lg ${
               isPositive
-                ? 'text-emerald-700 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-900/40'
-                : 'text-red-700 dark:text-red-400 bg-red-100 dark:bg-red-900/40'
+                ? 'text-success bg-success/15'
+                : 'text-error bg-error/15'
             }`}
           >
             <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -99,10 +99,10 @@ export function StatCard({ label, value, change, icon, accentColor }: StatCardPr
         </div>
 
         <div className="space-y-1">
-          <p className="text-2xl sm:text-3xl font-bold text-stone-900 dark:text-stone-50 tracking-tight">
+          <p className="text-2xl sm:text-3xl font-bold text-base-content tracking-tight">
             {value}
           </p>
-          <p className="text-sm text-stone-600 dark:text-stone-400">{label}</p>
+          <p className="text-sm text-base-content/70">{label}</p>
         </div>
       </div>
     </div>

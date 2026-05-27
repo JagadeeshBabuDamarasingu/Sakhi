@@ -74,16 +74,16 @@ export function LearningFeed({
   }
 
   return (
-    <div className="min-h-screen bg-stone-50 dark:bg-stone-950">
+    <div className="min-h-screen bg-base-200">
       <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <h1 className="text-2xl font-bold text-stone-900 dark:text-white sm:text-3xl">
+              <h1 className="text-2xl font-bold text-base-content sm:text-3xl">
                 Learn & Grow
               </h1>
-              <p className="mt-1 text-stone-600 dark:text-stone-400">
+              <p className="mt-1 text-base-content/70">
                 Free courses to build your skills and business
               </p>
             </div>
@@ -94,10 +94,10 @@ export function LearningFeed({
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search courses..."
-                className="w-full rounded-xl border-0 bg-white py-3 pl-11 pr-4 text-sm text-stone-900 shadow-sm ring-1 ring-stone-200 placeholder:text-stone-400 focus:ring-2 focus:ring-rose-500 dark:bg-stone-900 dark:text-white dark:ring-stone-700 dark:placeholder:text-stone-500"
+                className="w-full rounded-xl border-0 bg-base-100 py-3 pl-11 pr-4 text-sm text-base-content shadow-sm ring-1 ring-base-300 placeholder:text-base-content/40 focus:ring-2 focus:ring-primary"
               />
               <svg
-                className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-stone-400"
+                className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-base-content/40"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -171,10 +171,10 @@ export function LearningFeed({
             {inProgressCourses.length > 0 && (
               <section>
                 <div className="mb-4 flex items-center justify-between">
-                  <h2 className="text-lg font-semibold text-stone-900 dark:text-white">
+                  <h2 className="text-lg font-semibold text-base-content">
                     Continue Learning
                   </h2>
-                  <span className="text-sm text-stone-500 dark:text-stone-400">
+                  <span className="text-sm text-base-content/60">
                     {inProgressCourses.length} courses
                   </span>
                 </div>
@@ -197,7 +197,7 @@ export function LearningFeed({
 
             {/* Browse by Category */}
             <section>
-              <h2 className="mb-4 text-lg font-semibold text-stone-900 dark:text-white">
+              <h2 className="mb-4 text-lg font-semibold text-base-content">
                 Browse by Category
               </h2>
               <CategoryPills
@@ -210,10 +210,10 @@ export function LearningFeed({
             {/* Trending Courses */}
             <section>
               <div className="mb-4 flex items-center gap-2">
-                <h2 className="text-lg font-semibold text-stone-900 dark:text-white">
+                <h2 className="text-lg font-semibold text-base-content">
                   Trending Now
                 </h2>
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-rose-100 text-rose-600 dark:bg-rose-900/30 dark:text-rose-400">
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-primary/15 text-primary">
                   <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clipRule="evenodd" />
                   </svg>
@@ -240,10 +240,10 @@ export function LearningFeed({
             {recommendedCourses.length > 0 && (
               <section>
                 <div className="mb-4 flex items-center gap-2">
-                  <h2 className="text-lg font-semibold text-stone-900 dark:text-white">
+                  <h2 className="text-lg font-semibold text-base-content">
                     Recommended for You
                   </h2>
-                  <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">
+                  <span className="rounded-full bg-secondary/20 px-2 py-0.5 text-xs font-medium text-secondary">
                     Based on your goals
                   </span>
                 </div>
@@ -266,12 +266,12 @@ export function LearningFeed({
             <BadgeDisplay badges={badges} onShare={onShareBadge} />
 
             {/* Upcoming Events */}
-            <div className="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-stone-100 dark:bg-stone-900 dark:ring-stone-800">
+            <div className="rounded-2xl bg-base-100 p-5 shadow-sm ring-1 ring-base-300">
               <div className="flex items-center justify-between">
-                <h3 className="font-semibold text-stone-900 dark:text-white">Upcoming</h3>
+                <h3 className="font-semibold text-base-content">Upcoming</h3>
                 <button
                   onClick={onOpenCalendar}
-                  className="text-sm font-medium text-rose-600 hover:text-rose-700 dark:text-rose-400 dark:hover:text-rose-300"
+                  className="text-sm font-medium text-primary hover:text-primary/80"
                 >
                   View Calendar
                 </button>
@@ -285,12 +285,12 @@ export function LearningFeed({
                   return (
                     <div
                       key={event.id}
-                      className="group flex items-start gap-3 rounded-xl p-2 transition-colors hover:bg-stone-50 dark:hover:bg-stone-800"
+                      className="group flex items-start gap-3 rounded-xl p-2 transition-colors hover:bg-base-200"
                     >
                       <div className={`flex h-12 w-12 flex-shrink-0 flex-col items-center justify-center rounded-xl text-center ${
                         isToday
-                          ? 'bg-rose-100 text-rose-600 dark:bg-rose-900/30 dark:text-rose-400'
-                          : 'bg-stone-100 text-stone-600 dark:bg-stone-800 dark:text-stone-400'
+                          ? 'bg-primary/15 text-primary'
+                          : 'bg-base-200 text-base-content/70'
                       }`}>
                         <span className="text-[10px] font-medium uppercase">
                           {eventDate.toLocaleDateString('en-IN', { month: 'short' })}
@@ -301,10 +301,10 @@ export function LearningFeed({
                       </div>
 
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-stone-900 truncate dark:text-white">
+                        <p className="text-sm font-medium text-base-content truncate">
                           {event.title}
                         </p>
-                        <p className="text-xs text-stone-500 dark:text-stone-400">
+                        <p className="text-xs text-base-content/60">
                           {eventDate.toLocaleTimeString('en-IN', {
                             hour: 'numeric',
                             minute: '2-digit',
@@ -315,10 +315,10 @@ export function LearningFeed({
 
                       <div className={`flex-shrink-0 rounded-full px-2 py-1 text-[10px] font-semibold uppercase ${
                         event.type === 'live-session' || event.type === 'bootcamp'
-                          ? 'bg-rose-100 text-rose-600 dark:bg-rose-900/30 dark:text-rose-400'
+                          ? 'bg-primary/15 text-primary'
                           : event.type === 'deadline'
-                          ? 'bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400'
-                          : 'bg-stone-100 text-stone-600 dark:bg-stone-800 dark:text-stone-400'
+                          ? 'bg-secondary/20 text-secondary'
+                          : 'bg-base-200 text-base-content/70'
                       }`}>
                         {event.type === 'live-session' ? 'Live' :
                          event.type === 'bootcamp' ? 'Bootcamp' :
@@ -329,7 +329,7 @@ export function LearningFeed({
                 })}
 
                 {upcomingEvents.length === 0 && (
-                  <p className="text-center text-sm text-stone-500 dark:text-stone-400">
+                  <p className="text-center text-sm text-base-content/60">
                     No upcoming events
                   </p>
                 )}
@@ -337,8 +337,8 @@ export function LearningFeed({
             </div>
 
             {/* Learning Goals */}
-            <div className="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-stone-100 dark:bg-stone-900 dark:ring-stone-800">
-              <h3 className="font-semibold text-stone-900 dark:text-white">Your Goals</h3>
+            <div className="rounded-2xl bg-base-100 p-5 shadow-sm ring-1 ring-base-300">
+              <h3 className="font-semibold text-base-content">Your Goals</h3>
 
               <div className="mt-4 space-y-3">
                 {learningGoals
@@ -346,16 +346,16 @@ export function LearningFeed({
                   .map((goal) => (
                     <div
                       key={goal.id}
-                      className="flex items-start gap-3 rounded-xl bg-gradient-to-r from-rose-50 to-amber-50 p-3 dark:from-rose-900/20 dark:to-amber-900/20"
+                      className="flex items-start gap-3 rounded-xl bg-primary/5 p-3"
                     >
-                      <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-white text-rose-500 shadow-sm dark:bg-stone-800 dark:text-rose-400">
+                      <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-base-100 text-primary shadow-sm">
                         <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                         </svg>
                       </div>
                       <div>
-                        <p className="text-sm font-medium text-stone-900 dark:text-white">{goal.title}</p>
-                        <p className="text-xs text-stone-500 dark:text-stone-400">{goal.description}</p>
+                        <p className="text-sm font-medium text-base-content">{goal.title}</p>
+                        <p className="text-xs text-base-content/60">{goal.description}</p>
                       </div>
                     </div>
                   ))}

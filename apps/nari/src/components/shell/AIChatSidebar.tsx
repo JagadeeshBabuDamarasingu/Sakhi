@@ -177,14 +177,14 @@ export function AIChatSidebar({ isOpen, onClose }: AIChatSidebarProps) {
       {/* Panel */}
       <aside
         aria-label="AI Chat"
-        className={`fixed top-0 right-0 bottom-0 z-50 flex flex-col w-full sm:w-[22rem] bg-white dark:bg-stone-900 border-l border-stone-200 dark:border-stone-800 shadow-2xl transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+        className={`fixed top-0 right-0 bottom-0 z-50 flex flex-col w-full sm:w-[22rem] bg-base-100 border-l border-base-300 shadow-2xl transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         {/* Header */}
-        <div className="flex items-center gap-3 px-4 h-16 border-b border-stone-200 dark:border-stone-800 flex-shrink-0">
-          <span className="flex-shrink-0 w-8 h-8 rounded-xl bg-rose-50 dark:bg-rose-950/60 flex items-center justify-center">
-            <HiOutlineSparkles className="w-4 h-4 text-rose-500" />
+        <div className="flex items-center gap-3 px-4 h-16 border-b border-base-300 flex-shrink-0">
+          <span className="flex-shrink-0 w-8 h-8 rounded-xl bg-primary/10 flex items-center justify-center">
+            <HiOutlineSparkles className="w-4 h-4 text-primary" />
           </span>
 
           {/* Model selector */}
@@ -192,23 +192,23 @@ export function AIChatSidebar({ isOpen, onClose }: AIChatSidebarProps) {
             <select
               value={selectedModel}
               onChange={e => setSelectedModel(e.target.value)}
-              className="w-full text-sm font-semibold bg-transparent text-stone-900 dark:text-stone-100 focus:outline-none cursor-pointer appearance-none pr-5 truncate"
+              className="w-full text-sm font-semibold bg-transparent text-base-content focus:outline-none cursor-pointer appearance-none pr-5 truncate"
               aria-label="Select AI model"
             >
               {MODELS.map(m => (
-                <option key={m.id} value={m.id} className="font-normal dark:bg-stone-900">
+                <option key={m.id} value={m.id} className="font-normal bg-base-100">
                   {m.label}{m.hint ? ` · ${m.hint}` : ''}
                 </option>
               ))}
             </select>
-            <HiOutlineChevronDown className="absolute right-0 w-3.5 h-3.5 text-stone-400 pointer-events-none flex-shrink-0" />
+            <HiOutlineChevronDown className="absolute right-0 w-3.5 h-3.5 text-base-content/40 pointer-events-none flex-shrink-0" />
           </div>
 
           <div className="flex items-center gap-1 flex-shrink-0">
             {messages.length > 0 && (
               <button
                 onClick={() => setMessages([])}
-                className="p-2 rounded-lg text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+                className="p-2 rounded-lg text-base-content/40 hover:text-base-content hover:bg-base-200 transition-colors"
                 title="Clear chat"
                 aria-label="Clear chat"
               >
@@ -217,7 +217,7 @@ export function AIChatSidebar({ isOpen, onClose }: AIChatSidebarProps) {
             )}
             <button
               onClick={onClose}
-              className="p-2 rounded-lg text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+              className="p-2 rounded-lg text-base-content/40 hover:text-base-content hover:bg-base-200 transition-colors"
               aria-label="Close chat"
             >
               <HiOutlineXMark className="w-5 h-5" />
@@ -229,12 +229,12 @@ export function AIChatSidebar({ isOpen, onClose }: AIChatSidebarProps) {
         <div className="flex-1 overflow-y-auto px-4 py-5 space-y-4 scroll-smooth">
           {messages.length === 0 && (
             <div className="flex flex-col items-center justify-center h-full gap-4 text-center px-4">
-              <div className="w-14 h-14 rounded-2xl bg-rose-50 dark:bg-rose-950/60 flex items-center justify-center">
-                <HiOutlineSparkles className="w-7 h-7 text-rose-400" />
+              <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
+                <HiOutlineSparkles className="w-7 h-7 text-primary" />
               </div>
               <div className="space-y-1.5">
-                <p className="text-sm font-semibold text-stone-700 dark:text-stone-300">Sakhi AI</p>
-                <p className="text-xs text-stone-400 dark:text-stone-500 leading-relaxed">
+                <p className="text-sm font-semibold text-base-content">Sakhi AI</p>
+                <p className="text-xs text-base-content/40 leading-relaxed">
                   Ask about skills, courses, marketplace listings, or financing. Send an image or use your voice.
                 </p>
               </div>
@@ -247,8 +247,8 @@ export function AIChatSidebar({ isOpen, onClose }: AIChatSidebarProps) {
               className={`flex items-end gap-2 ${msg.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}
             >
               {msg.role === 'assistant' && (
-                <span className="flex-shrink-0 mb-5 w-6 h-6 rounded-full bg-rose-100 dark:bg-rose-900/50 flex items-center justify-center">
-                  <HiOutlineSparkles className="w-3.5 h-3.5 text-rose-500" />
+                <span className="flex-shrink-0 mb-5 w-6 h-6 rounded-full bg-primary/15 flex items-center justify-center">
+                  <HiOutlineSparkles className="w-3.5 h-3.5 text-primary" />
                 </span>
               )}
               <div className={`max-w-[80%] flex flex-col gap-1 ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
@@ -258,21 +258,21 @@ export function AIChatSidebar({ isOpen, onClose }: AIChatSidebarProps) {
                     key={i}
                     src={src}
                     alt="Uploaded"
-                    className="rounded-xl max-h-44 object-cover border border-stone-200 dark:border-stone-700"
+                    className="rounded-xl max-h-44 object-cover border border-base-300"
                   />
                 ))}
                 {msg.content && (
                   <div
                     className={`px-3.5 py-2.5 rounded-2xl text-sm leading-relaxed ${
                       msg.role === 'user'
-                        ? 'bg-rose-500 text-white rounded-br-sm'
-                        : 'bg-stone-100 dark:bg-stone-800 text-stone-800 dark:text-stone-200 rounded-bl-sm'
+                        ? 'bg-primary text-primary-content rounded-br-sm'
+                        : 'bg-base-200 text-base-content rounded-bl-sm'
                     }`}
                   >
                     {msg.content}
                   </div>
                 )}
-                <time className="text-[10px] text-stone-400 dark:text-stone-600 px-1">
+                <time className="text-[10px] text-base-content/40 px-1">
                   {msg.timestamp.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' })}
                 </time>
               </div>
@@ -281,13 +281,13 @@ export function AIChatSidebar({ isOpen, onClose }: AIChatSidebarProps) {
 
           {isTyping && (
             <div className="flex items-end gap-2">
-              <span className="flex-shrink-0 w-6 h-6 rounded-full bg-rose-100 dark:bg-rose-900/50 flex items-center justify-center">
-                <HiOutlineSparkles className="w-3.5 h-3.5 text-rose-500" />
+              <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/15 flex items-center justify-center">
+                <HiOutlineSparkles className="w-3.5 h-3.5 text-primary" />
               </span>
-              <div className="bg-stone-100 dark:bg-stone-800 rounded-2xl rounded-bl-sm px-4 py-3.5 flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-stone-400 animate-bounce [animation-delay:0ms]" />
-                <span className="w-1.5 h-1.5 rounded-full bg-stone-400 animate-bounce [animation-delay:120ms]" />
-                <span className="w-1.5 h-1.5 rounded-full bg-stone-400 animate-bounce [animation-delay:240ms]" />
+              <div className="bg-base-200 rounded-2xl rounded-bl-sm px-4 py-3.5 flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-base-content/40 animate-bounce [animation-delay:0ms]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-base-content/40 animate-bounce [animation-delay:120ms]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-base-content/40 animate-bounce [animation-delay:240ms]" />
               </div>
             </div>
           )}
@@ -297,18 +297,18 @@ export function AIChatSidebar({ isOpen, onClose }: AIChatSidebarProps) {
 
         {/* Pending image previews */}
         {pendingImages.length > 0 && (
-          <div className="flex gap-2 px-4 py-2.5 border-t border-stone-100 dark:border-stone-800 flex-wrap">
+          <div className="flex gap-2 px-4 py-2.5 border-t border-base-300 flex-wrap">
             {pendingImages.map((src, i) => (
               <div key={i} className="relative">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={src}
                   alt=""
-                  className="w-14 h-14 rounded-xl object-cover border border-stone-200 dark:border-stone-700"
+                  className="w-14 h-14 rounded-xl object-cover border border-base-300"
                 />
                 <button
                   onClick={() => setPendingImages(prev => prev.filter((_, j) => j !== i))}
-                  className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-stone-800 dark:bg-stone-600 text-white text-xs leading-none flex items-center justify-center hover:bg-rose-500 transition-colors"
+                  className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-base-content/80 text-base-100 text-xs leading-none flex items-center justify-center hover:bg-primary transition-colors"
                   aria-label="Remove image"
                 >
                   ×
@@ -319,8 +319,8 @@ export function AIChatSidebar({ isOpen, onClose }: AIChatSidebarProps) {
         )}
 
         {/* Input */}
-        <div className="px-3 py-3 border-t border-stone-200 dark:border-stone-800 flex-shrink-0">
-          <div className="flex items-end gap-2 bg-stone-100 dark:bg-stone-800 rounded-2xl px-3 py-2">
+        <div className="px-3 py-3 border-t border-base-300 flex-shrink-0">
+          <div className="flex items-end gap-2 bg-base-200 rounded-2xl px-3 py-2">
             <textarea
               ref={textareaRef}
               value={input}
@@ -333,7 +333,7 @@ export function AIChatSidebar({ isOpen, onClose }: AIChatSidebarProps) {
               }}
               placeholder="Ask Sakhi AI…"
               rows={1}
-              className="flex-1 bg-transparent text-sm text-stone-900 dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-500 resize-none focus:outline-none leading-5"
+              className="flex-1 bg-transparent text-sm text-base-content placeholder-base-content/40 resize-none focus:outline-none leading-5"
               style={{ minHeight: '20px', maxHeight: '128px' }}
             />
             <div className="flex items-center gap-0.5 pb-px flex-shrink-0">
@@ -347,7 +347,7 @@ export function AIChatSidebar({ isOpen, onClose }: AIChatSidebarProps) {
               />
               <button
                 onClick={() => fileInputRef.current?.click()}
-                className="p-1.5 rounded-xl text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 hover:bg-stone-200 dark:hover:bg-stone-700 transition-colors"
+                className="p-1.5 rounded-xl text-base-content/40 hover:text-base-content hover:bg-base-300 transition-colors"
                 title="Upload image"
                 aria-label="Upload image"
               >
@@ -357,8 +357,8 @@ export function AIChatSidebar({ isOpen, onClose }: AIChatSidebarProps) {
                 onClick={toggleListening}
                 className={`p-1.5 rounded-xl transition-colors ${
                   isListening
-                    ? 'text-rose-500 bg-rose-50 dark:bg-rose-950/50 animate-pulse'
-                    : 'text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 hover:bg-stone-200 dark:hover:bg-stone-700'
+                    ? 'text-primary bg-primary/10 animate-pulse'
+                    : 'text-base-content/40 hover:text-base-content hover:bg-base-300'
                 }`}
                 title={isListening ? 'Stop recording' : 'Voice input'}
                 aria-label={isListening ? 'Stop recording' : 'Voice input'}
@@ -368,7 +368,7 @@ export function AIChatSidebar({ isOpen, onClose }: AIChatSidebarProps) {
               <button
                 onClick={handleSend}
                 disabled={!input.trim() && pendingImages.length === 0}
-                className="ml-0.5 p-1.5 rounded-xl bg-rose-500 hover:bg-rose-600 text-white disabled:opacity-35 disabled:cursor-not-allowed transition-colors"
+                className="ml-0.5 p-1.5 rounded-xl bg-primary hover:bg-primary/90 text-primary-content disabled:opacity-35 disabled:cursor-not-allowed transition-colors"
                 title="Send message"
                 aria-label="Send message"
               >
@@ -376,7 +376,7 @@ export function AIChatSidebar({ isOpen, onClose }: AIChatSidebarProps) {
               </button>
             </div>
           </div>
-          <p className="mt-2 text-center text-[10px] text-stone-400 dark:text-stone-600">
+          <p className="mt-2 text-center text-[10px] text-base-content/40">
             Enter ↵ to send · Shift+Enter for newline
           </p>
         </div>

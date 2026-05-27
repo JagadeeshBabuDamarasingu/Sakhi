@@ -30,8 +30,8 @@ export function SummaryCard({ metrics, agentActions, streak, onNavigateTo }: Sum
       label: 'Earnings',
       value: formatCurrency(metrics.earningsThisMonth),
       sub: `${growing ? '+' : ''}${earningsGrowth}% vs last month`,
-      color: 'text-rose-600 dark:text-rose-400',
-      bg: 'bg-rose-50 dark:bg-rose-950/40',
+      color: 'text-primary',
+      bg: 'bg-primary/10',
       section: 'marketplace',
     },
     {
@@ -48,8 +48,8 @@ export function SummaryCard({ metrics, agentActions, streak, onNavigateTo }: Sum
       label: 'Courses',
       value: String(metrics.activeCoursesCount),
       sub: 'in progress',
-      color: 'text-amber-600 dark:text-amber-400',
-      bg: 'bg-amber-50 dark:bg-amber-950/40',
+      color: 'text-secondary',
+      bg: 'bg-secondary/10',
       section: 'elearning',
     },
     {
@@ -57,19 +57,19 @@ export function SummaryCard({ metrics, agentActions, streak, onNavigateTo }: Sum
       label: 'Orders',
       value: String(metrics.pendingOrdersCount),
       sub: 'pending',
-      color: 'text-emerald-600 dark:text-emerald-400',
-      bg: 'bg-emerald-50 dark:bg-emerald-950/40',
+      color: 'text-success',
+      bg: 'bg-success/15',
       section: 'marketplace',
     },
   ]
 
   return (
-    <div className="bg-white dark:bg-stone-900 rounded-2xl border border-stone-200 dark:border-stone-800 p-4 shadow-sm dark:shadow-none">
+    <div className="bg-base-100 rounded-2xl border border-base-300 p-4 shadow-sm dark:shadow-none">
       <div className="flex items-center gap-2 mb-3">
-        <LuZap className="w-4 h-4 text-rose-500" />
-        <h2 className="text-sm font-semibold text-stone-700 dark:text-stone-300">At a glance</h2>
+        <LuZap className="w-4 h-4 text-primary" />
+        <h2 className="text-sm font-semibold text-base-content">At a glance</h2>
         {streak.currentDays > 0 && (
-          <span className="ml-auto text-xs font-medium text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded-full">
+          <span className="ml-auto text-xs font-medium text-secondary bg-secondary/10 px-2 py-0.5 rounded-full">
             🔥 {streak.currentDays}-day streak
           </span>
         )}
@@ -84,8 +84,8 @@ export function SummaryCard({ metrics, agentActions, streak, onNavigateTo }: Sum
           >
             <span className={item.color}>{item.icon}</span>
             <span className={`text-lg font-bold leading-none ${item.color}`}>{item.value}</span>
-            <span className="text-xs font-medium text-stone-500 dark:text-stone-400">{item.label}</span>
-            <span className="text-[10px] text-stone-400 dark:text-stone-500 leading-tight">{item.sub}</span>
+            <span className="text-xs font-medium text-base-content/60">{item.label}</span>
+            <span className="text-[10px] text-base-content/40 leading-tight">{item.sub}</span>
           </button>
         ))}
       </div>

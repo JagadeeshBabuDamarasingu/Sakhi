@@ -15,10 +15,10 @@ const actionTypeConfig: Record<
   AgentAction['type'],
   { Icon: IconType; color: string; bg: string }
 > = {
-  listing: { Icon: LuShoppingBag, color: 'text-amber-500', bg: 'bg-amber-50 dark:bg-amber-950/30' },
-  course: { Icon: LuBookOpen, color: 'text-rose-500', bg: 'bg-rose-50 dark:bg-rose-950/30' },
-  financing: { Icon: LuCreditCard, color: 'text-emerald-500', bg: 'bg-emerald-50 dark:bg-emerald-950/30' },
-  assessment: { Icon: LuSearch, color: 'text-blue-500', bg: 'bg-blue-50 dark:bg-blue-950/30' },
+  listing: { Icon: LuShoppingBag, color: 'text-secondary', bg: 'bg-secondary/10' },
+  course: { Icon: LuBookOpen, color: 'text-primary', bg: 'bg-primary/10' },
+  financing: { Icon: LuCreditCard, color: 'text-success', bg: 'bg-success/15' },
+  assessment: { Icon: LuSearch, color: 'text-info', bg: 'bg-info/15' },
 }
 
 function formatRelativeTime(timestamp: string) {
@@ -37,23 +37,23 @@ export function AgentSummaryCard({
   const [tab, setTab] = useState<'actions' | 'recs'>('actions')
 
   return (
-    <div className="bg-white dark:bg-stone-900 rounded-2xl border border-stone-200 dark:border-stone-800 overflow-hidden shadow-sm dark:shadow-none">
+    <div className="bg-base-100 rounded-2xl border border-base-300 overflow-hidden shadow-sm dark:shadow-none">
       <div className="px-5 pt-5">
         <div className="flex items-center gap-2 mb-4">
-          <LuZap className="w-4 h-4 text-rose-500" />
-          <p className="text-[11px] font-semibold text-stone-500 uppercase tracking-widest">
+          <LuZap className="w-4 h-4 text-primary" />
+          <p className="text-[11px] font-semibold text-base-content/60 uppercase tracking-widest">
             AI Agent
           </p>
         </div>
-        <div className="flex border-b border-stone-100 dark:border-stone-800">
+        <div className="flex border-b border-base-300">
           {(['actions', 'recs'] as const).map((t) => (
             <button
               key={t}
               onClick={() => setTab(t)}
               className={`text-sm font-medium pb-2.5 mr-5 border-b-2 transition-colors ${
                 tab === t
-                  ? 'border-rose-500 text-rose-600 dark:text-rose-400'
-                  : 'border-transparent text-stone-400 hover:text-stone-600 dark:hover:text-stone-300'
+                  ? 'border-primary text-primary'
+                  : 'border-transparent text-base-content/40 hover:text-base-content/70'
               }`}
             >
               {t === 'actions' ? 'Recent actions' : 'Suggestions'}
@@ -65,7 +65,7 @@ export function AgentSummaryCard({
       <div className="p-4 space-y-3">
         {tab === 'actions' ? (
           agentActions.length === 0 ? (
-            <p className="text-xs text-stone-400 text-center py-4">No recent agent activity.</p>
+            <p className="text-xs text-base-content/50 text-center py-4">No recent agent activity.</p>
           ) : (
             agentActions.slice(0, 4).map((action) => {
               const config = actionTypeConfig[action.type]
@@ -78,10 +78,10 @@ export function AgentSummaryCard({
                     <Icon className={`w-4 h-4 ${config.color}`} />
                   </span>
                   <div className="flex-1 min-w-0">
-                    <p className="text-xs text-stone-700 dark:text-stone-300 leading-relaxed">
+                    <p className="text-xs text-base-content/80 leading-relaxed">
                       {action.message}
                     </p>
-                    <p className="text-[11px] text-stone-400 mt-0.5">
+                    <p className="text-[11px] text-base-content/50 mt-0.5">
                       {formatRelativeTime(action.timestamp)}
                     </p>
                   </div>
@@ -93,14 +93,14 @@ export function AgentSummaryCard({
           recommendations.map((rec) => (
             <div
               key={rec.id}
-              className="rounded-xl bg-stone-50 dark:bg-stone-800/60 p-3 space-y-2"
+              className="rounded-xl bg-base-200 p-3 space-y-2"
             >
-              <p className="text-xs text-stone-700 dark:text-stone-300 leading-relaxed">
+              <p className="text-xs text-base-content/80 leading-relaxed">
                 {rec.message}
               </p>
               <div className="flex items-center justify-between gap-2">
                 {rec.potentialBoost ? (
-                  <span className="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/30 px-2 py-0.5 rounded-full">
+                  <span className="text-[11px] font-semibold text-success bg-success/10 px-2 py-0.5 rounded-full">
                     {rec.potentialBoost}
                   </span>
                 ) : (
@@ -108,7 +108,7 @@ export function AgentSummaryCard({
                 )}
                 <button
                   onClick={() => onNavigateTo?.(rec.targetSection)}
-                  className="flex items-center gap-1 text-xs font-semibold text-rose-500 hover:text-rose-600 transition-colors"
+                  className="flex items-center gap-1 text-xs font-semibold text-primary hover:text-primary/80 transition-colors"
                 >
                   {rec.ctaLabel}
                   <LuArrowRight className="w-3 h-3" />

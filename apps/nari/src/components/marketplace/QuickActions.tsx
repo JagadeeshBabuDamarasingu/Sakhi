@@ -9,7 +9,7 @@ export function QuickActions({ onCreateListing, onGoLive }: QuickActionsProps) {
       {/* Create Listing Button */}
       <button
         onClick={onCreateListing}
-        className="group relative inline-flex items-center gap-2.5 px-5 py-3 bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white text-sm font-semibold rounded-xl shadow-lg shadow-rose-500/25 hover:shadow-rose-500/40 transition-all hover:-translate-y-0.5"
+        className="group relative inline-flex items-center gap-2.5 px-5 py-3 bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white text-sm font-semibold rounded-xl shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all hover:-translate-y-0.5"
       >
         <div className="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center">
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -30,9 +30,9 @@ export function QuickActions({ onCreateListing, onGoLive }: QuickActionsProps) {
       {/* Go Live Button */}
       <button
         onClick={onGoLive}
-        className="group relative inline-flex items-center gap-2.5 px-5 py-3 bg-white dark:bg-stone-900 border-2 border-rose-200 dark:border-rose-900/50 hover:border-rose-300 dark:hover:border-rose-800 text-rose-600 dark:text-rose-400 text-sm font-semibold rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
+        className="group relative inline-flex items-center gap-2.5 px-5 py-3 bg-base-100 border-2 border-rose-200 dark:border-rose-900/50 hover:border-rose-300 dark:hover:border-rose-800 text-primary text-sm font-semibold rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
       >
-        <div className="w-8 h-8 rounded-lg bg-rose-50 dark:bg-rose-950/50 flex items-center justify-center">
+        <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
           <div className="relative">
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
@@ -50,7 +50,7 @@ export function QuickActions({ onCreateListing, onGoLive }: QuickActionsProps) {
       </button>
 
       {/* Additional Quick Actions */}
-      <button className="inline-flex items-center gap-2 px-4 py-3 bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 text-sm font-medium rounded-xl transition-colors">
+      <button className="inline-flex items-center gap-2 px-4 py-3 bg-base-200 hover:bg-base-300 text-base-content/70 text-sm font-medium rounded-xl transition-colors">
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
             strokeLinecap="round"
@@ -62,7 +62,7 @@ export function QuickActions({ onCreateListing, onGoLive }: QuickActionsProps) {
         <span>Create Coupon</span>
       </button>
 
-      <button className="inline-flex items-center gap-2 px-4 py-3 bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 text-sm font-medium rounded-xl transition-colors">
+      <button className="inline-flex items-center gap-2 px-4 py-3 bg-base-200 hover:bg-base-300 text-base-content/70 text-sm font-medium rounded-xl transition-colors">
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
             strokeLinecap="round"

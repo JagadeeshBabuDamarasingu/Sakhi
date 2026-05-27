@@ -33,7 +33,7 @@ const themeScript = `
       var preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       var theme = saved || preferred;
       var html = document.documentElement;
-      html.setAttribute('data-theme', theme === 'dark' ? 'dark' : 'bumblebee');
+      html.setAttribute('data-theme', theme === 'dark' ? 'shakti-dark' : 'shakti');
       if (theme === 'dark') html.classList.add('dark');
     } catch(e) {}
   })();
@@ -47,7 +47,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      data-theme="bumblebee"
+      data-theme="shakti"
       className={`${poppins.variable} ${ibmPlexMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >

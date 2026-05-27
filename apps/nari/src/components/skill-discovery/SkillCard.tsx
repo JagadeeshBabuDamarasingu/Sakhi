@@ -33,22 +33,22 @@ const validationStatusConfig = {
   verified: {
     icon: CheckCircle2,
     label: 'Verified',
-    className: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-400',
+    className: 'badge badge-success badge-soft',
   },
   'auto-verified': {
     icon: Shield,
     label: 'Auto-verified',
-    className: 'bg-sky-100 text-sky-700 dark:bg-sky-900/50 dark:text-sky-400',
+    className: 'badge badge-info badge-soft',
   },
   pending: {
     icon: Clock,
     label: 'Pending',
-    className: 'bg-amber-100 text-amber-700 dark:bg-amber-900/50 dark:text-amber-400',
+    className: 'badge badge-secondary badge-soft',
   },
   unverified: {
     icon: AlertCircle,
     label: 'Unverified',
-    className: 'bg-stone-100 text-stone-600 dark:bg-stone-800 dark:text-stone-400',
+    className: 'badge badge-neutral badge-soft',
   },
 }
 
@@ -60,16 +60,16 @@ const proficiencyConfig = {
 }
 
 const demandConfig = {
-  low: { label: 'Low Demand', className: 'text-stone-500' },
-  medium: { label: 'Medium Demand', className: 'text-amber-600 dark:text-amber-400' },
-  high: { label: 'High Demand', className: 'text-emerald-600 dark:text-emerald-400' },
-  'very-high': { label: 'Very High Demand', className: 'text-rose-600 dark:text-rose-400' },
+  low: { label: 'Low Demand', className: 'text-base-content/60' },
+  medium: { label: 'Medium Demand', className: 'text-secondary' },
+  high: { label: 'High Demand', className: 'text-success' },
+  'very-high': { label: 'Very High Demand', className: 'text-primary' },
 }
 
 const trendConfig = {
-  rising: { icon: TrendingUp, label: 'Rising', className: 'text-emerald-600 dark:text-emerald-400' },
-  stable: { icon: Minus, label: 'Stable', className: 'text-stone-500' },
-  falling: { icon: TrendingDown, label: 'Falling', className: 'text-rose-600 dark:text-rose-400' },
+  rising: { icon: TrendingUp, label: 'Rising', className: 'text-success' },
+  stable: { icon: Minus, label: 'Stable', className: 'text-base-content/60' },
+  falling: { icon: TrendingDown, label: 'Falling', className: 'text-primary' },
 }
 
 export function SkillCard({
@@ -104,20 +104,20 @@ export function SkillCard({
 
   return (
     <div
-      className="group relative bg-white dark:bg-stone-900 rounded-2xl border border-stone-200 dark:border-stone-800 overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-rose-500/10 hover:border-rose-200 dark:hover:border-rose-800/50"
+      className="group relative bg-base-100 rounded-2xl border border-base-300 overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:border-primary/20"
       onClick={onView}
     >
-      {/* Top accent line */}
+      {/* Top accent line — kept as-is per spec */}
       <div className="h-1 bg-gradient-to-r from-rose-400 via-rose-500 to-amber-400" />
 
       <div className="p-5">
         {/* Header */}
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1 min-w-0">
-            <h3 className="text-lg font-semibold text-stone-900 dark:text-stone-100 truncate pr-2">
+            <h3 className="text-lg font-semibold text-base-content truncate pr-2">
               {skill.name}
             </h3>
-            <p className="text-sm text-stone-500 dark:text-stone-400 mt-0.5">{skill.category}</p>
+            <p className="text-sm text-base-content/60 mt-0.5">{skill.category}</p>
           </div>
 
           {/* Actions Menu */}
@@ -128,20 +128,20 @@ export function SkillCard({
                 setShowMenu(!showMenu)
               }}
               aria-label="More options"
-              className="p-1.5 rounded-lg text-stone-400 hover:text-stone-600 hover:bg-stone-100 dark:hover:bg-stone-800 dark:hover:text-stone-300 transition-colors"
+              className="p-1.5 rounded-lg text-base-content/40 hover:text-base-content hover:bg-base-200 transition-colors"
             >
               <MoreVertical className="w-5 h-5" />
             </button>
 
             {showMenu && (
-              <div className="absolute right-0 top-full mt-1 w-36 bg-white dark:bg-stone-800 rounded-xl shadow-lg border border-stone-200 dark:border-stone-700 py-1 z-10">
+              <div className="absolute right-0 top-full mt-1 w-36 bg-base-100 shadow-lg border border-base-300 rounded-box py-1 z-10">
                 <button
                   onClick={(e) => {
                     e.stopPropagation()
                     onEdit?.()
                     setShowMenu(false)
                   }}
-                  className="flex items-center gap-2 w-full px-3 py-2 text-sm text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700"
+                  className="flex items-center gap-2 w-full px-3 py-2 text-sm text-base-content hover:bg-base-200"
                 >
                   <Edit3 className="w-4 h-4" />
                   Edit
@@ -152,7 +152,7 @@ export function SkillCard({
                     onDelete?.()
                     setShowMenu(false)
                   }}
-                  className="flex items-center gap-2 w-full px-3 py-2 text-sm text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-900/30"
+                  className="flex items-center gap-2 w-full px-3 py-2 text-sm text-primary hover:bg-primary/10"
                 >
                   <Trash2 className="w-4 h-4" />
                   Remove
@@ -164,9 +164,7 @@ export function SkillCard({
 
         {/* Status Badge */}
         <div className="flex items-center gap-2 mb-4">
-          <span
-            className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${statusConfig.className}`}
-          >
+          <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${statusConfig.className}`}>
             <StatusIcon className="w-3.5 h-3.5" />
             {statusConfig.label}
           </span>
@@ -177,7 +175,7 @@ export function SkillCard({
                 e.stopPropagation()
                 onValidate?.()
               }}
-              className="text-xs font-medium text-rose-600 dark:text-rose-400 hover:text-rose-700 dark:hover:text-rose-300 underline underline-offset-2"
+              className="text-xs font-medium text-primary hover:text-primary/80 underline underline-offset-2"
             >
               Validate now
             </button>
@@ -187,8 +185,8 @@ export function SkillCard({
         {/* Proficiency Bars */}
         <div className="mb-4">
           <div className="flex items-center justify-between mb-1.5">
-            <span className="text-xs text-stone-500 dark:text-stone-400">Proficiency</span>
-            <span className="text-xs font-medium text-stone-700 dark:text-stone-300">
+            <span className="text-xs text-base-content/60">Proficiency</span>
+            <span className="text-xs font-medium text-base-content">
               {proficiency.label}
             </span>
           </div>
@@ -198,8 +196,8 @@ export function SkillCard({
                 key={bar}
                 className={`h-1.5 flex-1 rounded-full ${
                   bar <= proficiency.bars
-                    ? 'bg-gradient-to-r from-rose-400 to-rose-500'
-                    : 'bg-stone-200 dark:bg-stone-700'
+                    ? 'bg-primary'
+                    : 'bg-base-300'
                 }`}
               />
             ))}
@@ -207,13 +205,13 @@ export function SkillCard({
         </div>
 
         {/* Earning Potential */}
-        <div className="flex items-center justify-between p-3 bg-gradient-to-r from-amber-50 to-rose-50 dark:from-amber-900/20 dark:to-rose-900/20 rounded-xl mb-4">
+        <div className="flex items-center justify-between p-3 bg-gradient-to-r from-secondary/10 to-primary/10 rounded-xl mb-4">
           <div>
-            <p className="text-xs text-stone-500 dark:text-stone-400 mb-0.5">Earning Potential</p>
-            <p className="text-lg font-bold text-stone-900 dark:text-stone-100 flex items-center">
+            <p className="text-xs text-base-content/60 mb-0.5">Earning Potential</p>
+            <p className="text-lg font-bold text-base-content flex items-center">
               <IndianRupee className="w-4 h-4" />
               {formatEarning(skill.earningPotential.min)} - {formatEarning(skill.earningPotential.max)}
-              <span className="text-xs font-normal text-stone-500 ml-1">/month</span>
+              <span className="text-xs font-normal text-base-content/60 ml-1">/month</span>
             </p>
           </div>
           <div className="text-right">
@@ -233,7 +231,7 @@ export function SkillCard({
                 e.stopPropagation()
                 onViewCourse?.(linkedCourses[0].id)
               }}
-              className="flex items-center gap-1.5 text-stone-600 dark:text-stone-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors"
+              className="flex items-center gap-1.5 text-base-content/70 hover:text-primary transition-colors"
             >
               <BookOpen className="w-4 h-4" />
               <span>{linkedCourses.length} Course{linkedCourses.length > 1 ? 's' : ''}</span>
@@ -246,7 +244,7 @@ export function SkillCard({
                 e.stopPropagation()
                 onViewListing?.(skill.relatedListings[0])
               }}
-              className="flex items-center gap-1.5 text-stone-600 dark:text-stone-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors"
+              className="flex items-center gap-1.5 text-base-content/70 hover:text-primary transition-colors"
             >
               <ShoppingBag className="w-4 h-4" />
               <span>{skill.relatedListings.length} Listing{skill.relatedListings.length > 1 ? 's' : ''}</span>

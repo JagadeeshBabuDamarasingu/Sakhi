@@ -8,19 +8,19 @@ const DAY_LABELS = ['M', 'T', 'W', 'T', 'F', 'S', 'S']
 
 export function StreakCard({ streak }: StreakCardProps) {
   return (
-    <div className="bg-white dark:bg-stone-900 rounded-2xl border border-stone-200 dark:border-stone-800 p-5 shadow-sm dark:shadow-none">
+    <div className="bg-base-100 rounded-2xl border border-base-300 p-5 shadow-sm dark:shadow-none">
       <div className="flex items-center justify-between mb-4">
-        <p className="text-[11px] font-semibold text-stone-500 uppercase tracking-widest">
+        <p className="text-[11px] font-semibold text-base-content/60 uppercase tracking-widest">
           Learning streak
         </p>
         <span className="text-lg" role="img" aria-label="fire">🔥</span>
       </div>
 
       <div className="flex items-end gap-1.5 mb-4">
-        <span className="text-4xl font-bold text-amber-500 leading-none">
+        <span className="text-4xl font-bold text-secondary leading-none">
           {streak.currentDays}
         </span>
-        <span className="text-sm text-stone-400 mb-1">days</span>
+        <span className="text-sm text-base-content/40 mb-1">days</span>
       </div>
 
       <div className="flex gap-1">
@@ -29,20 +29,20 @@ export function StreakCard({ streak }: StreakCardProps) {
             <div
               className={`h-7 w-full rounded-lg transition-colors ${
                 active
-                  ? 'bg-amber-400 shadow-sm shadow-amber-200 dark:shadow-none'
-                  : 'bg-stone-100 dark:bg-stone-800'
+                  ? 'bg-secondary shadow-sm shadow-secondary/20'
+                  : 'bg-base-200'
               }`}
             />
-            <span className="text-[10px] font-medium text-stone-400 dark:text-stone-600">
+            <span className="text-[10px] font-medium text-base-content/30">
               {DAY_LABELS[i]}
             </span>
           </div>
         ))}
       </div>
 
-      <p className="text-xs text-stone-400 mt-3">
+      <p className="text-xs text-base-content/40 mt-3">
         Best streak:{' '}
-        <span className="font-semibold text-stone-500 dark:text-stone-400">
+        <span className="font-semibold text-base-content/60">
           {streak.longestDays} days
         </span>
       </p>

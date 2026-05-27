@@ -27,12 +27,12 @@ export function MainNav({ items, onNavigate, variant }: MainNavProps) {
               transition-colors duration-200
               ${
                 item.isActive
-                  ? 'text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/50'
-                  : 'text-stone-600 dark:text-stone-400 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-stone-100 dark:hover:bg-stone-800'
+                  ? 'bg-primary/10 text-primary'
+                  : 'text-base-content/70 hover:text-primary hover:bg-base-200'
               }
             `}
           >
-            <span className={item.isActive ? 'text-rose-600 dark:text-rose-400' : ''}>
+            <span className={item.isActive ? 'text-primary' : ''}>
               {item.icon}
             </span>
             <span className="mt-1 text-xs font-medium truncate max-w-[72px]">
@@ -56,12 +56,12 @@ export function MainNav({ items, onNavigate, variant }: MainNavProps) {
             transition-colors duration-200
             ${
               item.isActive
-                ? 'text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/50'
-                : 'text-stone-600 dark:text-stone-400 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-stone-100 dark:hover:bg-stone-800'
+                ? 'bg-primary/10 text-primary'
+                : 'text-base-content/70 hover:text-primary hover:bg-base-200'
             }
           `}
         >
-          <span className={item.isActive ? 'text-rose-600 dark:text-rose-400' : ''}>
+          <span className={item.isActive ? 'text-primary' : ''}>
             {item.icon}
           </span>
           <span>{item.label}</span>

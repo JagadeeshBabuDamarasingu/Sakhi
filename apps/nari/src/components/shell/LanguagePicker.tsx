@@ -28,7 +28,7 @@ export function LanguagePicker() {
         onClick={() => setIsOpen((v) => !v)}
         aria-label="Select language"
         aria-expanded={isOpen}
-        className="flex items-center gap-1.5 px-2.5 py-2 rounded-lg text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+        className="flex items-center gap-1.5 px-2.5 py-2 rounded-lg text-base-content/60 hover:bg-base-200 hover:text-base-content transition-colors"
       >
         <LuLanguages className="w-4 h-4 shrink-0" />
         <span className="hidden sm:block text-xs font-medium leading-none">
@@ -40,7 +40,7 @@ export function LanguagePicker() {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-1.5 w-44 bg-white dark:bg-stone-900 rounded-xl shadow-lg border border-stone-200 dark:border-stone-700 py-1.5 z-50">
+        <div className="absolute right-0 mt-1.5 w-44 bg-base-100 rounded-xl shadow-lg border border-base-300 py-1.5 z-50">
           {languages.map((lang) => (
             <button
               key={lang.code}
@@ -50,8 +50,8 @@ export function LanguagePicker() {
               }}
               className={`flex items-center justify-between w-full px-3 py-2 text-sm transition-colors ${
                 language === lang.code
-                  ? 'text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40'
-                  : 'text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800'
+                  ? 'bg-primary/10 text-primary'
+                  : 'text-base-content/70 hover:bg-base-200'
               }`}
             >
               {lang.label}

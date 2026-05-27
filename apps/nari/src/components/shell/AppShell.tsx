@@ -38,13 +38,13 @@ export function AppShell({
   ]
 
   return (
-    <div className="min-h-screen bg-stone-50 dark:bg-stone-950 font-sans">
+    <div className="min-h-screen bg-base-200 font-sans">
       {/* Desktop/Tablet Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-stone-900 border-b border-stone-200 dark:border-stone-800">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-base-100 border-b border-base-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex-shrink-0">
-              <span className="text-2xl font-bold text-rose-600 dark:text-rose-400">
+              <span className="text-2xl font-bold text-primary">
                 Shakti
               </span>
             </div>
@@ -63,8 +63,8 @@ export function AppShell({
                 onClick={() => setIsChatOpen(prev => !prev)}
                 className={`p-2 rounded-lg transition-colors ${
                   isChatOpen
-                    ? 'bg-rose-50 dark:bg-rose-950/50 text-rose-500'
-                    : 'text-stone-500 hover:text-stone-700 dark:hover:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800'
+                    ? 'bg-primary/10 text-primary'
+                    : 'text-base-content/60 hover:text-base-content hover:bg-base-200'
                 }`}
                 aria-label="Toggle AI chat"
                 title="Sakhi AI"
@@ -88,7 +88,7 @@ export function AppShell({
       </main>
 
       {/* Mobile Bottom Navigation */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white dark:bg-stone-900 border-t border-stone-200 dark:border-stone-800 safe-area-bottom">
+      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-base-100 border-t border-base-300 safe-area-bottom">
         <MainNav
           items={navigationItems}
           onNavigate={onNavigate}

@@ -13,14 +13,14 @@ export function KeywordRankingsTable({ rankings }: KeywordRankingsTableProps) {
   }
 
   return (
-    <div className="bg-white dark:bg-stone-900 rounded-2xl border border-stone-200 dark:border-stone-800 overflow-hidden">
+    <div className="bg-base-100 rounded-2xl border border-base-300 overflow-hidden">
       {/* Header */}
-      <div className="flex items-center justify-between p-5 border-b border-stone-100 dark:border-stone-800">
+      <div className="flex items-center justify-between p-5 border-b border-base-300">
         <div>
-          <h3 className="text-lg font-semibold text-stone-900 dark:text-stone-50">Keyword Rankings</h3>
-          <p className="text-sm text-stone-500 dark:text-stone-400 mt-0.5">Your search visibility</p>
+          <h3 className="text-lg font-semibold text-base-content">Keyword Rankings</h3>
+          <p className="text-sm text-base-content/60 mt-0.5">Your search visibility</p>
         </div>
-        <div className="flex items-center gap-1.5 text-xs text-stone-500 dark:text-stone-400">
+        <div className="flex items-center gap-1.5 text-xs text-base-content/60">
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path
               strokeLinecap="round"
@@ -34,7 +34,7 @@ export function KeywordRankingsTable({ rankings }: KeywordRankingsTableProps) {
       </div>
 
       {/* Table */}
-      <div className="divide-y divide-stone-100 dark:divide-stone-800">
+      <div className="divide-y divide-base-300">
         {rankings.map((ranking) => {
           const isTop3 = ranking.rank <= 3
           const isImproving = ranking.change > 0
@@ -43,14 +43,14 @@ export function KeywordRankingsTable({ rankings }: KeywordRankingsTableProps) {
           return (
             <div
               key={ranking.keyword}
-              className="flex items-center gap-4 p-4 hover:bg-stone-50 dark:hover:bg-stone-800/50 transition-colors"
+              className="flex items-center gap-4 p-4 hover:bg-base-200 transition-colors"
             >
               {/* Rank */}
               <div
                 className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 font-bold text-sm ${
                   isTop3
                     ? 'bg-gradient-to-br from-rose-500 to-amber-500 text-white shadow-sm'
-                    : 'bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400'
+                    : 'bg-base-200 text-base-content/70'
                 }`}
               >
                 #{ranking.rank}
@@ -58,10 +58,10 @@ export function KeywordRankingsTable({ rankings }: KeywordRankingsTableProps) {
 
               {/* Keyword Info */}
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-stone-900 dark:text-stone-100 truncate">
+                <p className="text-sm font-medium text-base-content truncate">
                   {ranking.keyword}
                 </p>
-                <p className="text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+                <p className="text-xs text-base-content/60 mt-0.5">
                   {formatNumber(ranking.searchVolume)} monthly searches
                 </p>
               </div>
@@ -70,10 +70,10 @@ export function KeywordRankingsTable({ rankings }: KeywordRankingsTableProps) {
               <div
                 className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold ${
                   isImproving
-                    ? 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-400'
+                    ? 'bg-success/15 text-success'
                     : isDecreasing
-                      ? 'bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-400'
-                      : 'bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400'
+                      ? 'bg-error/15 text-error'
+                      : 'bg-base-200 text-base-content/70'
                 }`}
               >
                 {isImproving ? (
@@ -120,10 +120,10 @@ export function KeywordRankingsTable({ rankings }: KeywordRankingsTableProps) {
       </div>
 
       {/* Footer Tip */}
-      <div className="p-4 bg-stone-50 dark:bg-stone-800/30 border-t border-stone-100 dark:border-stone-800">
+      <div className="p-4 bg-base-200 border-t border-base-300">
         <div className="flex items-start gap-3">
-          <div className="w-8 h-8 rounded-lg bg-rose-100 dark:bg-rose-900/50 flex items-center justify-center flex-shrink-0">
-            <svg className="w-4 h-4 text-rose-600 dark:text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div className="w-8 h-8 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0">
+            <svg className="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -132,8 +132,8 @@ export function KeywordRankingsTable({ rankings }: KeywordRankingsTableProps) {
               />
             </svg>
           </div>
-          <p className="text-xs text-stone-600 dark:text-stone-400 leading-relaxed">
-            <span className="font-semibold text-stone-700 dark:text-stone-300">Pro tip:</span> Add your top keywords to product titles and descriptions to improve rankings.
+          <p className="text-xs text-base-content/70 leading-relaxed">
+            <span className="font-semibold text-base-content">Pro tip:</span> Add your top keywords to product titles and descriptions to improve rankings.
           </p>
         </div>
       </div>
