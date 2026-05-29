@@ -1,0 +1,222 @@
+syntax = "proto3";
+
+package financing.v1;
+
+option go_package = "github.com/shakthi/protocols/financing/v1;financingv1";
+
+// ─── Enums ───────────────────────────────────────────────────────────────────
+
+enum LoanType {
+  LOAN_TYPE_UNSPECIFIED = 0;
+  LOAN_TYPE_MICRO_LOAN = 1;
+  LOAN_TYPE_COURSE_FINANCING = 2;
+  LOAN_TYPE_BUSINESS_EXPANSION = 3;
+}
+
+enum LoanStatus {
+  LOAN_STATUS_UNSPECIFIED = 0;
+  LOAN_STATUS_ACTIVE = 1;
+  LOAN_STATUS_CLOSED = 2;
+  LOAN_STATUS_OVERDUE = 3;
+  LOAN_STATUS_PENDING = 4;
+}
+
+enum RepaymentStatus {
+  REPAYMENT_STATUS_UNSPECIFIED = 0;
+  REPAYMENT_STATUS_ON_TRACK = 1;
+  REPAYMENT_STATUS_DUE_SOON = 2;
+  REPAYMENT_STATUS_OVERDUE = 3;
+  REPAYMENT_STATUS_CLOSED = 4;
+}
+
+enum EmiStatus {
+  EMI_STATUS_UNSPECIFIED = 0;
+  EMI_STATUS_PAID = 1;
+  EMI_STATUS_UPCOMING = 2;
+  EMI_STATUS_DUE_SOON = 3;
+  EMI_STATUS_OVERDUE = 4;
+}
+
+enum KycStatus {
+  KYC_STATUS_UNSPECIFIED = 0;
+  KYC_STATUS_VERIFIED = 1;
+  KYC_STATUS_PENDING = 2;
+  KYC_STATUS_NOT_STARTED = 3;
+}
+
+enum ApplicationStatus {
+  APPLICATION_STATUS_UNSPECIFIED = 0;
+  APPLICATION_STATUS_OFFERS_READY = 1;
+  APPLICATION_STATUS_OFFER_SELECTED = 2;
+  APPLICATION_STATUS_ESIGN_PENDING = 3;
+  APPLICATION_STATUS_DISBURSED = 4;
+  APPLICATION_STATUS_REJECTED = 5;
+}
+
+// ─── Messages ─────────────────────────────────────────────────────────────────
+
+message EmiInstallment {
+  string id = 1;
+  int32 installment_number = 2;
+  string due_date = 3;
+  int64 amount = 4;
+  EmiStatus status = 5;
+  optional string paid_at = 6;
+  optional string reference = 7;
+}
+
+message Loan {
+  string id = 1;
+  LoanType type = 2;
+  string purpose = 3;
+  LoanStatus status = 4;
+  string lender_name = 5;
+  string lender_nbfc_registration = 6;
+  int64 amount = 7;
+  double interest_rate = 8;
+  double effective_annual_rate = 9;
+  int32 tenure = 10;
+  int64 emi_amount = 11;
+  int64 total_repayment = 12;
+  int64 total_interest = 13;
+  int64 processing_fee = 14;
+  string disbursed_at = 15;
+  optional string next_emi_date = 16;
+  optional int64 next_emi_amount = 17;
+  int64 outstanding_balance = 18;
+  int32 emis_paid = 19;
+  int32 total_emis = 20;
+  RepaymentStatus repayment_status = 21;
+  bool upi_mandate_active = 22;
+  int32 upi_mandate_debit_day = 23;
+  bool noc_available = 24;
+  optional string closed_at = 25;
+  repeated EmiInstallment emi_schedule = 26;
+  // milestone_reached: "halfway" | "closed" | null — serialized as string
+  optional string milestone_reached = 27;
+}
+
+message LenderOffer {
+  string id = 1;
+  string lender_name = 2;
+  string lender_logo = 3;
+  string rbi_registration = 4;
+  bool is_recommended = 5;
+  int64 loan_amount = 6;
+  double interest_rate = 7;
+  double effective_annual_rate = 8;
+  int32 tenure = 9;
+  int64 emi_amount = 10;
+  int64 processing_fee = 11;
+  int64 total_repayment = 12;
+  int64 total_interest = 13;
+  string disbursal_time = 14;
+  bool no_collateral = 15;
+  bool no_guarantor = 16;
+}
+
+message Testimonial {
+  string id = 1;
+  string name = 2;
+  string location = 3;
+  string business = 4;
+  string quote = 5;
+  optional string quote_translation = 6;
+  LoanType loan_type = 7;
+  int64 loan_amount = 8;
+  string avatar_initials = 9;
+}
+
+message CreditLadder {
+  bool active = 1;
+  int64 previous_loan_amount = 2;
+  int64 new_limit_offer = 3;
+  string message = 4;
+}
+
+message UserFinancingProfile {
+  bool is_first_time_borrower = 1;
+  int64 credit_limit = 2;
+  bool credit_limit_eligible = 3;
+  CreditLadder credit_ladder = 4;
+  string upi_id = 5;
+  KycStatus kyc_status = 6;
+}
+
+message UpiMandate {
+  string loan_id = 1;
+  bool active = 2;
+  int32 debit_day = 3;
+  string upi_id = 4;
+  optional string mandate_ref = 5;
+}
+
+message EligibilityResult {
+  bool eligible = 1;
+  int64 credit_limit = 2;
+  bool consent_required = 3;
+  string message = 4;
+}
+
+message LoanApplication {
+  string application_id = 1;
+  LoanType type = 2;
+  ApplicationStatus status = 3;
+  repeated LenderOffer offers = 4;
+}
+
+message ClosureQuote {
+  string loan_id = 1;
+  int64 amount_due = 2;
+  string valid_until = 3;
+}
+
+// ─── Services ─────────────────────────────────────────────────────────────────
+
+service FinancingService {
+  rpc GetProfile(GetProfileRequest) returns (UserFinancingProfile);
+  rpc CheckEligibility(CheckEligibilityRequest) returns (EligibilityResult);
+  rpc StartApplication(StartApplicationRequest) returns (LoanApplication);
+  rpc GetOffers(GetOffersRequest) returns (GetOffersResponse);
+  rpc SelectOffer(SelectOfferRequest) returns (SelectOfferResponse);
+  rpc GetLoan(GetLoanRequest) returns (Loan);
+  rpc PayEmi(PayEmiRequest) returns (Loan);
+  rpc RequestClosure(RequestClosureRequest) returns (ClosureQuote);
+  rpc GetMandate(GetMandateRequest) returns (UpiMandate);
+  rpc UpdateMandate(UpdateMandateRequest) returns (UpiMandate);
+  rpc CancelMandate(CancelMandateRequest) returns (CancelMandateResponse);
+}
+
+message GetProfileRequest {}
+message CheckEligibilityRequest {}
+
+message StartApplicationRequest {
+  LoanType type = 1;
+  optional int64 amount = 2;
+  optional int32 tenure = 3;
+}
+
+message GetOffersRequest { string application_id = 1; }
+message GetOffersResponse { repeated LenderOffer offers = 1; }
+
+message SelectOfferRequest { string offer_id = 1; }
+message SelectOfferResponse {
+  string offer_id = 1;
+  string next_step = 2;
+  string disbursal_time = 3;
+}
+
+message GetLoanRequest { string loan_id = 1; }
+message PayEmiRequest { string loan_id = 1; }
+message RequestClosureRequest { string loan_id = 1; }
+
+message GetMandateRequest { string loan_id = 1; }
+message UpdateMandateRequest {
+  string loan_id = 1;
+  int32 debit_day = 2;
+}
+message CancelMandateRequest { string loan_id = 1; }
+message CancelMandateResponse {
+  string loan_id = 1;
+  string status = 2;
+}

@@ -294,7 +294,24 @@ export function FinancingDashboard({
   const totalOutstanding = activeLoans.reduce((sum, l) => sum + l.outstandingBalance, 0)
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-6 space-y-6">
+    <div className="relative min-h-screen bg-base-200">
+      <div className="absolute inset-x-0 top-0 h-64 bg-gradient-to-br from-primary/8 via-secondary/4 to-transparent -z-10 pointer-events-none" />
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+      {/* ── Page header ── */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-8">
+        <div>
+          <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-1">Financing</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-base-content">Your Finances</h1>
+          <p className="text-sm text-base-content/60 mt-1">Loans, repayments, and credit access</p>
+        </div>
+        <button
+          onClick={onCheckEligibility}
+          className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold bg-primary text-primary-content rounded-xl hover:bg-primary/90 transition-colors shadow-sm"
+        >
+          Check eligibility
+        </button>
+      </div>
 
       {/* ── Hero credit card ── */}
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-rose-500 via-rose-600 to-rose-700 p-6 text-white shadow-lg shadow-rose-200 dark:shadow-rose-950">
@@ -452,6 +469,7 @@ export function FinancingDashboard({
         </p>
       </div>
 
+      </div>
     </div>
   )
 }

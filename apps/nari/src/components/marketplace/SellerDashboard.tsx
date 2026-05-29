@@ -25,6 +25,7 @@ export interface SellerDashboardProps {
   onViewListing?: (listingId: string) => void
   onCreateListing?: () => void
   onGoLive?: () => void
+  onPreviewStorefront?: () => void
   onViewAllOrders?: () => void
   onViewAllListings?: () => void
   onInsightAction?: (insight: AIInsight) => void
@@ -40,6 +41,7 @@ export function SellerDashboard({
   onViewListing,
   onCreateListing,
   onGoLive,
+  onPreviewStorefront,
   onViewAllOrders,
   onViewAllListings,
   onInsightAction,
@@ -103,7 +105,7 @@ export function SellerDashboard({
         </div>
 
         {/* Quick Actions */}
-        <QuickActions onCreateListing={onCreateListing} onGoLive={onGoLive} />
+        <QuickActions onCreateListing={onCreateListing} onGoLive={onGoLive} onPreviewStorefront={onPreviewStorefront} />
 
         {/* Stats Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">

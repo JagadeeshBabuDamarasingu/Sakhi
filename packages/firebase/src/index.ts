@@ -6,8 +6,8 @@ const firebaseConfig = {
   projectId: "nari-shakthi-dev",
   storageBucket: "nari-shakthi-dev.firebasestorage.app",
   messagingSenderId: "504626026587",
-  appId: "1:504626026587:web:ae495a9885b64e22b7477e",
-  measurementId: "G-HLLT09BMB5",
+  appId: "1:504626026587:web:c73e329b94fa7b27b7477e",
+  measurementId: "G-WPF3DPEZ0Z"
 };
 
 export const firebaseApp = getApps().length ? getApp() : initializeApp(firebaseConfig);

@@ -178,6 +178,45 @@ export function acceptCreditLadderOffer() {
   return userFinancingProfile
 }
 
+export function getLoan(loanId: string) {
+  return loans.find((candidate) => candidate.id === loanId) ?? null
+}
+
+export function getMandateInfo(loanId: string) {
+  const loan = loans.find((candidate) => candidate.id === loanId)
+  if (!loan) return null
+
+  return {
+    loanId,
+    active: loan.upiMandateActive,
+    debitDay: loan.upiMandateDebitDay,
+    upiId: userFinancingProfile.upiId,
+    mandateRef: loan.upiMandateActive ? `NACH/${loan.id.toUpperCase()}/001` : null,
+  }
+}
+
+export function updateMandateDebitDay(loanId: string, newDebitDay: number) {
+  const loan = loans.find((candidate) => candidate.id === loanId)
+  if (!loan || !loan.upiMandateActive) return null
+
+  loans = loans.map((l) =>
+    l.id === loanId ? { ...l, upiMandateDebitDay: newDebitDay } : l
+  )
+
+  return getMandateInfo(loanId)
+}
+
+export function cancelMandate(loanId: string) {
+  const loan = loans.find((candidate) => candidate.id === loanId)
+  if (!loan) return null
+
+  loans = loans.map((l) =>
+    l.id === loanId ? { ...l, upiMandateActive: false } : l
+  )
+
+  return { loanId, status: 'cancelled' }
+}
+
 export function getLoanDocument(loanId: string, type: 'statement' | 'noc') {
   const loan = loans.find((candidate) => candidate.id === loanId)
   if (!loan) return null

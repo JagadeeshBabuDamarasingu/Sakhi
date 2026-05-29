@@ -1,0 +1,264 @@
+syntax = "proto3";
+
+package marketplace.v1;
+
+option go_package = "github.com/shakthi/protocols/marketplace/v1;marketplacev1";
+
+// ─── Enums ───────────────────────────────────────────────────────────────────
+
+enum ListingType {
+  LISTING_TYPE_UNSPECIFIED = 0;
+  LISTING_TYPE_PRODUCT = 1;
+  LISTING_TYPE_SERVICE = 2;
+  LISTING_TYPE_DIGITAL = 3;
+}
+
+enum ListingStatus {
+  LISTING_STATUS_UNSPECIFIED = 0;
+  LISTING_STATUS_ACTIVE = 1;
+  LISTING_STATUS_DRAFT = 2;
+  LISTING_STATUS_OUT_OF_STOCK = 3;
+  LISTING_STATUS_ARCHIVED = 4;
+}
+
+enum OrderStatus {
+  ORDER_STATUS_UNSPECIFIED = 0;
+  ORDER_STATUS_PLACED = 1;
+  ORDER_STATUS_CONFIRMED = 2;
+  ORDER_STATUS_PROCESSING = 3;
+  ORDER_STATUS_SHIPPED = 4;
+  ORDER_STATUS_OUT_FOR_DELIVERY = 5;
+  ORDER_STATUS_DELIVERED = 6;
+  ORDER_STATUS_COMPLETED = 7;
+  ORDER_STATUS_RETURN_REQUESTED = 8;
+  ORDER_STATUS_RETURNED = 9;
+  ORDER_STATUS_CANCELLED = 10;
+}
+
+enum PaymentStatus {
+  PAYMENT_STATUS_UNSPECIFIED = 0;
+  PAYMENT_STATUS_PENDING = 1;
+  PAYMENT_STATUS_PAID = 2;
+  PAYMENT_STATUS_FAILED = 3;
+  PAYMENT_STATUS_REFUNDED = 4;
+}
+
+enum LiveStreamStatus {
+  LIVE_STREAM_STATUS_UNSPECIFIED = 0;
+  LIVE_STREAM_STATUS_SCHEDULED = 1;
+  LIVE_STREAM_STATUS_LIVE = 2;
+  LIVE_STREAM_STATUS_ENDED = 3;
+}
+
+enum InsightType {
+  INSIGHT_TYPE_UNSPECIFIED = 0;
+  INSIGHT_TYPE_OPPORTUNITY = 1;
+  INSIGHT_TYPE_ALERT = 2;
+  INSIGHT_TYPE_SUGGESTION = 3;
+}
+
+// ─── Messages ─────────────────────────────────────────────────────────────────
+
+message Inventory {
+  int32 quantity = 1;
+  int32 low_stock_threshold = 2;
+  string sku = 3;
+}
+
+message Variant {
+  string name = 1;
+  repeated string options = 2;
+}
+
+message Listing {
+  string id = 1;
+  string seller_id = 2;
+  ListingType type = 3;
+  string title = 4;
+  string description = 5;
+  string category = 6;
+  string category_id = 7;
+  string subcategory = 8;
+  repeated string images = 9;
+  optional string video = 10;
+  double price = 11;
+  optional double compare_at_price = 12;
+  string currency = 13;
+  Inventory inventory = 14;
+  repeated Variant variants = 15;
+  repeated string tags = 16;
+  ListingStatus status = 17;
+  bool featured = 18;
+  int32 views = 19;
+  int32 sold_count = 20;
+  double rating = 21;
+  int32 review_count = 22;
+  string created_at = 23;
+  string updated_at = 24;
+}
+
+message OrderItem {
+  string listing_id = 1;
+  string title = 2;
+  optional string variant = 3;
+  int32 quantity = 4;
+  double price = 5;
+  string image = 6;
+}
+
+message ShippingAddress {
+  string name = 1;
+  string line1 = 2;
+  string line2 = 3;
+  string city = 4;
+  string state = 5;
+  string pincode = 6;
+  string phone = 7;
+}
+
+message Tracking {
+  string carrier = 1;
+  string tracking_number = 2;
+  string estimated_delivery = 3;
+  string current_status = 4;
+  string last_update = 5;
+}
+
+message OrderTimelineEvent {
+  string status = 1;
+  string timestamp = 2;
+  optional string note = 3;
+}
+
+message Order {
+  string id = 1;
+  string order_number = 2;
+  string seller_id = 3;
+  string buyer_id = 4;
+  string buyer_name = 5;
+  string buyer_email = 6;
+  string buyer_phone = 7;
+  repeated OrderItem items = 8;
+  double subtotal = 9;
+  double shipping = 10;
+  double discount = 11;
+  optional string coupon_code = 12;
+  double total = 13;
+  string currency = 14;
+  string payment_method = 15;
+  PaymentStatus payment_status = 16;
+  OrderStatus status = 17;
+  optional ShippingAddress shipping_address = 18;
+  optional Tracking tracking = 19;
+  repeated OrderTimelineEvent timeline = 20;
+  string created_at = 21;
+}
+
+message LiveStream {
+  string id = 1;
+  string seller_id = 2;
+  string title = 3;
+  string description = 4;
+  string thumbnail_url = 5;
+  LiveStreamStatus status = 6;
+  int32 viewer_count = 7;
+  int32 like_count = 8;
+  optional string started_at = 9;
+  optional string scheduled_at = 10;
+  int32 scheduled_duration = 11;
+  repeated string featured_products = 12;
+  bool chat_enabled = 13;
+}
+
+message AIInsight {
+  InsightType type = 1;
+  string title = 2;
+  string description = 3;
+  string action = 4;
+}
+
+message SellerProfile {
+  string id = 1;
+  string store_name = 2;
+  string tagline = 3;
+  string bio = 4;
+  string profile_image = 5;
+  string cover_image = 6;
+  repeated string skills = 7;
+  string location_city = 8;
+  string location_state = 9;
+  double rating = 10;
+  int32 total_reviews = 11;
+  int32 total_sales = 12;
+  string member_since = 13;
+  bool ondc_registered = 14;
+}
+
+// ─── Services ─────────────────────────────────────────────────────────────────
+
+service MarketplaceService {
+  rpc GetProfile(GetProfileRequest) returns (SellerProfile);
+  rpc ListListings(ListListingsRequest) returns (ListListingsResponse);
+  rpc GetListing(GetListingRequest) returns (Listing);
+  rpc CreateListing(CreateListingRequest) returns (Listing);
+  rpc UpdateListing(UpdateListingRequest) returns (Listing);
+  rpc DeleteListing(DeleteListingRequest) returns (DeleteListingResponse);
+  rpc ListOrders(ListOrdersRequest) returns (ListOrdersResponse);
+  rpc GetOrder(GetOrderRequest) returns (Order);
+  rpc UpdateOrderStatus(UpdateOrderStatusRequest) returns (Order);
+  rpc StartLiveStream(StartLiveStreamRequest) returns (LiveStream);
+  rpc EndLiveStream(EndLiveStreamRequest) returns (LiveStream);
+  rpc GetLiveStream(GetLiveStreamRequest) returns (LiveStream);
+  rpc GetAnalytics(GetAnalyticsRequest) returns (GetAnalyticsResponse);
+}
+
+message GetProfileRequest {}
+
+message ListListingsRequest {
+  optional string status = 1;
+}
+message ListListingsResponse { repeated Listing listings = 1; }
+
+message GetListingRequest { string listing_id = 1; }
+
+message CreateListingRequest {
+  string title = 1;
+  string description = 2;
+  double price = 3;
+  string category = 4;
+  ListingType type = 5;
+}
+
+message UpdateListingRequest {
+  string listing_id = 1;
+  optional string title = 2;
+  optional double price = 3;
+  optional ListingStatus status = 4;
+}
+
+message DeleteListingRequest { string listing_id = 1; }
+message DeleteListingResponse { bool deleted = 1; }
+
+message ListOrdersRequest {
+  optional int32 page = 1;
+  optional int32 limit = 2;
+}
+message ListOrdersResponse { repeated Order orders = 1; }
+
+message GetOrderRequest { string order_id = 1; }
+
+message UpdateOrderStatusRequest {
+  string order_id = 1;
+  OrderStatus status = 2;
+}
+
+message StartLiveStreamRequest {}
+
+message EndLiveStreamRequest { string stream_id = 1; }
+
+message GetLiveStreamRequest { string stream_id = 1; }
+
+message GetAnalyticsRequest {}
+message GetAnalyticsResponse {
+  repeated AIInsight insights = 1;
+}

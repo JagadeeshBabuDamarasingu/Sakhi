@@ -1,0 +1,153 @@
+syntax = "proto3";
+
+package skill_discovery.v1;
+
+option go_package = "github.com/shakthi/protocols/skill_discovery/v1;skilldiscoveryv1";
+
+// ─── Enums ───────────────────────────────────────────────────────────────────
+
+enum ValidationStatus {
+  VALIDATION_STATUS_UNSPECIFIED = 0;
+  VALIDATION_STATUS_VERIFIED = 1;
+  VALIDATION_STATUS_PENDING = 2;
+  VALIDATION_STATUS_UNVERIFIED = 3;
+  VALIDATION_STATUS_AUTO_VERIFIED = 4;
+}
+
+enum ProficiencyLevel {
+  PROFICIENCY_LEVEL_UNSPECIFIED = 0;
+  PROFICIENCY_LEVEL_BEGINNER = 1;
+  PROFICIENCY_LEVEL_INTERMEDIATE = 2;
+  PROFICIENCY_LEVEL_ADVANCED = 3;
+  PROFICIENCY_LEVEL_EXPERT = 4;
+}
+
+enum MarketDemand {
+  MARKET_DEMAND_UNSPECIFIED = 0;
+  MARKET_DEMAND_LOW = 1;
+  MARKET_DEMAND_MEDIUM = 2;
+  MARKET_DEMAND_HIGH = 3;
+  MARKET_DEMAND_VERY_HIGH = 4;
+}
+
+enum DemandTrend {
+  DEMAND_TREND_UNSPECIFIED = 0;
+  DEMAND_TREND_FALLING = 1;
+  DEMAND_TREND_STABLE = 2;
+  DEMAND_TREND_RISING = 3;
+}
+
+// ─── Messages ─────────────────────────────────────────────────────────────────
+
+message EarningPotential {
+  int32 min = 1;
+  int32 max = 2;
+  string currency = 3;
+  string period = 4;
+}
+
+message Skill {
+  string id = 1;
+  string name = 2;
+  string category = 3;
+  string category_id = 4;
+  string description = 5;
+  ValidationStatus validation_status = 6;
+  string validation_type = 7;
+  ProficiencyLevel proficiency_level = 8;
+  int32 years_of_experience = 9;
+  EarningPotential earning_potential = 10;
+  MarketDemand market_demand = 11;
+  DemandTrend demand_trend = 12;
+  repeated string related_courses = 13;
+  repeated string related_listings = 14;
+  string added_at = 15;
+  optional string verified_at = 16;
+}
+
+message SkillCategory {
+  string id = 1;
+  string name = 2;
+  string icon = 3;
+  string description = 4;
+  int32 skill_count = 5;
+  repeated string popular_skills = 6;
+}
+
+message SkillSuggestion {
+  string id = 1;
+  string skill_name = 2;
+  string category = 3;
+  string category_id = 4;
+  string suggestion_type = 5;
+  string reason = 6;
+  MarketDemand market_demand = 7;
+  EarningPotential earning_potential = 8;
+  optional int32 match_score = 9;
+  optional int32 trending_rank = 10;
+}
+
+message ValidationMethod {
+  string id = 1;
+  string type = 2;
+  string name = 3;
+  string description = 4;
+  string duration = 5;
+  string icon = 6;
+}
+
+// ─── Services ─────────────────────────────────────────────────────────────────
+
+service SkillDiscoveryService {
+  rpc ListSkills(ListSkillsRequest) returns (ListSkillsResponse);
+  rpc GetSkill(GetSkillRequest) returns (Skill);
+  rpc AddSkill(AddSkillRequest) returns (Skill);
+  rpc UpdateSkill(UpdateSkillRequest) returns (Skill);
+  rpc DeleteSkill(DeleteSkillRequest) returns (DeleteSkillResponse);
+  rpc ValidateSkill(ValidateSkillRequest) returns (Skill);
+  rpc ListCategories(ListCategoriesRequest) returns (ListCategoriesResponse);
+  rpc ListSuggestions(ListSuggestionsRequest) returns (ListSuggestionsResponse);
+  rpc DiscoverSkillsViaAI(DiscoverSkillsViaAIRequest) returns (DiscoverSkillsViaAIResponse);
+}
+
+message ListSkillsRequest {}
+message ListSkillsResponse { repeated Skill skills = 1; }
+
+message GetSkillRequest { string skill_id = 1; }
+
+message AddSkillRequest {
+  string skill_name = 1;
+  string category_id = 2;
+}
+
+message UpdateSkillRequest {
+  string skill_id = 1;
+  optional ProficiencyLevel proficiency_level = 2;
+  optional int32 years_of_experience = 3;
+  optional string description = 4;
+}
+
+message DeleteSkillRequest { string skill_id = 1; }
+message DeleteSkillResponse { bool deleted = 1; }
+
+message ValidateSkillRequest {
+  string skill_id = 1;
+  string method_type = 2;
+}
+
+message ListCategoriesRequest {}
+message ListCategoriesResponse { repeated SkillCategory categories = 1; }
+
+message ListSuggestionsRequest {}
+message ListSuggestionsResponse { repeated SkillSuggestion suggestions = 1; }
+
+message DiscoverSkillsViaAIRequest {
+  string message = 1;
+  optional string session_id = 2;
+}
+
+message DiscoverSkillsViaAIResponse {
+  string message = 1;
+  string session_id = 2;
+  repeated SkillSuggestion suggestions = 3;
+}

@@ -152,6 +152,47 @@ export function getMarketplaceDashboardData() {
   }
 }
 
+export function getListingById(id: string) {
+  return listings.find((l) => l.id === id) ?? null
+}
+
+export function updateListing(id: string, updates: Partial<Listing>) {
+  const index = listings.findIndex((l) => l.id === id)
+  if (index === -1) return null
+  listings[index] = { ...listings[index], ...updates, updatedAt: new Date().toISOString() }
+  return listings[index]
+}
+
+export function deleteListing(id: string) {
+  const index = listings.findIndex((l) => l.id === id)
+  if (index === -1) return false
+  listings.splice(index, 1)
+  return true
+}
+
+export function getOrderById(id: string) {
+  return orders.find((o) => o.id === id) ?? null
+}
+
+export function updateOrderStatus(id: string, status: Order['status']) {
+  const index = orders.findIndex((o) => o.id === id)
+  if (index === -1) return null
+  const event = { status, timestamp: new Date().toISOString() }
+  orders[index] = { ...orders[index], status, timeline: [...orders[index].timeline, event] }
+  return orders[index]
+}
+
+export function getLiveStreamById(id: string) {
+  return liveStreams.find((s) => s.id === id) ?? null
+}
+
+export function endLiveStream(id: string) {
+  const index = liveStreams.findIndex((s) => s.id === id)
+  if (index === -1) return null
+  liveStreams[index] = { ...liveStreams[index], status: 'ended' }
+  return liveStreams[index]
+}
+
 export function getAnalyticsCsv() {
   const rows = [
     ['Metric', 'Value'],

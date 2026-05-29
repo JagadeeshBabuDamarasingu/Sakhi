@@ -42,20 +42,6 @@ export const metadata: Metadata = {
   description: 'AI-powered platform helping women across India discover skills, learn, earn, and access financing.',
 }
 
-// Applied before hydration to prevent flash of wrong theme
-const themeScript = `
-  (function() {
-    try {
-      var saved = localStorage.getItem('sakhi_theme');
-      var preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      var theme = saved || preferred;
-      var html = document.documentElement;
-      html.setAttribute('data-theme', theme === 'dark' ? 'shakti-dark' : 'shakti');
-      if (theme === 'dark') html.classList.add('dark');
-    } catch(e) {}
-  })();
-`
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -68,9 +54,6 @@ export default function RootLayout({
       className={`${poppins.variable} ${ibmPlexMono.variable} ${notoDevanagari.variable} ${notoTamil.variable} ${notoTelugu.variable} ${notoKannada.variable} ${notoBengali.variable} ${notoGujarati.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-      </head>
       <body className="min-h-full">
         <ThemeProvider>
           <I18nProvider>

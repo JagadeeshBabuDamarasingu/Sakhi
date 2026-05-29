@@ -5,7 +5,7 @@ import { MainNav } from './MainNav'
 import { UserMenu } from './UserMenu'
 import { ThemeToggle } from './ThemeToggle'
 import { LanguagePicker } from './LanguagePicker'
-import { AIChatSidebar } from './AIChatSidebar'
+import { AIChatWindow } from './AIChatWindow'
 import {
   HiOutlineSquares2X2,
   HiOutlineAcademicCap,
@@ -81,7 +81,11 @@ export function AppShell({
         </div>
       </header>
 
-      <main className="pt-16 pb-20 md:pb-8">
+      <main
+        className={`pt-16 pb-20 md:pb-8 transition-[padding-right] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          isChatOpen ? 'sm:pr-[22rem]' : 'pr-0'
+        }`}
+      >
         <div className="max-w-7xl mx-auto">
           {children}
         </div>
@@ -96,7 +100,7 @@ export function AppShell({
         />
       </div>
 
-      <AIChatSidebar isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
+      <AIChatWindow isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
     </div>
   )
 }

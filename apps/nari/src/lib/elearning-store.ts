@@ -32,6 +32,40 @@ const initialCourses: Course[] = [
     instructorName: 'Priya Sharma',
     rating: 4.8,
     enrolledCount: 12450,
+    chapters: [
+      {
+        title: 'Getting Started with Your Smartphone',
+        lessons: [
+          { title: 'What Is a Smartphone and Why It Matters', duration: 12 },
+          { title: 'Setting Up Your Phone for the First Time', duration: 15 },
+          { title: 'Basic Navigation, Gestures & Settings', duration: 18 },
+        ],
+      },
+      {
+        title: 'Connecting to the Internet',
+        lessons: [
+          { title: 'Understanding Wi-Fi vs. Mobile Data', duration: 14 },
+          { title: 'Browsing the Web Safely', duration: 16 },
+          { title: 'Finding & Installing Apps from Play Store', duration: 12 },
+        ],
+      },
+      {
+        title: 'Staying Safe Online',
+        lessons: [
+          { title: 'Recognizing Fake Websites & Phishing Links', duration: 18 },
+          { title: 'Creating Strong Passwords & PINs', duration: 14 },
+          { title: 'Managing App Permissions & Privacy Settings', duration: 16 },
+        ],
+      },
+      {
+        title: 'Everyday Digital Tools',
+        lessons: [
+          { title: 'Using Google Maps for Navigation', duration: 15 },
+          { title: 'Making Video Calls on WhatsApp & Google Meet', duration: 14 },
+          { title: 'Your Digital Future: Next Steps', duration: 16 },
+        ],
+      },
+    ],
   },
   {
     id: 'course-002',
@@ -49,6 +83,29 @@ const initialCourses: Course[] = [
     instructorName: 'Anjali Verma',
     rating: 4.9,
     enrolledCount: 28340,
+    chapters: [
+      {
+        title: 'Understanding Online Threats',
+        lessons: [
+          { title: 'Common Scams Targeting Women in India Today', duration: 18 },
+          { title: 'How Fraudsters Find and Target Their Victims', duration: 14 },
+        ],
+      },
+      {
+        title: 'Protecting Your Money',
+        lessons: [
+          { title: 'Safe UPI & Net Banking Practices', duration: 20 },
+          { title: 'Recognizing Fake Payment Requests & QR Codes', duration: 16 },
+        ],
+      },
+      {
+        title: 'Staying Secure & Taking Action',
+        lessons: [
+          { title: 'Securing Your Social Media & Email Accounts', duration: 14 },
+          { title: 'What to Do If You Are Scammed: Reporting & Recovery', duration: 8 },
+        ],
+      },
+    ],
   },
   {
     id: 'course-003',
@@ -66,6 +123,49 @@ const initialCourses: Course[] = [
     instructorName: 'Meera Patel',
     rating: 4.7,
     enrolledCount: 8920,
+    chapters: [
+      {
+        title: 'Discovering Your Business Idea',
+        lessons: [
+          { title: 'Turning Your Skills & Hobbies into a Product or Service', duration: 16 },
+          { title: 'Market Research Without Leaving Your Neighbourhood', duration: 18 },
+          { title: 'Validating Your Idea with Real Customers', duration: 14 },
+        ],
+      },
+      {
+        title: 'Setting Up Your Business',
+        lessons: [
+          { title: 'Choosing a Business Name and Structure', duration: 12 },
+          { title: 'Registering on Udyam Portal (MSME) — Step by Step', duration: 18 },
+          { title: 'Opening a Business Bank Account & Understanding GST Basics', duration: 16 },
+          { title: 'Pricing Your Products for Profit, Not Just Cost', duration: 20 },
+        ],
+      },
+      {
+        title: 'Getting Your First Customers',
+        lessons: [
+          { title: 'Word of Mouth & Community Marketing Strategies', duration: 14 },
+          { title: 'Creating Your WhatsApp Business Profile & Catalog', duration: 16 },
+          { title: 'Listing on Local Platforms, Bazaars & Online Marketplaces', duration: 18 },
+        ],
+      },
+      {
+        title: 'Managing Money & Steady Growth',
+        lessons: [
+          { title: 'Basic Bookkeeping Using a Simple Notebook or App', duration: 16 },
+          { title: 'Understanding Profit, Loss & Cash Flow', duration: 18 },
+          { title: 'Reinvesting Wisely: When to Spend and When to Save', duration: 14 },
+          { title: 'Handling Tax, Insurance & Government Schemes for Women', duration: 16 },
+        ],
+      },
+      {
+        title: 'Scaling Up & Next Steps',
+        lessons: [
+          { title: 'Building a Support Network: SHGs, Mentors & Online Communities', duration: 12 },
+          { title: 'Your 90-Day Business Launch Plan', duration: 16 },
+        ],
+      },
+    ],
   },
   {
     id: 'course-004',
@@ -83,6 +183,28 @@ const initialCourses: Course[] = [
     instructorName: 'Sunita Rao',
     rating: 4.6,
     enrolledCount: 15780,
+    chapters: [
+      {
+        title: 'WhatsApp Business Basics',
+        lessons: [
+          { title: 'Downloading, Installing & Setting Up WhatsApp Business', duration: 12 },
+          { title: 'Building a Professional Business Profile That Attracts Customers', duration: 14 },
+        ],
+      },
+      {
+        title: 'Connecting & Selling to Customers',
+        lessons: [
+          { title: 'Quick Replies, Away Messages & Greeting Automation', duration: 16 },
+          { title: 'Creating & Sharing Your Product Catalog', duration: 18 },
+        ],
+      },
+      {
+        title: 'Growing with WhatsApp',
+        lessons: [
+          { title: 'Broadcast Lists, Labels & Managing Orders at Scale', duration: 10 },
+        ],
+      },
+    ],
   },
   {
     id: 'course-005',
@@ -100,6 +222,36 @@ const initialCourses: Course[] = [
     instructorName: 'Kavita Joshi',
     rating: 4.5,
     enrolledCount: 6540,
+    chapters: [
+      {
+        title: 'Understanding Your Money',
+        lessons: [
+          { title: 'Where Does Your Money Come From? Income & Expenses Explained', duration: 16 },
+          { title: 'Tracking Daily Expenses: Simple Methods That Work', duration: 14 },
+        ],
+      },
+      {
+        title: 'Budgeting for Your Family',
+        lessons: [
+          { title: 'The 50-30-20 Rule Adapted for Indian Households', duration: 18 },
+          { title: 'Creating a Monthly Budget You Can Actually Stick To', duration: 16 },
+        ],
+      },
+      {
+        title: 'Saving Smart',
+        lessons: [
+          { title: 'Building an Emergency Fund: How Much & Where to Keep It', duration: 16 },
+          { title: 'Savings Schemes: Post Office, SHG, Jan Dhan & RD Accounts', duration: 18 },
+        ],
+      },
+      {
+        title: 'Planning Your Financial Future',
+        lessons: [
+          { title: 'Goal-Based Saving for Education, Health & Business', duration: 14 },
+          { title: 'Your Personal Financial Action Plan & Next Steps', duration: 8 },
+        ],
+      },
+    ],
   },
   {
     id: 'course-006',
@@ -117,6 +269,38 @@ const initialCourses: Course[] = [
     instructorName: 'Deepa Nair',
     rating: 4.4,
     enrolledCount: 4230,
+    chapters: [
+      {
+        title: 'Building Your Voice',
+        lessons: [
+          { title: 'Overcoming the Fear of Speaking in Public & to Strangers', duration: 18 },
+          { title: 'Body Language, Eye Contact & First Impressions', duration: 16 },
+          { title: 'Speaking Clearly, Slowly & with Confidence', duration: 14 },
+        ],
+      },
+      {
+        title: 'Winning Customer Conversations',
+        lessons: [
+          { title: 'Explaining Your Product\'s Value Without Sounding Pushy', duration: 16 },
+          { title: 'Handling Objections & "It\'s Too Expensive" Gracefully', duration: 18 },
+          { title: 'Asking for the Sale and Following Up', duration: 14 },
+        ],
+      },
+      {
+        title: 'Negotiation & Difficult Conversations',
+        lessons: [
+          { title: 'Negotiating Prices with Suppliers & Wholesalers', duration: 16 },
+          { title: 'Resolving Conflicts with Customers Professionally', duration: 14 },
+        ],
+      },
+      {
+        title: 'Professional Presence',
+        lessons: [
+          { title: 'Speaking Up in Meetings, SHG Sessions & Group Settings', duration: 14 },
+          { title: 'Conclusion: Your 30-Day Communication Practice Plan', duration: 10 },
+        ],
+      },
+    ],
   },
   {
     id: 'course-007',
@@ -134,6 +318,334 @@ const initialCourses: Course[] = [
     instructorName: 'Lakshmi Iyer',
     rating: 4.8,
     enrolledCount: 9870,
+    chapters: [
+      {
+        title: 'The Basics of a Great Photo',
+        lessons: [
+          { title: 'Using Natural Light Effectively at Home', duration: 12 },
+          { title: 'Setting Up a Simple Studio with a White Sheet & Cardboard', duration: 11 },
+        ],
+      },
+      {
+        title: 'Shooting & Editing Like a Pro',
+        lessons: [
+          { title: 'Framing, Angles & Capturing Perfect Product Shots', duration: 12 },
+          { title: 'Editing Photos with Free Apps (Snapseed, Lightroom Mobile)', duration: 10 },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'course-009',
+    title: 'Sustainable Business Ideas for Women',
+    description: 'Discover eco-friendly and sustainable business opportunities that are low-cost, high-impact, and in demand. Learn how to build a green business that helps your community and the planet.',
+    category: 'business',
+    duration: 200,
+    totalModules: 14,
+    format: 'mixed',
+    level: 'beginner',
+    language: 'hindi',
+    isMandatory: false,
+    isTrending: true,
+    thumbnailUrl: '/images/courses/sustainable-business.jpg',
+    instructorName: 'Asha Bhatt',
+    rating: 4.7,
+    enrolledCount: 5320,
+    chapters: [
+      {
+        title: 'What Is a Sustainable Business?',
+        lessons: [
+          { title: 'Understanding Sustainability: Why It Matters for You and India', duration: 14 },
+          { title: 'Green Business vs. Regular Business: What Changes?', duration: 12 },
+          { title: 'Spotting Sustainable Opportunities in Your Community', duration: 16 },
+        ],
+      },
+      {
+        title: 'Eco-Friendly Product Businesses',
+        lessons: [
+          { title: 'Making and Selling Natural/Herbal Products (soaps, oils, cleaners)', duration: 18 },
+          { title: 'Cloth Bags, Jute Crafts & Upcycled Fashion from Home', duration: 16 },
+          { title: 'Organic Farming, Kitchen Gardens & Selling Surplus Produce', duration: 18 },
+        ],
+      },
+      {
+        title: 'Sustainable Service Businesses',
+        lessons: [
+          { title: 'Waste Collection, Composting & Recycling Services', duration: 14 },
+          { title: 'Repair, Reuse & Refurbish: Building a Local Service Business', duration: 16 },
+          { title: 'Green Catering: Cooking with Local, Seasonal Ingredients', duration: 14 },
+        ],
+      },
+      {
+        title: 'Funding & Selling Your Green Business',
+        lessons: [
+          { title: 'Government Schemes & Grants for Eco-Entrepreneurs', duration: 16 },
+          { title: 'Selling on Green Marketplaces and Local Eco-Networks', duration: 14 },
+          { title: 'Telling Your Brand Story: Why Customers Pay More for Green', duration: 14 },
+        ],
+      },
+      {
+        title: 'Growing Sustainably',
+        lessons: [
+          { title: 'Measuring Your Business\'s Environmental & Social Impact', duration: 14 },
+          { title: 'Your 6-Month Sustainable Business Launch Plan', duration: 14 },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'course-010',
+    title: 'Zero-Waste Home & Business',
+    description: 'Learn practical zero-waste techniques for your home and business. Turn waste into income, reduce costs, and attract eco-conscious customers.',
+    category: 'business',
+    duration: 120,
+    totalModules: 8,
+    format: 'video',
+    level: 'beginner',
+    language: 'hindi',
+    isMandatory: false,
+    isTrending: false,
+    thumbnailUrl: '/images/courses/zero-waste.jpg',
+    instructorName: 'Nandita Krishnan',
+    rating: 4.5,
+    enrolledCount: 3180,
+    chapters: [
+      {
+        title: 'Zero-Waste Basics',
+        lessons: [
+          { title: 'Understanding the 5 Rs: Refuse, Reduce, Reuse, Recycle, Rot', duration: 16 },
+          { title: 'Waste Audit: Tracking What You Throw Away at Home & Work', duration: 14 },
+        ],
+      },
+      {
+        title: 'Turning Waste into Income',
+        lessons: [
+          { title: 'Composting Kitchen Waste & Selling Organic Fertilizer', duration: 16 },
+          { title: 'Upcycling Old Clothes, Bottles & Packaging into Products', duration: 18 },
+          { title: 'Connecting with Recyclers, Kabadiwala Networks & Waste Buyers', duration: 14 },
+        ],
+      },
+      {
+        title: 'Running a Zero-Waste Business',
+        lessons: [
+          { title: 'Eco-Friendly Packaging: Low-Cost Alternatives to Plastic', duration: 16 },
+          { title: 'Marketing Your Zero-Waste Practices to Attract Customers', duration: 14 },
+          { title: 'Building a Zero-Waste Policy for Your Shop or Home Business', duration: 12 },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'course-011',
+    title: 'Sanitary Pad Manufacturing: Start Your Own Unit',
+    description: 'Learn to set up a low-cost sanitary pad manufacturing business from scratch. Covers raw materials, machines, quality standards, packaging, and how to sell to schools, SHGs, and local markets.',
+    category: 'business',
+    duration: 180,
+    totalModules: 12,
+    format: 'mixed',
+    level: 'beginner',
+    language: 'hindi',
+    isMandatory: false,
+    isTrending: true,
+    thumbnailUrl: '/images/courses/sanitary-pad-manufacturing.jpg',
+    instructorName: 'Rekha Devi',
+    rating: 4.9,
+    enrolledCount: 7640,
+    chapters: [
+      {
+        title: 'Understanding the Opportunity',
+        lessons: [
+          { title: 'Why Sanitary Pad Manufacturing Is a High-Impact Business in India', duration: 14 },
+          { title: 'Market Overview: Rural & Urban Demand, Competition & Pricing', duration: 16 },
+          { title: 'Success Stories: Women-Led Pad Units Across India', duration: 12 },
+        ],
+      },
+      {
+        title: 'Raw Materials & Equipment',
+        lessons: [
+          { title: 'Core Materials: SAP Granules, Cellulose Pulp, Non-Woven Fabric & PE Film', duration: 18 },
+          { title: 'Manual vs. Semi-Automatic Machines: Cost, Output & What to Choose', duration: 16 },
+          { title: 'Where to Source Materials & Machines at Low Cost', duration: 14 },
+        ],
+      },
+      {
+        title: 'Manufacturing Process Step by Step',
+        lessons: [
+          { title: 'Preparing the Absorbent Core: Layering & Bonding', duration: 16 },
+          { title: 'Wrapping, Sealing & Cutting Pads to Size', duration: 14 },
+          { title: 'Quality Checks: Absorption, Leak-Proof Testing & Hygiene Standards', duration: 16 },
+          { title: 'Packaging, Labelling & Sterilisation for Safe Use', duration: 14 },
+        ],
+      },
+      {
+        title: 'Setting Up & Running Your Unit',
+        lessons: [
+          { title: 'Space, Power & Investment Needed to Get Started', duration: 14 },
+          { title: 'Licenses & Certifications: BIS Standards & MSME Registration', duration: 16 },
+        ],
+      },
+      {
+        title: 'Selling & Growing Your Business',
+        lessons: [
+          { title: 'Selling to Schools, Anganwadis, SHGs & Government Schemes (PM Suvidha)', duration: 16 },
+          { title: 'Pricing for Profit and Building a Local Brand', duration: 14 },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'course-012',
+    title: 'Spirulina Farming: Grow & Sell a Superfood',
+    description: 'Learn to cultivate spirulina — a high-protein superfood algae — at home or in a small unit. Covers tank setup, water chemistry, harvesting, drying, and selling to health stores, gyms, and online.',
+    category: 'business',
+    duration: 160,
+    totalModules: 11,
+    format: 'mixed',
+    level: 'beginner',
+    language: 'hindi',
+    isMandatory: false,
+    isTrending: true,
+    thumbnailUrl: '/images/courses/spirulina-farming.jpg',
+    instructorName: 'Dr. Sunita Pillai',
+    rating: 4.8,
+    enrolledCount: 4210,
+    chapters: [
+      {
+        title: 'Introduction to Spirulina',
+        lessons: [
+          { title: 'What Is Spirulina and Why the World Is Buying It', duration: 12 },
+          { title: 'Market Demand in India: Health Stores, Gyms & Export', duration: 14 },
+          { title: 'Is Spirulina Farming Right for You? Investment & Returns', duration: 12 },
+        ],
+      },
+      {
+        title: 'Setting Up Your Cultivation Unit',
+        lessons: [
+          { title: 'Space Requirements: Rooftop, Backyard & Indoor Options', duration: 14 },
+          { title: 'Building or Buying Tanks: Materials, Size & Cost', duration: 16 },
+          { title: 'Water Chemistry: pH, Temperature, Nutrients & Light Needs', duration: 18 },
+        ],
+      },
+      {
+        title: 'Growing & Harvesting',
+        lessons: [
+          { title: 'Inoculating Your Culture: Getting the Starter Right', duration: 14 },
+          { title: 'Daily Maintenance: Stirring, Testing & Troubleshooting', duration: 16 },
+          { title: 'Harvesting, Washing & Drying Spirulina at Home', duration: 16 },
+        ],
+      },
+      {
+        title: 'Selling Your Spirulina',
+        lessons: [
+          { title: 'Powder, Tablets & Fresh Paste: Choosing Your Product Format', duration: 14 },
+          { title: 'Packaging, Food Safety Compliance & Pricing for Profit', duration: 14 },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'course-013',
+    title: 'Aquaponics: Farm Fish & Vegetables Together',
+    description: 'Set up a profitable aquaponics system that grows fish and vegetables using the same water. Ideal for small spaces — rooftops, backyards, or community plots.',
+    category: 'business',
+    duration: 210,
+    totalModules: 14,
+    format: 'video',
+    level: 'beginner',
+    language: 'hindi',
+    isMandatory: false,
+    isTrending: true,
+    thumbnailUrl: '/images/courses/aquaponics.jpg',
+    instructorName: 'Girija Menon',
+    rating: 4.7,
+    enrolledCount: 3870,
+    chapters: [
+      {
+        title: 'How Aquaponics Works',
+        lessons: [
+          { title: 'The Fish-Plant Cycle: Nature\'s Self-Sustaining Loop Explained', duration: 14 },
+          { title: 'Aquaponics vs. Soil Farming vs. Hydroponics: Pros & Cons', duration: 12 },
+          { title: 'Real Examples: Women Running Aquaponics Units in India', duration: 12 },
+        ],
+      },
+      {
+        title: 'Designing Your System',
+        lessons: [
+          { title: 'System Types: Media Bed, NFT, DWC — Which Is Best for You?', duration: 16 },
+          { title: 'Space & Budget Planning: Starting from ₹5,000', duration: 14 },
+          { title: 'Tanks, Pumps, Pipes & Grow Beds: Sourcing Locally', duration: 16 },
+        ],
+      },
+      {
+        title: 'Fish & Plants',
+        lessons: [
+          { title: 'Best Fish for India: Tilapia, Catfish & Rohu', duration: 14 },
+          { title: 'Best Crops: Leafy Greens, Herbs, Tomatoes & Chilies', duration: 14 },
+          { title: 'Feeding Fish, Water Testing & Preventing Disease', duration: 16 },
+        ],
+      },
+      {
+        title: 'Harvesting & Selling',
+        lessons: [
+          { title: 'When & How to Harvest Fish and Vegetables', duration: 14 },
+          { title: 'Selling to Restaurants, Homes, Schools & Local Markets', duration: 16 },
+          { title: 'Scaling Up: From Home Unit to Community Enterprise', duration: 16 },
+          { title: 'Government Schemes for Aquaculture & Horticulture Support', duration: 16 },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'course-014',
+    title: 'Bamboo Technology & Business',
+    description: 'Turn bamboo — India\'s fastest-growing natural resource — into a livelihood. Learn bamboo processing, product making (furniture, décor, agarbatti sticks, straws), and how to sell locally and online.',
+    category: 'business',
+    duration: 190,
+    totalModules: 13,
+    format: 'mixed',
+    level: 'beginner',
+    language: 'hindi',
+    isMandatory: false,
+    isTrending: false,
+    thumbnailUrl: '/images/courses/bamboo-tech.jpg',
+    instructorName: 'Malati Bora',
+    rating: 4.6,
+    enrolledCount: 2950,
+    chapters: [
+      {
+        title: 'Bamboo as a Business Resource',
+        lessons: [
+          { title: 'Why Bamboo? Fast Growth, Low Cost, High Demand', duration: 12 },
+          { title: 'Types of Bamboo in India & Their Commercial Uses', duration: 14 },
+          { title: 'National Bamboo Mission: Grants & Support for Entrepreneurs', duration: 14 },
+        ],
+      },
+      {
+        title: 'Processing Bamboo',
+        lessons: [
+          { title: 'Harvesting, Treating & Seasoning Bamboo to Prevent Rot', duration: 16 },
+          { title: 'Basic Tools & Machines for Cutting, Splitting & Shaping', duration: 16 },
+          { title: 'Making Bamboo Boards & Sheets for Furniture & Construction', duration: 14 },
+        ],
+      },
+      {
+        title: 'Bamboo Product Ideas',
+        lessons: [
+          { title: 'Agarbatti Sticks: High-Volume, Low-Investment Production', duration: 16 },
+          { title: 'Bamboo Straws, Cutlery & Eco-Tableware for Restaurants', duration: 14 },
+          { title: 'Bamboo Furniture, Baskets & Home Décor for Local & Online Markets', duration: 16 },
+          { title: 'Bamboo Flooring & Construction Panels: B2B Opportunity', duration: 14 },
+        ],
+      },
+      {
+        title: 'Selling Bamboo Products',
+        lessons: [
+          { title: 'Pricing, Branding & Packaging Your Bamboo Products', duration: 14 },
+          { title: 'Selling on Marketplaces, Government Tenders & Export Platforms', duration: 14 },
+          { title: 'Building a Bamboo Cooperative with Other Women in Your Village', duration: 16 },
+        ],
+      },
+    ],
   },
   {
     id: 'course-008',
@@ -151,6 +663,28 @@ const initialCourses: Course[] = [
     instructorName: 'Rekha Menon',
     rating: 4.3,
     enrolledCount: 3210,
+    chapters: [
+      {
+        title: 'How Credit Works',
+        lessons: [
+          { title: 'What Is a Loan and How Banks Decide to Lend', duration: 18 },
+          { title: 'Understanding Interest Rates, EMIs & Loan Tenure', duration: 16 },
+        ],
+      },
+      {
+        title: 'Loan Options for Women Entrepreneurs',
+        lessons: [
+          { title: 'Mudra Loans, SHG Credit & Microfinance Explained', duration: 18 },
+          { title: 'Comparing Loan Offers: Banks, NBFCs & Digital Lenders', duration: 14 },
+        ],
+      },
+      {
+        title: 'Borrowing Wisely',
+        lessons: [
+          { title: 'When to Borrow, When to Wait & How to Stay Debt-Free', duration: 9 },
+        ],
+      },
+    ],
   },
 ]
 
@@ -479,6 +1013,22 @@ export function getCertificates(): Certificate[] {
 
 export function getCalendarEvents(): CalendarEvent[] {
   return structuredClone(store.calendarEvents)
+}
+
+export function getSessionById(id: string) {
+  return structuredClone(store.liveSessions.find((s) => s.id === id) ?? null)
+}
+
+export function getSpeakerById(id: string) {
+  return structuredClone(store.speakers.find((s) => s.id === id) ?? null)
+}
+
+export function getUserProgressForCourse(courseId: string) {
+  return structuredClone(store.userProgress.find((p) => p.courseId === courseId) ?? null)
+}
+
+export function isRegisteredForSession(sessionId: string): boolean {
+  return store.calendarEvents.some((e) => e.sessionId === sessionId)
 }
 
 // =============================================================================

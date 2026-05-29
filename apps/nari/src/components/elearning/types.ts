@@ -25,6 +25,16 @@ export type CalendarEventType =
   | 'deadline'
   | 'mandatory-reminder'
 
+export interface CourseLesson {
+  title: string
+  duration: number
+}
+
+export interface CourseChapter {
+  title: string
+  lessons: CourseLesson[]
+}
+
 export interface Course {
   id: string
   title: string
@@ -41,6 +51,7 @@ export interface Course {
   instructorName: string
   rating: number
   enrolledCount: number
+  chapters?: CourseChapter[]
 }
 
 export interface Speaker {

@@ -32,7 +32,7 @@ export function MetricsRow({ metrics }: MetricsRowProps) {
   const loanConfig = loanStatusConfig[metrics.loanStatus]
 
   return (
-    <div className="grid grid-cols-2 gap-3">
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
       <div className="bg-gradient-to-br from-rose-500 to-rose-600 rounded-2xl p-4 text-white shadow-sm shadow-primary/20">
         <div className="flex items-center justify-between mb-3">
           <p className="text-white/80 text-xs font-medium">This month</p>

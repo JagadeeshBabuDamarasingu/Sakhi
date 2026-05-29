@@ -2,20 +2,20 @@
   padding-bottom: env(safe-area-inset-bottom);
 }
 
-/* Light surface: faint warm dots */
+/* Light surface: delicate rose dots */
 .bg-dot-grid {
-  background-image: radial-gradient(circle, oklch(85% 0.008 55) 1px, transparent 1px);
+  background-image: radial-gradient(circle, oklch(87% 0.022 355) 1px, transparent 1px);
   background-size: 28px 28px;
 }
 
-/* Dark surface: subtle warm-dark dots */
+/* Dark surface: rose-velvet dots */
 .dark .bg-dot-grid {
-  background-image: radial-gradient(circle, oklch(20% 0.014 28) 1px, transparent 1px);
+  background-image: radial-gradient(circle, oklch(22% 0.025 12) 1px, transparent 1px);
   background-size: 28px 28px;
 }
 
 /* Always-dark section variant */
 .bg-dot-grid-dark {
-  background-image: radial-gradient(circle, oklch(20% 0.014 28) 1px, transparent 1px);
+  background-image: radial-gradient(circle, oklch(22% 0.025 12) 1px, transparent 1px);
   background-size: 28px 28px;
 }

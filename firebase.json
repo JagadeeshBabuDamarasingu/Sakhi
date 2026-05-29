@@ -16,7 +16,7 @@
       ]
     },
     {
-      "backendId": "admin-web-dev",
+      "backendId": "nari-admin",
       "rootDir": "apps/admin",
       "ignore": [
         "node_modules",
@@ -31,7 +31,7 @@
       ]
     },
     {
-      "backendId": "marketplace-web-dev",
+      "backendId": "nari-marketplace",
       "rootDir": "apps/marketplace",
       "ignore": [
         "node_modules",
@@ -50,7 +50,11 @@
     {
       "source": "services/functions",
       "codebase": "default",
-      "ignore": ["node_modules", "lib", ".git"]
+      "ignore": [
+        "node_modules",
+        "lib",
+        ".git"
+      ]
     }
   ],
   "firestore": {

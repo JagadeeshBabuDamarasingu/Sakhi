@@ -3,22 +3,25 @@ version: alpha
 name: Shakti
 description: AI-powered economic empowerment platform for women across India
 colors:
-  primary: "#e11d48"
-  primary-light: "#fff1f2"
-  primary-dark: "#be123c"
-  secondary: "#f59e0b"
-  secondary-light: "#fef3c7"
-  secondary-dark: "#92400e"
-  neutral: "#57534e"
-  neutral-50: "#fafaf9"
-  neutral-100: "#f5f5f4"
-  neutral-200: "#e7e5e4"
-  neutral-700: "#44403c"
-  neutral-800: "#292524"
-  neutral-900: "#1c1917"
-  surface: "#ffffff"
-  on-surface: "#1c1917"
-  error: "#dc2626"
+  # Light mode (shakti theme) — blush-rose surfaces
+  base-100: "oklch(99.2% 0.005 345)"   # faintest blush white
+  base-200: "oklch(97.5% 0.010 348)"   # soft blush
+  base-300: "oklch(93% 0.016 352)"     # rose-tinted border
+  base-content: "oklch(19% 0.015 20)"  # rose-charcoal text
+  primary: "oklch(54.6% 0.229 17)"     # Rose 600
+  primary-content: "oklch(99% 0.004 345)"
+  secondary: "oklch(79.5% 0.18 74)"    # Amber 500
+  secondary-content: "oklch(22% 0.008 55)"
+  accent: "oklch(65% 0.12 22)"         # Terracotta
+  neutral: "oklch(40% 0.010 340)"      # rose-tinted warm gray
+  error: "oklch(54.4% 0.225 29)"
+  # Dark mode (shakti-dark theme) — rose velvet
+  dark-base-100: "oklch(15.5% 0.016 12)"
+  dark-base-200: "oklch(10.5% 0.010 10)"
+  dark-base-300: "oklch(21% 0.022 12)"
+  dark-base-content: "oklch(95.5% 0.008 355)"
+  dark-primary: "oklch(72% 0.168 13)"  # Rose 400 brightened
+  dark-secondary: "oklch(85% 0.165 78)"
 typography:
   headline-lg:
     fontFamily: Poppins
@@ -162,19 +165,33 @@ The platform supports 8 Indian languages (English, Hindi, Tamil, Telugu, Kannada
 
 ## Colors
 
-The palette is anchored in a bold, energetic rose primary and a warm amber accent, set against earthy stone neutrals. This combination evokes strength, warmth, and optimism — qualities central to Shakti's mission.
+The palette is anchored in rose and amber against blush-tinted surfaces. Light mode reads warm and inviting — the surfaces carry a barely-perceptible blush rather than neutral white, so the interface feels alive before any content loads. Dark mode inverts to a rose-velvet dark: warm charcoal with rose undertones, not cold gray.
 
-- **Primary (#e11d48 — Rose 600):** The core brand color. Used for primary action buttons, active navigation, links, and key CTAs. Communicates energy, passion, and agency.
-- **Primary Light (#fff1f2 — Rose 50):** Soft rose tint for active nav backgrounds, hover states, and badge fills.
-- **Primary Dark (#be123c — Rose 700):** Deeper rose for button hover/pressed states and high-emphasis text links.
-- **Secondary (#f59e0b — Amber 500):** A warm golden yellow used for achievement badges, trending labels, onboarding nudges, and secondary highlights. Evokes warmth, reward, and aspiration.
-- **Secondary Light (#fef3c7 — Amber 100):** Soft amber tint for badge backgrounds and highlight fills.
-- **Neutral (#57534e — Stone 600):** Warm gray for body text and supporting UI elements. Stone's warmth (vs. cool gray) reinforces the platform's approachable character.
-- **Surface (#ffffff):** Card and panel backgrounds. Pure white to ensure maximum contrast for content.
-- **Background (Neutral 50 — #fafaf9):** Page-level background. A hair off-white that provides subtle depth without harshness.
-- **Error (#dc2626 — Red 600):** Reserved strictly for error states and destructive action confirmations.
+All color values use OKLCH. Chroma is kept very low on surface colors (0.005–0.016) so the tinting reads as warmth, not color.
 
-Dark mode is fully supported. All tokens shift: backgrounds invert to stone-950/stone-900, text to stone-100, and accents lighten (rose-400, amber-400).
+### Light mode (shakti theme)
+
+- **base-100 (oklch 99.2% 0.005 345):** Page background. Faintest blush white — imperceptible on its own, but gives the page warmth vs. cold white.
+- **base-200 (oklch 97.5% 0.010 348):** Card and panel background. Soft blush that separates surfaces without borders.
+- **base-300 (oklch 93% 0.016 352):** Borders and dividers. Rose-tinted, never cold.
+- **base-content (oklch 19% 0.015 20):** Body text. Rose-charcoal — slightly warm vs. stone black.
+- **Primary (Rose 600 — oklch 54.6% 0.229 17):** The core brand color. Primary actions, active nav, key CTAs.
+- **Secondary (Amber 500 — oklch 79.5% 0.18 74):** Achievement badges, trending labels, onboarding nudges.
+- **Accent (Terracotta — oklch 65% 0.12 22):** Warm earthy accent for highlights and tags. Feminine without leaning fashion.
+- **Neutral (oklch 40% 0.010 340):** Supporting text and ghost UI elements. Rose-tinted warm gray.
+- **Error (oklch 54.4% 0.225 29):** Error states only.
+
+### Dark mode (shakti-dark theme)
+
+Scene: woman checking her sales late evening, warm lamp, dim room. Warm and intimate.
+
+- **base-100 (oklch 15.5% 0.016 12):** Main dark surface. Deep rose-charcoal.
+- **base-200 (oklch 10.5% 0.010 10):** Deepest dark — sidebar, behind-content layers.
+- **base-300 (oklch 21% 0.022 12):** Dark surface borders. Visible but not jarring.
+- **base-content (oklch 95.5% 0.008 355):** Text on dark. Warm near-white with a faint rose cast.
+- **Primary (oklch 72% 0.168 13):** Rose 400-ish, brightened for legibility on dark bg.
+- **Secondary (oklch 85% 0.165 78):** Amber 400, warm gold on dark.
+- **Accent (oklch 70% 0.10 18):** Lighter terracotta for dark surfaces.
 
 ## Typography
 

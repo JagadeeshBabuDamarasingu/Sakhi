@@ -2,13 +2,27 @@
   "name": "@shakthi/protocols",
   "version": "1.0.0",
   "private": true,
-  "main": "./generated-ts/index.js",
-  "types": "./generated-ts/index.d.ts",
+  "description": "Shared protobuf-defined data models — TypeScript types for all Shakthi domains",
   "exports": {
     ".": {
-      "types": "./generated-ts/index.d.ts",
-      "import": "./generated-ts/index.js",
-      "require": "./generated-ts/index.js"
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./financing": {
+      "types": "./src/financing/index.ts",
+      "default": "./src/financing/index.ts"
+    },
+    "./elearning": {
+      "types": "./src/elearning/index.ts",
+      "default": "./src/elearning/index.ts"
+    },
+    "./marketplace": {
+      "types": "./src/marketplace/index.ts",
+      "default": "./src/marketplace/index.ts"
+    },
+    "./skill-discovery": {
+      "types": "./src/skill-discovery/index.ts",
+      "default": "./src/skill-discovery/index.ts"
     }
   },
   "scripts": {

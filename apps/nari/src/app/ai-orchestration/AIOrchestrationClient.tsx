@@ -168,15 +168,15 @@ export function AIOrchestrationClient() {
             <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-rose-500 to-amber-500 flex items-center justify-center shadow-lg shadow-rose-200/50 dark:shadow-none">
               <HiOutlineCpuChip className="w-5 h-5 text-white" />
             </div>
-            <h1 className="text-2xl font-bold text-stone-900 dark:text-stone-100">AI Orchestration</h1>
+            <h1 className="text-2xl font-bold text-base-content">AI Orchestration</h1>
           </div>
-          <p className="text-stone-500 dark:text-stone-400 text-sm ml-11.5">
+          <p className="text-base-content/50 text-sm ml-11.5">
             Run AI agents, review actions, and manage recommendations across your business.
           </p>
         </div>
         <button
           onClick={refreshFeed}
-          className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-stone-600 dark:text-stone-400 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-xl hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors"
+          className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-base-content/60 bg-base-100 border border-base-300 rounded-xl hover:bg-base-200 transition-colors"
         >
           <HiOutlineArrowPath className={`w-4 h-4 ${loadingFeed ? 'animate-spin' : ''}`} />
           Refresh
@@ -185,7 +185,7 @@ export function AIOrchestrationClient() {
 
       {/* AI Capabilities Grid */}
       <section>
-        <h2 className="text-sm font-semibold text-stone-500 dark:text-stone-400 uppercase tracking-wide mb-4">
+        <h2 className="text-sm font-semibold text-base-content/50 uppercase tracking-wide mb-4">
           AI Capabilities
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -201,13 +201,13 @@ export function AIOrchestrationClient() {
           >
             {results.skillDiscovery && (
               <div className="mt-3 space-y-2">
-                <p className="text-xs text-stone-600 dark:text-stone-400 line-clamp-2">
+                <p className="text-xs text-base-content/60 line-clamp-2">
                   {(results.skillDiscovery as SkillResult).message}
                 </p>
                 {(results.skillDiscovery as SkillResult).suggestions?.map((s, i) => (
-                  <div key={i} className="flex items-center justify-between text-xs bg-stone-50 dark:bg-stone-800 rounded-lg px-2.5 py-1.5">
-                    <span className="font-medium text-stone-800 dark:text-stone-200">{s.skillName}</span>
-                    <span className="text-stone-500 dark:text-stone-400">{s.marketDemand} demand</span>
+                  <div key={i} className="flex items-center justify-between text-xs bg-base-200 rounded-lg px-2.5 py-1.5">
+                    <span className="font-medium text-base-content">{s.skillName}</span>
+                    <span className="text-base-content/50">{s.marketDemand} demand</span>
                   </div>
                 ))}
               </div>
@@ -227,9 +227,9 @@ export function AIOrchestrationClient() {
             {results.marketplaceInsights && (
               <div className="mt-3 space-y-2">
                 {(results.marketplaceInsights as InsightResult[]).map((ins, i) => (
-                  <div key={i} className="text-xs bg-stone-50 dark:bg-stone-800 rounded-lg px-2.5 py-2">
-                    <p className="font-medium text-stone-800 dark:text-stone-200">{ins.title}</p>
-                    <p className="text-stone-500 dark:text-stone-400 mt-0.5 line-clamp-2">{ins.description}</p>
+                  <div key={i} className="text-xs bg-base-200 rounded-lg px-2.5 py-2">
+                    <p className="font-medium text-base-content">{ins.title}</p>
+                    <p className="text-base-content/50 mt-0.5 line-clamp-2">{ins.description}</p>
                   </div>
                 ))}
               </div>
@@ -248,10 +248,10 @@ export function AIOrchestrationClient() {
           >
             {results.listingDraft && (
               <div className="mt-3 space-y-1.5">
-                <p className="text-xs font-medium text-stone-800 dark:text-stone-200 line-clamp-1">
+                <p className="text-xs font-medium text-base-content line-clamp-1">
                   {(results.listingDraft as ListingDraft).title}
                 </p>
-                <p className="text-xs text-stone-500 dark:text-stone-400 line-clamp-2">
+                <p className="text-xs text-base-content/50 line-clamp-2">
                   {(results.listingDraft as ListingDraft).description}
                 </p>
                 <div className="flex flex-wrap gap-1">
@@ -276,7 +276,7 @@ export function AIOrchestrationClient() {
             navigateLabel="Open Learning"
           >
             {results.learningCoach && (
-              <div className="mt-3 text-xs text-stone-600 dark:text-stone-400 line-clamp-3">
+              <div className="mt-3 text-xs text-base-content/60 line-clamp-3">
                 {(results.learningCoach as CoachResult).message}
               </div>
             )}
@@ -293,7 +293,7 @@ export function AIOrchestrationClient() {
             navigateLabel="Open Financing"
           >
             {results.financingCoach && (
-              <div className="mt-3 text-xs text-stone-600 dark:text-stone-400 line-clamp-3">
+              <div className="mt-3 text-xs text-base-content/60 line-clamp-3">
                 {(results.financingCoach as CoachResult).message}
               </div>
             )}
@@ -305,42 +305,42 @@ export function AIOrchestrationClient() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Agent Actions Feed */}
         <section>
-          <h2 className="text-sm font-semibold text-stone-500 dark:text-stone-400 uppercase tracking-wide mb-4">
+          <h2 className="text-sm font-semibold text-base-content/50 uppercase tracking-wide mb-4">
             Agent Action Log
           </h2>
-          <div className="bg-white dark:bg-stone-900 rounded-2xl border border-stone-200 dark:border-stone-800 overflow-hidden">
+          <div className="bg-base-100 rounded-2xl border border-base-300 overflow-hidden">
             {loadingFeed ? (
               <div className="p-6 space-y-3">
                 {[1, 2, 3].map((i) => (
                   <div key={i} className="flex gap-3 animate-pulse">
-                    <div className="w-8 h-8 rounded-lg bg-stone-100 dark:bg-stone-800 flex-shrink-0" />
+                    <div className="w-8 h-8 rounded-lg bg-base-200 flex-shrink-0" />
                     <div className="flex-1 space-y-1.5">
-                      <div className="h-3 bg-stone-100 dark:bg-stone-800 rounded w-4/5" />
-                      <div className="h-2.5 bg-stone-100 dark:bg-stone-800 rounded w-2/5" />
+                      <div className="h-3 bg-base-200 rounded w-4/5" />
+                      <div className="h-2.5 bg-base-200 rounded w-2/5" />
                     </div>
                   </div>
                 ))}
               </div>
             ) : actions.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-12 px-6 text-center">
-                <div className="w-12 h-12 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center mb-3">
-                  <HiOutlineCpuChip className="w-6 h-6 text-stone-400" />
+                <div className="w-12 h-12 rounded-full bg-base-200 flex items-center justify-center mb-3">
+                  <HiOutlineCpuChip className="w-6 h-6 text-base-content/40" />
                 </div>
-                <p className="text-sm font-medium text-stone-700 dark:text-stone-300">No AI actions yet</p>
-                <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">
+                <p className="text-sm font-medium text-base-content/80">No AI actions yet</p>
+                <p className="text-xs text-base-content/40 mt-1">
                   Run one of the AI capabilities above to see actions here.
                 </p>
               </div>
             ) : (
-              <ul className="divide-y divide-stone-100 dark:divide-stone-800">
+              <ul className="divide-y divide-stone-100">
                 {actions.slice(0, 8).map((action) => (
                   <li key={action.id} className="flex items-start gap-3 px-4 py-3.5">
-                    <span className="flex-shrink-0 mt-0.5 w-8 h-8 rounded-lg bg-stone-50 dark:bg-stone-800 flex items-center justify-center">
+                    <span className="flex-shrink-0 mt-0.5 w-8 h-8 rounded-lg bg-base-200 flex items-center justify-center">
                       {actionTypeIcon[action.type]}
                     </span>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm text-stone-800 dark:text-stone-200 line-clamp-2">{action.message}</p>
-                      <time className="text-xs text-stone-400 dark:text-stone-500 mt-0.5 block">
+                      <p className="text-sm text-base-content line-clamp-2">{action.message}</p>
+                      <time className="text-xs text-base-content/40 mt-0.5 block">
                         {new Date(action.timestamp).toLocaleString('en-IN', {
                           day: 'numeric',
                           month: 'short',
@@ -358,36 +358,36 @@ export function AIOrchestrationClient() {
 
         {/* Recommendations */}
         <section>
-          <h2 className="text-sm font-semibold text-stone-500 dark:text-stone-400 uppercase tracking-wide mb-4">
+          <h2 className="text-sm font-semibold text-base-content/50 uppercase tracking-wide mb-4">
             AI Recommendations
           </h2>
-          <div className="bg-white dark:bg-stone-900 rounded-2xl border border-stone-200 dark:border-stone-800 overflow-hidden">
+          <div className="bg-base-100 rounded-2xl border border-base-300 overflow-hidden">
             {loadingFeed ? (
               <div className="p-6 space-y-3">
                 {[1, 2].map((i) => (
                   <div key={i} className="animate-pulse space-y-2">
-                    <div className="h-3 bg-stone-100 dark:bg-stone-800 rounded w-3/4" />
-                    <div className="h-2.5 bg-stone-100 dark:bg-stone-800 rounded w-1/3" />
+                    <div className="h-3 bg-base-200 rounded w-3/4" />
+                    <div className="h-2.5 bg-base-200 rounded w-1/3" />
                   </div>
                 ))}
               </div>
             ) : recommendations.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-12 px-6 text-center">
-                <div className="w-12 h-12 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center mb-3">
-                  <HiOutlineSparkles className="w-6 h-6 text-stone-400" />
+                <div className="w-12 h-12 rounded-full bg-base-200 flex items-center justify-center mb-3">
+                  <HiOutlineSparkles className="w-6 h-6 text-base-content/40" />
                 </div>
-                <p className="text-sm font-medium text-stone-700 dark:text-stone-300">No recommendations yet</p>
-                <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">
+                <p className="text-sm font-medium text-base-content/80">No recommendations yet</p>
+                <p className="text-xs text-base-content/40 mt-1">
                   Recommendations will appear here as the AI learns more about your journey.
                 </p>
               </div>
             ) : (
-              <ul className="divide-y divide-stone-100 dark:divide-stone-800">
+              <ul className="divide-y divide-stone-100">
                 {recommendations.map((rec) => (
                   <li key={rec.id} className="px-4 py-3.5">
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm text-stone-800 dark:text-stone-200 line-clamp-2">{rec.message}</p>
+                        <p className="text-sm text-base-content line-clamp-2">{rec.message}</p>
                         {rec.potentialBoost && (
                           <span className="mt-1 inline-block text-xs font-medium text-emerald-600 dark:text-emerald-400">
                             {rec.potentialBoost}
@@ -476,10 +476,10 @@ function AIPanel({ icon, color, title, description, state, onRun, onNavigate, na
         </span>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
-            <h3 className="font-semibold text-stone-900 dark:text-stone-100 text-sm">{title}</h3>
+            <h3 className="font-semibold text-base-content text-sm">{title}</h3>
             <RunStateIndicator state={state} />
           </div>
-          <p className="text-xs text-stone-500 dark:text-stone-400 mt-0.5 line-clamp-2">{description}</p>
+          <p className="text-xs text-base-content/50 mt-0.5 line-clamp-2">{description}</p>
         </div>
       </div>
 
@@ -510,7 +510,7 @@ function AIPanel({ icon, color, title, description, state, onRun, onNavigate, na
         </button>
         <button
           onClick={onNavigate}
-          className="flex items-center gap-1 py-2 px-3 rounded-xl text-xs font-medium text-stone-600 dark:text-stone-400 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors"
+          className="flex items-center gap-1 py-2 px-3 rounded-xl text-xs font-medium text-base-content/60 bg-base-100 border border-base-300 hover:bg-base-200 transition-colors"
         >
           {navigateLabel}
           <HiOutlineArrowRight className="w-3.5 h-3.5" />

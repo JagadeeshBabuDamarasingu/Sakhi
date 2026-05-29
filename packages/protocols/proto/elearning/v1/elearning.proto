@@ -1,0 +1,206 @@
+syntax = "proto3";
+
+package elearning.v1;
+
+option go_package = "github.com/shakthi/protocols/elearning/v1;elearningv1";
+
+// ─── Enums ───────────────────────────────────────────────────────────────────
+
+enum CourseCategory {
+  COURSE_CATEGORY_UNSPECIFIED = 0;
+  COURSE_CATEGORY_DIGITAL_LITERACY = 1;
+  COURSE_CATEGORY_BUSINESS = 2;
+  COURSE_CATEGORY_COMMUNICATION = 3;
+  COURSE_CATEGORY_PERSONAL_FINANCE = 4;
+  COURSE_CATEGORY_CYBER_SECURITY = 5;
+  COURSE_CATEGORY_ENTREPRENEURSHIP = 6;
+}
+
+enum CourseFormat {
+  COURSE_FORMAT_UNSPECIFIED = 0;
+  COURSE_FORMAT_VIDEO = 1;
+  COURSE_FORMAT_INTERACTIVE = 2;
+  COURSE_FORMAT_MIXED = 3;
+}
+
+enum CourseLevel {
+  COURSE_LEVEL_UNSPECIFIED = 0;
+  COURSE_LEVEL_BEGINNER = 1;
+  COURSE_LEVEL_INTERMEDIATE = 2;
+  COURSE_LEVEL_ADVANCED = 3;
+}
+
+enum ProgressStatus {
+  PROGRESS_STATUS_UNSPECIFIED = 0;
+  PROGRESS_STATUS_ENROLLED = 1;
+  PROGRESS_STATUS_IN_PROGRESS = 2;
+  PROGRESS_STATUS_COMPLETED = 3;
+}
+
+enum SessionType {
+  SESSION_TYPE_UNSPECIFIED = 0;
+  SESSION_TYPE_GUEST_SPEAKER = 1;
+  SESSION_TYPE_BOOTCAMP = 2;
+  SESSION_TYPE_WORKSHOP = 3;
+}
+
+enum CalendarEventType {
+  CALENDAR_EVENT_TYPE_UNSPECIFIED = 0;
+  CALENDAR_EVENT_TYPE_COURSE_REMINDER = 1;
+  CALENDAR_EVENT_TYPE_LIVE_SESSION = 2;
+  CALENDAR_EVENT_TYPE_BOOTCAMP = 3;
+  CALENDAR_EVENT_TYPE_DEADLINE = 4;
+  CALENDAR_EVENT_TYPE_MANDATORY_REMINDER = 5;
+}
+
+// ─── Messages ─────────────────────────────────────────────────────────────────
+
+message Course {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+  CourseCategory category = 4;
+  int32 duration = 5;
+  int32 total_modules = 6;
+  CourseFormat format = 7;
+  CourseLevel level = 8;
+  string language = 9;
+  bool is_mandatory = 10;
+  bool is_trending = 11;
+  string thumbnail_url = 12;
+  string instructor_name = 13;
+  double rating = 14;
+  int32 enrolled_count = 15;
+}
+
+message Speaker {
+  string id = 1;
+  string name = 2;
+  string title = 3;
+  string bio = 4;
+  string avatar_url = 5;
+  repeated string expertise = 6;
+}
+
+message LiveSession {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+  optional string speaker_id = 4;
+  optional string course_id = 5;
+  SessionType type = 6;
+  string scheduled_at = 7;
+  int32 duration = 8;
+  int32 registered_count = 9;
+  int32 max_capacity = 10;
+  bool is_upcoming = 11;
+  string thumbnail_url = 12;
+}
+
+message UserProgress {
+  string id = 1;
+  string course_id = 2;
+  int32 completed_modules = 3;
+  int32 percent_complete = 4;
+  optional string last_accessed_at = 5;
+  ProgressStatus status = 6;
+  string enrolled_at = 7;
+  optional string completed_at = 8;
+}
+
+message LearningGoal {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+  bool is_active = 4;
+  string created_at = 5;
+}
+
+message Badge {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+  string icon_url = 4;
+  string earned_at = 5;
+  optional string course_id = 6;
+  string share_url = 7;
+}
+
+message Certificate {
+  string id = 1;
+  string title = 2;
+  string issued_at = 3;
+  string course_id = 4;
+  string certificate_url = 5;
+  string share_url = 6;
+  string valid_until = 7;
+}
+
+message CalendarEvent {
+  string id = 1;
+  string title = 2;
+  CalendarEventType type = 3;
+  optional string course_id = 4;
+  optional string session_id = 5;
+  string scheduled_at = 6;
+  bool is_completed = 7;
+}
+
+message UserStats {
+  int32 courses_completed = 1;
+  int32 courses_in_progress = 2;
+  int32 total_learning_minutes = 3;
+  int32 current_streak = 4;
+  int32 longest_streak = 5;
+  int32 badges_earned = 6;
+  int32 certificates_earned = 7;
+}
+
+// ─── Services ─────────────────────────────────────────────────────────────────
+
+service ELearningService {
+  rpc ListCourses(ListCoursesRequest) returns (ListCoursesResponse);
+  rpc GetCourse(GetCourseRequest) returns (Course);
+  rpc EnrollCourse(EnrollCourseRequest) returns (UserProgress);
+  rpc UpdateProgress(UpdateProgressRequest) returns (UserProgress);
+  rpc ListSessions(ListSessionsRequest) returns (ListSessionsResponse);
+  rpc GetSession(GetSessionRequest) returns (LiveSession);
+  rpc RegisterForSession(RegisterForSessionRequest) returns (RegisterForSessionResponse);
+  rpc GetCalendarEvents(GetCalendarEventsRequest) returns (GetCalendarEventsResponse);
+  rpc CreateGoal(CreateGoalRequest) returns (LearningGoal);
+  rpc GetUserStats(GetUserStatsRequest) returns (UserStats);
+}
+
+message ListCoursesRequest {
+  optional string category = 1;
+  optional string search = 2;
+}
+message ListCoursesResponse { repeated Course courses = 1; }
+
+message GetCourseRequest { string course_id = 1; }
+message EnrollCourseRequest { string course_id = 1; }
+message UpdateProgressRequest {
+  string course_id = 1;
+  int32 completed_modules = 2;
+}
+
+message ListSessionsRequest {}
+message ListSessionsResponse { repeated LiveSession sessions = 1; }
+
+message GetSessionRequest { string session_id = 1; }
+message RegisterForSessionRequest { string session_id = 1; }
+message RegisterForSessionResponse {
+  bool registered = 1;
+  LiveSession session = 2;
+}
+
+message GetCalendarEventsRequest {}
+message GetCalendarEventsResponse { repeated CalendarEvent events = 1; }
+
+message CreateGoalRequest {
+  string title = 1;
+  string description = 2;
+  bool is_active = 3;
+}
+
+message GetUserStatsRequest {}

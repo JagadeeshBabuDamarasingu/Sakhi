@@ -4,43 +4,41 @@
   prefersdark: false;
   color-scheme: "light";
 
-  /* Surfaces — warm white, stone-50, stone-200 */
-  --color-base-100: oklch(100% 0.003 60);
-  --color-base-200: oklch(98% 0.004 55);
-  --color-base-300: oklch(91% 0.007 53);
-  --color-base-content: oklch(17.7% 0.006 55);
+  /* Surfaces — blush white, rose-tinted */
+  --color-base-100: oklch(99.2% 0.005 345);
+  --color-base-200: oklch(97.5% 0.010 348);
+  --color-base-300: oklch(93% 0.016 352);
+  --color-base-content: oklch(19% 0.015 20);
 
-  /* Primary — Rose 600 (#e11d48) */
+  /* Primary — Rose 600 */
   --color-primary: oklch(54.6% 0.229 17);
-  --color-primary-content: oklch(98% 0.003 60);
+  --color-primary-content: oklch(99% 0.004 345);
 
-  /* Secondary — Amber 500 (#f59e0b) */
+  /* Secondary — Amber 500 */
   --color-secondary: oklch(79.5% 0.18 74);
-  --color-secondary-content: oklch(23.8% 0.008 55);
+  --color-secondary-content: oklch(22% 0.008 55);
 
-  /* Accent — Emerald 600 (#059669) */
-  --color-accent: oklch(60.4% 0.156 153);
-  --color-accent-content: oklch(98% 0.003 60);
+  /* Accent — Terracotta */
+  --color-accent: oklch(65% 0.12 22);
+  --color-accent-content: oklch(98% 0.005 345);
 
-  /* Neutral — Stone 600 (#57534e) */
-  --color-neutral: oklch(40.8% 0.012 53);
-  --color-neutral-content: oklch(98% 0.004 55);
+  /* Neutral — rose-tinted warm gray */
+  --color-neutral: oklch(40% 0.010 340);
+  --color-neutral-content: oklch(98% 0.005 345);
 
   /* Semantic states */
-  --color-info: oklch(68% 0.17 238);
-  --color-info-content: oklch(98% 0.003 60);
-  --color-success: oklch(60.4% 0.156 153);
-  --color-success-content: oklch(98% 0.003 60);
+  --color-info: oklch(68% 0.15 238);
+  --color-info-content: oklch(98% 0.003 345);
+  --color-success: oklch(62% 0.14 150);
+  --color-success-content: oklch(98% 0.003 345);
   --color-warning: oklch(79.5% 0.18 74);
-  --color-warning-content: oklch(23.8% 0.008 55);
+  --color-warning-content: oklch(22% 0.008 55);
   --color-error: oklch(54.4% 0.225 29);
-  --color-error-content: oklch(98% 0.003 60);
+  --color-error-content: oklch(98% 0.003 345);
 
-  /* Shape — pill buttons, 8px fields, 12px boxes */
   --radius-selector: 9999px;
   --radius-field: 0.5rem;
   --radius-box: 0.75rem;
-
   --border: 1px;
   --depth: 0;
   --noise: 0;
@@ -52,42 +50,41 @@
   prefersdark: true;
   color-scheme: "dark";
 
-  /* Surfaces — stone-900, stone-950, stone-800 */
-  --color-base-100: oklch(17.7% 0.006 55);
-  --color-base-200: oklch(10.5% 0.004 56);
-  --color-base-300: oklch(23.8% 0.008 55);
-  --color-base-content: oklch(96.5% 0.005 53);
+  /* Surfaces — rose velvet dark */
+  --color-base-100: oklch(15.5% 0.016 12);
+  --color-base-200: oklch(10.5% 0.010 10);
+  --color-base-300: oklch(21% 0.022 12);
+  --color-base-content: oklch(95.5% 0.008 355);
 
-  /* Primary — Rose 400 (#fb7185) lightened for dark bg */
-  --color-primary: oklch(71% 0.176 15);
-  --color-primary-content: oklch(12% 0.005 55);
+  /* Primary — Rose 400, brightened for dark bg */
+  --color-primary: oklch(72% 0.168 13);
+  --color-primary-content: oklch(11% 0.012 10);
 
-  /* Secondary — Amber 400 (#fbbf24) */
-  --color-secondary: oklch(87% 0.19 84);
-  --color-secondary-content: oklch(12% 0.005 55);
+  /* Secondary — Amber 400 */
+  --color-secondary: oklch(85% 0.165 78);
+  --color-secondary-content: oklch(11% 0.008 60);
 
-  /* Accent — Emerald 500 lightened */
-  --color-accent: oklch(70% 0.15 153);
-  --color-accent-content: oklch(12% 0.005 55);
+  /* Accent — warm terracotta */
+  --color-accent: oklch(70% 0.10 18);
+  --color-accent-content: oklch(11% 0.010 10);
 
-  /* Neutral — Stone 700 */
-  --color-neutral: oklch(34.1% 0.01 54);
-  --color-neutral-content: oklch(96.5% 0.005 53);
+  /* Neutral — dark rose-tinted surface */
+  --color-neutral: oklch(27% 0.018 10);
+  --color-neutral-content: oklch(95.5% 0.008 355);
 
   /* Semantic states */
-  --color-info: oklch(75% 0.15 238);
-  --color-info-content: oklch(12% 0.005 55);
-  --color-success: oklch(70% 0.15 153);
-  --color-success-content: oklch(12% 0.005 55);
-  --color-warning: oklch(87% 0.19 84);
-  --color-warning-content: oklch(12% 0.005 55);
-  --color-error: oklch(65% 0.2 25);
-  --color-error-content: oklch(12% 0.005 55);
+  --color-info: oklch(75% 0.14 238);
+  --color-info-content: oklch(11% 0.005 240);
+  --color-success: oklch(70% 0.14 150);
+  --color-success-content: oklch(11% 0.005 150);
+  --color-warning: oklch(85% 0.165 78);
+  --color-warning-content: oklch(11% 0.008 60);
+  --color-error: oklch(65% 0.19 25);
+  --color-error-content: oklch(11% 0.005 25);
 
   --radius-selector: 9999px;
   --radius-field: 0.5rem;
   --radius-box: 0.75rem;
-
   --border: 1px;
   --depth: 0;
   --noise: 0;

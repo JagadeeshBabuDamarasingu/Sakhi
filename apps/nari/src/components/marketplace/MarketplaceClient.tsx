@@ -50,6 +50,10 @@ export function MarketplaceClient({ data }: { data: MarketplaceData }) {
     router.push('/marketplace/insights')
   }, [router])
 
+  const handlePreviewStorefront = useCallback(() => {
+    router.push('/marketplace/storefront')
+  }, [router])
+
   const handleExportAnalytics = useCallback(async () => {
     const res = await fetch('/api/seller/analytics/export')
     if (!res.ok) return
@@ -71,6 +75,7 @@ export function MarketplaceClient({ data }: { data: MarketplaceData }) {
       onViewListing={(listingId) => router.push(`/marketplace/listings/${listingId}`)}
       onCreateListing={handleCreateListing}
       onGoLive={handleGoLive}
+      onPreviewStorefront={handlePreviewStorefront}
       onViewAllOrders={() => router.push('/marketplace/orders')}
       onViewAllListings={() => router.push('/marketplace/listings')}
       onInsightAction={handleInsightAction}
