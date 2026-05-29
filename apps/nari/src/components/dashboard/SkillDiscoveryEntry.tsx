@@ -7,7 +7,7 @@ interface SkillDiscoveryEntryProps {
 export function SkillDiscoveryEntry({ onNavigateTo }: SkillDiscoveryEntryProps) {
   return (
     <button
-      onClick={() => onNavigateTo?.('skill-discovery')}
+      onClick={() => onNavigateTo?.('skills')}
       className="w-full text-left bg-gradient-to-r from-violet-500 to-indigo-500 rounded-2xl p-4 shadow-sm shadow-violet-200 dark:shadow-none group"
     >
       <div className="flex items-center justify-between">

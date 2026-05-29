@@ -1,0 +1,384 @@
+{
+  "_meta": {
+    "models": {
+      "skills": "Each skill represents a marketable ability the user has claimed. Skills can be validated through AI assessments, document uploads, or video demonstrations to increase trust and earning potential.",
+      "skillCategories": "Categories help organize skills into browsable groups, making it easier for users to find and add skills they have.",
+      "skillSuggestions": "AI-recommended and trending skills that the user might want to add based on their profile, location, and market demand.",
+      "relatedCourses": "Courses that help users learn or improve a skill, linked from skill cards to encourage upskilling."
+    },
+    "relationships": [
+      "Each Skill belongs to a SkillCategory",
+      "Skills can have multiple RelatedCourses for learning and improvement",
+      "Skills reference RelatedListings (products/services the user sells using this skill)",
+      "SkillSuggestions are potential Skills the user can add"
+    ]
+  },
+  "skills": [
+    {
+      "id": "skill-001",
+      "name": "Tailoring & Stitching",
+      "category": "Fashion & Textiles",
+      "categoryId": "cat-003",
+      "description": "Expert in blouse stitching, dress alterations, and custom ethnic wear tailoring including sarees and salwar suits.",
+      "validationStatus": "verified",
+      "validationType": "video",
+      "proficiencyLevel": "expert",
+      "yearsOfExperience": 8,
+      "earningPotential": {
+        "min": 15000,
+        "max": 35000,
+        "currency": "INR",
+        "period": "monthly"
+      },
+      "marketDemand": "high",
+      "demandTrend": "rising",
+      "relatedCourses": ["course-001", "course-002"],
+      "relatedListings": ["listing-001", "listing-002"],
+      "addedAt": "2024-06-15T10:30:00Z",
+      "verifiedAt": "2024-06-20T14:00:00Z"
+    },
+    {
+      "id": "skill-002",
+      "name": "Mehndi Art",
+      "category": "Beauty & Wellness",
+      "categoryId": "cat-006",
+      "description": "Traditional and modern mehndi designs for weddings, festivals, and special occasions. Specializing in Arabic and Indian bridal patterns.",
+      "validationStatus": "verified",
+      "validationType": "document",
+      "proficiencyLevel": "advanced",
+      "yearsOfExperience": 5,
+      "earningPotential": {
+        "min": 8000,
+        "max": 25000,
+        "currency": "INR",
+        "period": "monthly"
+      },
+      "marketDemand": "high",
+      "demandTrend": "stable",
+      "relatedCourses": ["course-003"],
+      "relatedListings": ["listing-003"],
+      "addedAt": "2024-07-01T09:00:00Z",
+      "verifiedAt": "2024-07-05T11:30:00Z"
+    },
+    {
+      "id": "skill-003",
+      "name": "Home-cooked Tiffin Service",
+      "category": "Food & Cooking",
+      "categoryId": "cat-002",
+      "description": "Preparing healthy, homestyle vegetarian meals. Specializing in North Indian cuisine with options for diabetic-friendly and low-oil meals.",
+      "validationStatus": "pending",
+      "validationType": null,
+      "proficiencyLevel": "intermediate",
+      "yearsOfExperience": 12,
+      "earningPotential": {
+        "min": 12000,
+        "max": 30000,
+        "currency": "INR",
+        "period": "monthly"
+      },
+      "marketDemand": "very-high",
+      "demandTrend": "rising",
+      "relatedCourses": ["course-004"],
+      "relatedListings": [],
+      "addedAt": "2024-08-10T08:15:00Z",
+      "verifiedAt": null
+    },
+    {
+      "id": "skill-004",
+      "name": "Data Entry & Typing",
+      "category": "Digital Services",
+      "categoryId": "cat-005",
+      "description": "Fast and accurate typing in English and Hindi. Experienced with Excel, Google Sheets, and basic data management tasks.",
+      "validationStatus": "verified",
+      "validationType": "ai-assessment",
+      "proficiencyLevel": "intermediate",
+      "yearsOfExperience": 2,
+      "earningPotential": {
+        "min": 8000,
+        "max": 18000,
+        "currency": "INR",
+        "period": "monthly"
+      },
+      "marketDemand": "medium",
+      "demandTrend": "stable",
+      "relatedCourses": ["course-002"],
+      "relatedListings": ["listing-004"],
+      "addedAt": "2024-09-01T12:00:00Z",
+      "verifiedAt": "2024-09-01T12:30:00Z"
+    },
+    {
+      "id": "skill-005",
+      "name": "Bamboo Craft",
+      "category": "Handicrafts & Art",
+      "categoryId": "cat-001",
+      "description": "Traditional bamboo basket weaving and decorative items. Creating eco-friendly home decor, storage baskets, and gift items using locally sourced bamboo.",
+      "validationStatus": "auto-verified",
+      "validationType": null,
+      "proficiencyLevel": "expert",
+      "yearsOfExperience": 15,
+      "earningPotential": {
+        "min": 10000,
+        "max": 22000,
+        "currency": "INR",
+        "period": "monthly"
+      },
+      "marketDemand": "medium",
+      "demandTrend": "rising",
+      "relatedCourses": [],
+      "relatedListings": ["listing-005", "listing-006"],
+      "addedAt": "2024-05-20T16:45:00Z",
+      "verifiedAt": null
+    },
+    {
+      "id": "skill-006",
+      "name": "Tutoring - Mathematics",
+      "category": "Education & Tutoring",
+      "categoryId": "cat-004",
+      "description": "Teaching mathematics to students from Class 1 to Class 10. Patient approach with focus on building strong fundamentals and exam preparation.",
+      "validationStatus": "unverified",
+      "validationType": null,
+      "proficiencyLevel": "beginner",
+      "yearsOfExperience": 1,
+      "earningPotential": {
+        "min": 5000,
+        "max": 15000,
+        "currency": "INR",
+        "period": "monthly"
+      },
+      "marketDemand": "high",
+      "demandTrend": "stable",
+      "relatedCourses": ["course-002"],
+      "relatedListings": [],
+      "addedAt": "2024-10-05T10:00:00Z",
+      "verifiedAt": null
+    }
+  ],
+  "skillCategories": [
+    {
+      "id": "cat-001",
+      "name": "Handicrafts & Art",
+      "icon": "palette",
+      "description": "Traditional crafts, painting, embroidery, and artistic creations",
+      "skillCount": 24,
+      "popularSkills": ["Embroidery", "Bamboo Craft", "Pottery", "Block Printing"]
+    },
+    {
+      "id": "cat-002",
+      "name": "Food & Cooking",
+      "icon": "chef-hat",
+      "description": "Cooking, baking, food preservation, and tiffin services",
+      "skillCount": 18,
+      "popularSkills": ["Tiffin Service", "Pickle Making", "Baking", "Catering"]
+    },
+    {
+      "id": "cat-003",
+      "name": "Fashion & Textiles",
+      "icon": "scissors",
+      "description": "Tailoring, fashion design, textile work, and alterations",
+      "skillCount": 15,
+      "popularSkills": ["Tailoring", "Boutique Design", "Saree Draping", "Alterations"]
+    },
+    {
+      "id": "cat-004",
+      "name": "Education & Tutoring",
+      "icon": "book-open",
+      "description": "Teaching, tutoring, coaching, and educational content creation",
+      "skillCount": 12,
+      "popularSkills": ["Math Tutoring", "Language Teaching", "Music Lessons", "Coaching"]
+    },
+    {
+      "id": "cat-005",
+      "name": "Digital Services",
+      "icon": "laptop",
+      "description": "Data entry, content writing, social media, and online services",
+      "skillCount": 20,
+      "popularSkills": ["Data Entry", "Content Writing", "Social Media", "Transcription"]
+    },
+    {
+      "id": "cat-006",
+      "name": "Beauty & Wellness",
+      "icon": "sparkles",
+      "description": "Mehndi, makeup, skincare, and wellness services",
+      "skillCount": 16,
+      "popularSkills": ["Mehndi Art", "Makeup Artist", "Threading", "Hair Styling"]
+    },
+    {
+      "id": "cat-007",
+      "name": "Agriculture & Farming",
+      "icon": "leaf",
+      "description": "Organic farming, dairy, poultry, and agricultural skills",
+      "skillCount": 10,
+      "popularSkills": ["Organic Farming", "Dairy Management", "Poultry", "Mushroom Cultivation"]
+    },
+    {
+      "id": "cat-008",
+      "name": "Home Services",
+      "icon": "home",
+      "description": "Cleaning, childcare, elderly care, and household management",
+      "skillCount": 8,
+      "popularSkills": ["Childcare", "Elderly Care", "House Cleaning", "Event Decoration"]
+    }
+  ],
+  "skillSuggestions": [
+    {
+      "id": "sug-001",
+      "skillName": "Pickle & Papad Making",
+      "category": "Food & Cooking",
+      "categoryId": "cat-002",
+      "suggestionType": "ai-recommended",
+      "reason": "Based on your cooking skills and location, homemade pickles have high demand in your area",
+      "marketDemand": "high",
+      "earningPotential": {
+        "min": 8000,
+        "max": 20000,
+        "currency": "INR",
+        "period": "monthly"
+      },
+      "matchScore": 92
+    },
+    {
+      "id": "sug-002",
+      "skillName": "Blouse Designing",
+      "category": "Fashion & Textiles",
+      "categoryId": "cat-003",
+      "suggestionType": "ai-recommended",
+      "reason": "Your tailoring expertise makes this a natural extension with higher earning potential",
+      "marketDemand": "very-high",
+      "earningPotential": {
+        "min": 12000,
+        "max": 30000,
+        "currency": "INR",
+        "period": "monthly"
+      },
+      "matchScore": 88
+    },
+    {
+      "id": "sug-003",
+      "skillName": "Social Media Management",
+      "category": "Digital Services",
+      "categoryId": "cat-005",
+      "suggestionType": "ai-recommended",
+      "reason": "Your data entry skills can be expanded to social media work with a short course",
+      "marketDemand": "high",
+      "earningPotential": {
+        "min": 10000,
+        "max": 25000,
+        "currency": "INR",
+        "period": "monthly"
+      },
+      "matchScore": 75
+    },
+    {
+      "id": "sug-004",
+      "skillName": "Resin Art & Jewelry",
+      "category": "Handicrafts & Art",
+      "categoryId": "cat-001",
+      "suggestionType": "trending",
+      "reason": "Trending skill with 150% growth in demand this year",
+      "marketDemand": "very-high",
+      "earningPotential": {
+        "min": 15000,
+        "max": 40000,
+        "currency": "INR",
+        "period": "monthly"
+      },
+      "trendingRank": 1
+    },
+    {
+      "id": "sug-005",
+      "skillName": "Online Tutoring",
+      "category": "Education & Tutoring",
+      "categoryId": "cat-004",
+      "suggestionType": "trending",
+      "reason": "Remote learning demand continues to grow, especially for vernacular language tutoring",
+      "marketDemand": "high",
+      "earningPotential": {
+        "min": 8000,
+        "max": 22000,
+        "currency": "INR",
+        "period": "monthly"
+      },
+      "trendingRank": 2
+    },
+    {
+      "id": "sug-006",
+      "skillName": "Sustainable Packaging",
+      "category": "Handicrafts & Art",
+      "categoryId": "cat-001",
+      "suggestionType": "trending",
+      "reason": "Eco-friendly packaging is in high demand from e-commerce sellers and businesses",
+      "marketDemand": "high",
+      "earningPotential": {
+        "min": 10000,
+        "max": 28000,
+        "currency": "INR",
+        "period": "monthly"
+      },
+      "trendingRank": 3
+    }
+  ],
+  "relatedCourses": [
+    {
+      "id": "course-001",
+      "title": "Advanced Boutique Tailoring",
+      "thumbnail": "/images/courses/tailoring-advanced.jpg",
+      "duration": "6 weeks",
+      "level": "Advanced",
+      "rating": 4.8,
+      "enrolledCount": 1250
+    },
+    {
+      "id": "course-002",
+      "title": "Digital Literacy Fundamentals",
+      "thumbnail": "/images/courses/digital-literacy.jpg",
+      "duration": "4 weeks",
+      "level": "Beginner",
+      "rating": 4.6,
+      "enrolledCount": 3400
+    },
+    {
+      "id": "course-003",
+      "title": "Bridal Mehndi Masterclass",
+      "thumbnail": "/images/courses/mehndi-bridal.jpg",
+      "duration": "3 weeks",
+      "level": "Intermediate",
+      "rating": 4.9,
+      "enrolledCount": 890
+    },
+    {
+      "id": "course-004",
+      "title": "Start Your Tiffin Business",
+      "thumbnail": "/images/courses/tiffin-business.jpg",
+      "duration": "2 weeks",
+      "level": "Beginner",
+      "rating": 4.7,
+      "enrolledCount": 2100
+    }
+  ],
+  "validationMethods": [
+    {
+      "id": "val-ai",
+      "type": "ai-assessment",
+      "name": "AI Skill Assessment",
+      "description": "Complete an AI-powered test to demonstrate your skill level",
+      "duration": "15-30 minutes",
+      "icon": "brain"
+    },
+    {
+      "id": "val-doc",
+      "type": "document",
+      "name": "Certificate Upload",
+      "description": "Upload certificates, training documents, or work samples",
+      "duration": "5 minutes",
+      "icon": "file-text"
+    },
+    {
+      "id": "val-video",
+      "type": "video",
+      "name": "Video Demonstration",
+      "description": "Record a short video showcasing your skill",
+      "duration": "10-20 minutes",
+      "icon": "video"
+    }
+  ]
+}

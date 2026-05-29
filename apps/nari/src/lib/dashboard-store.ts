@@ -20,7 +20,7 @@ const initialData: DashboardData = {
       id: 'step-skill-discovery',
       title: 'Discover your skills',
       description: 'Complete an AI-powered skill assessment to find out what you can offer.',
-      targetSection: 'skill-discovery',
+      targetSection: 'skills',
       completed: true,
     },
     {
@@ -34,7 +34,7 @@ const initialData: DashboardData = {
       id: 'step-financing',
       title: 'Explore financing options',
       description: 'Check your loan eligibility and apply for your first micro-loan.',
-      targetSection: 'financing',
+      targetSection: 'finance',
       completed: false,
     },
   ],
@@ -103,7 +103,7 @@ const initialData: DashboardData = {
     title: 'Complete Module 3 in Digital Marketing',
     description:
       "You're 60% through — finish Module 3 to earn your certificate and unlock advanced seller tools.",
-    targetSection: 'elearning',
+    targetSection: 'learn',
     targetLabel: 'Resume Course',
     progressPercent: 60,
   },
@@ -152,7 +152,7 @@ const initialData: DashboardData = {
       message:
         "You've completed 60% of 'Digital Marketing Basics' — finishing it unlocks the Certified Seller badge.",
       ctaLabel: 'Resume Course',
-      targetSection: 'elearning',
+      targetSection: 'learn',
       potentialBoost: null,
     },
     {
@@ -160,7 +160,7 @@ const initialData: DashboardData = {
       message:
         'Your repayment history makes you eligible for a ₹50,000 business expansion loan. Apply before June 30.',
       ctaLabel: 'Check Eligibility',
-      targetSection: 'financing',
+      targetSection: 'finance',
       potentialBoost: 'Up to ₹50,000',
     },
   ],

@@ -1,0 +1,1240 @@
+{
+  "_meta": {
+    "models": {
+      "sellerProfile": "The seller's portfolio and storefront page, including bio, branding, skills, social links, and store customization.",
+      "listings": "Products, services, or digital offerings for sale. Each listing has images, optional video, pricing, and inventory details.",
+      "videos": "TikTok-style short videos where sellers showcase, explain, or demo their products and services.",
+      "orders": "Purchases made through the marketplace, tracking status from placed to delivered.",
+      "reviews": "Customer reviews with star ratings, text feedback, and optional photos/videos.",
+      "categories": "Product categories for organizing and browsing the marketplace catalog.",
+      "coupons": "Discount codes and promotional offers created by sellers.",
+      "liveStreams": "Live selling sessions where sellers demo products in real-time with chat and instant buy.",
+      "analyticsSummary": "Seller dashboard analytics including views, orders, revenue, and trends.",
+      "cartItems": "Items added to the shopping cart by buyers."
+    },
+    "relationships": [
+      "SellerProfile belongs to a User and contains many Listings",
+      "Each Listing can have multiple Videos showcasing it",
+      "Orders reference Listings and track buyer/seller information",
+      "Reviews belong to Listings and are written by buyers",
+      "Listings belong to Categories",
+      "Coupons are created by sellers and can apply to specific Listings or store-wide",
+      "LiveStreams are hosted by sellers and feature multiple Listings",
+      "CartItems reference Listings and belong to a buyer's session"
+    ]
+  },
+  "sellerProfile": {
+    "id": "seller-001",
+    "userId": "user-001",
+    "storeName": "Priya's Creations",
+    "tagline": "Handcrafted with love from Jaipur",
+    "bio": "I'm Priya, a third-generation artisan from Jaipur specializing in traditional block printing and embroidery. What started as learning from my grandmother has now become my passion and livelihood. Every piece I create carries the essence of Rajasthani craftsmanship passed down through generations.",
+    "profileImage": "/images/sellers/priya-profile.jpg",
+    "coverImage": "/images/sellers/priya-cover.jpg",
+    "skills": ["Block Printing", "Embroidery", "Fabric Dyeing", "Traditional Crafts"],
+    "location": {
+      "city": "Jaipur",
+      "state": "Rajasthan",
+      "pincode": "302001"
+    },
+    "socialLinks": {
+      "instagram": "priyascreations_jaipur",
+      "whatsapp": "+919876543210",
+      "youtube": null
+    },
+    "brandColors": {
+      "primary": "#E91E63",
+      "secondary": "#FFC107"
+    },
+    "badges": ["Verified Seller", "Top Rated", "Quick Shipper"],
+    "rating": 4.8,
+    "totalReviews": 156,
+    "totalSales": 423,
+    "memberSince": "2023-03-15",
+    "responseTime": "Usually responds within 2 hours",
+    "shippingPolicy": "Ships within 2-3 business days. Free shipping on orders above ₹999.",
+    "returnPolicy": "7-day easy returns for unused items in original packaging.",
+    "ondcRegistered": true,
+    "ondcSellerId": "ONDC-RAJ-2024-0892"
+  },
+  "listings": [
+    {
+      "id": "listing-001",
+      "sellerId": "seller-001",
+      "type": "product",
+      "title": "Hand Block Printed Cotton Saree - Indigo Blue",
+      "description": "Exquisite hand block printed cotton saree featuring traditional Bagru prints in indigo blue. Made with natural dyes and soft cotton fabric, perfect for daily wear or casual occasions. Each piece is unique with slight variations that reflect the handcrafted nature.",
+      "category": "Fashion & Textiles",
+      "categoryId": "cat-001",
+      "subcategory": "Sarees",
+      "images": [
+        "/images/products/saree-indigo-1.jpg",
+        "/images/products/saree-indigo-2.jpg",
+        "/images/products/saree-indigo-3.jpg"
+      ],
+      "video": "/videos/products/saree-indigo-demo.mp4",
+      "price": 1299,
+      "compareAtPrice": 1599,
+      "currency": "INR",
+      "inventory": {
+        "quantity": 12,
+        "lowStockThreshold": 5,
+        "sku": "PCS-SAR-IND-001"
+      },
+      "variants": [
+        { "name": "Color", "options": ["Indigo Blue", "Maroon", "Mustard Yellow"] }
+      ],
+      "specifications": {
+        "Material": "100% Cotton",
+        "Length": "5.5 meters with blouse piece",
+        "Care": "Hand wash separately in cold water",
+        "Origin": "Bagru, Rajasthan"
+      },
+      "tags": ["handmade", "block print", "cotton", "natural dye", "saree", "traditional"],
+      "status": "active",
+      "featured": true,
+      "views": 1247,
+      "wishlistCount": 89,
+      "soldCount": 34,
+      "rating": 4.9,
+      "reviewCount": 28,
+      "shippingWeight": 400,
+      "ondcCategoryId": "Apparel:Sarees",
+      "createdAt": "2024-06-15T10:30:00Z",
+      "updatedAt": "2024-11-20T14:00:00Z"
+    },
+    {
+      "id": "listing-002",
+      "sellerId": "seller-001",
+      "type": "product",
+      "title": "Embroidered Cushion Covers - Set of 2",
+      "description": "Beautiful hand-embroidered cushion covers featuring traditional Rajasthani mirror work and colorful thread embroidery. Each cover is crafted with attention to detail, adding a vibrant touch to your home decor.",
+      "category": "Home & Living",
+      "categoryId": "cat-002",
+      "subcategory": "Cushion Covers",
+      "images": [
+        "/images/products/cushion-embroidery-1.jpg",
+        "/images/products/cushion-embroidery-2.jpg"
+      ],
+      "video": null,
+      "price": 599,
+      "compareAtPrice": null,
+      "currency": "INR",
+      "inventory": {
+        "quantity": 25,
+        "lowStockThreshold": 5,
+        "sku": "PCS-CUS-EMB-002"
+      },
+      "variants": [
+        { "name": "Size", "options": ["16x16 inch", "18x18 inch"] }
+      ],
+      "specifications": {
+        "Material": "Cotton with mirror work",
+        "Closure": "Zip closure",
+        "Care": "Dry clean recommended"
+      },
+      "tags": ["cushion cover", "embroidery", "mirror work", "home decor"],
+      "status": "active",
+      "featured": false,
+      "views": 567,
+      "wishlistCount": 42,
+      "soldCount": 67,
+      "rating": 4.7,
+      "reviewCount": 19,
+      "shippingWeight": 300,
+      "ondcCategoryId": "Home:Furnishing",
+      "createdAt": "2024-07-20T09:00:00Z",
+      "updatedAt": "2024-11-15T11:30:00Z"
+    },
+    {
+      "id": "listing-003",
+      "sellerId": "seller-001",
+      "type": "service",
+      "title": "Custom Block Printing Workshop - Online",
+      "description": "Learn the art of traditional Rajasthani block printing from your home! This 3-hour online workshop covers fabric preparation, ink mixing, block handling techniques, and creating your own printed fabric piece. All materials kit shipped to your address before the session.",
+      "category": "Services",
+      "categoryId": "cat-003",
+      "subcategory": "Workshops",
+      "images": [
+        "/images/services/workshop-block-1.jpg",
+        "/images/services/workshop-block-2.jpg"
+      ],
+      "video": "/videos/services/workshop-preview.mp4",
+      "price": 1499,
+      "compareAtPrice": 1999,
+      "currency": "INR",
+      "inventory": {
+        "quantity": 8,
+        "lowStockThreshold": 2,
+        "sku": "PCS-WRK-BLK-003"
+      },
+      "variants": [
+        { "name": "Session", "options": ["Weekend Batch", "Weekday Evening"] }
+      ],
+      "specifications": {
+        "Duration": "3 hours",
+        "Mode": "Online via Zoom",
+        "Kit Included": "Fabric, blocks, natural dyes, brushes",
+        "Batch Size": "Max 10 participants"
+      },
+      "tags": ["workshop", "online class", "block printing", "learn", "craft"],
+      "status": "active",
+      "featured": true,
+      "views": 423,
+      "wishlistCount": 31,
+      "soldCount": 45,
+      "rating": 4.9,
+      "reviewCount": 38,
+      "shippingWeight": 0,
+      "ondcCategoryId": "Services:Education",
+      "createdAt": "2024-08-01T12:00:00Z",
+      "updatedAt": "2024-11-18T16:00:00Z"
+    },
+    {
+      "id": "listing-004",
+      "sellerId": "seller-001",
+      "type": "product",
+      "title": "Block Print Fabric - 5 Meter Cut",
+      "description": "Premium quality hand block printed cotton fabric in a beautiful floral pattern. Perfect for making kurtas, dresses, or home furnishing projects. Natural vegetable dyes ensure eco-friendly and skin-safe material.",
+      "category": "Fashion & Textiles",
+      "categoryId": "cat-001",
+      "subcategory": "Fabric",
+      "images": [
+        "/images/products/fabric-floral-1.jpg",
+        "/images/products/fabric-floral-2.jpg"
+      ],
+      "video": null,
+      "price": 899,
+      "compareAtPrice": null,
+      "currency": "INR",
+      "inventory": {
+        "quantity": 0,
+        "lowStockThreshold": 3,
+        "sku": "PCS-FAB-FLR-004"
+      },
+      "variants": [
+        { "name": "Pattern", "options": ["Blue Floral", "Red Paisley", "Green Leaves"] }
+      ],
+      "specifications": {
+        "Material": "100% Cotton",
+        "Width": "44 inches",
+        "Length": "5 meters",
+        "Dye": "Natural vegetable dyes"
+      },
+      "tags": ["fabric", "block print", "cotton", "DIY", "natural dye"],
+      "status": "out_of_stock",
+      "featured": false,
+      "views": 312,
+      "wishlistCount": 56,
+      "soldCount": 89,
+      "rating": 4.6,
+      "reviewCount": 12,
+      "shippingWeight": 350,
+      "ondcCategoryId": "Fashion:Fabrics",
+      "createdAt": "2024-05-10T08:00:00Z",
+      "updatedAt": "2024-11-22T10:00:00Z"
+    },
+    {
+      "id": "listing-005",
+      "sellerId": "seller-001",
+      "type": "digital",
+      "title": "Block Printing Pattern Templates - Digital Download",
+      "description": "Collection of 25 traditional Rajasthani block printing patterns in high-resolution PDF format. Includes floral, paisley, geometric, and animal motifs. Perfect for crafters, designers, and DIY enthusiasts who want to create their own printing blocks.",
+      "category": "Digital Products",
+      "categoryId": "cat-004",
+      "subcategory": "Templates",
+      "images": [
+        "/images/digital/patterns-preview-1.jpg",
+        "/images/digital/patterns-preview-2.jpg"
+      ],
+      "video": null,
+      "price": 299,
+      "compareAtPrice": 499,
+      "currency": "INR",
+      "inventory": {
+        "quantity": 999,
+        "lowStockThreshold": 0,
+        "sku": "PCS-DIG-PAT-005"
+      },
+      "variants": [],
+      "specifications": {
+        "Format": "PDF (High Resolution)",
+        "Patterns": "25 unique designs",
+        "Size": "A4 printable",
+        "License": "Personal and small business use"
+      },
+      "tags": ["digital download", "patterns", "templates", "block print", "DIY"],
+      "status": "active",
+      "featured": false,
+      "views": 678,
+      "wishlistCount": 23,
+      "soldCount": 156,
+      "rating": 4.8,
+      "reviewCount": 45,
+      "shippingWeight": 0,
+      "ondcCategoryId": "Digital:Templates",
+      "createdAt": "2024-04-20T14:00:00Z",
+      "updatedAt": "2024-10-05T09:00:00Z"
+    },
+    {
+      "id": "listing-006",
+      "sellerId": "seller-001",
+      "type": "product",
+      "title": "Handmade Jewelry Box - Wooden with Embroidery",
+      "description": "Elegant wooden jewelry box topped with hand-embroidered fabric featuring traditional Rajasthani patterns. The interior is lined with soft velvet and includes a ring holder, earring slots, and a spacious compartment for necklaces and bangles.",
+      "category": "Home & Living",
+      "categoryId": "cat-002",
+      "subcategory": "Storage & Organization",
+      "images": [
+        "/images/products/jewelry-box-1.jpg",
+        "/images/products/jewelry-box-2.jpg",
+        "/images/products/jewelry-box-3.jpg"
+      ],
+      "video": "/videos/products/jewelry-box-demo.mp4",
+      "price": 1199,
+      "compareAtPrice": 1499,
+      "currency": "INR",
+      "inventory": {
+        "quantity": 7,
+        "lowStockThreshold": 3,
+        "sku": "PCS-JWB-EMB-006"
+      },
+      "variants": [
+        { "name": "Color", "options": ["Maroon & Gold", "Blue & Silver", "Pink & White"] }
+      ],
+      "specifications": {
+        "Material": "Wood with embroidered fabric top",
+        "Size": "8 x 6 x 4 inches",
+        "Interior": "Velvet lined",
+        "Features": "Ring holder, earring slots, main compartment"
+      },
+      "tags": ["jewelry box", "storage", "handmade", "embroidery", "gift"],
+      "status": "active",
+      "featured": true,
+      "views": 534,
+      "wishlistCount": 67,
+      "soldCount": 28,
+      "rating": 4.9,
+      "reviewCount": 15,
+      "shippingWeight": 600,
+      "ondcCategoryId": "Home:Storage",
+      "createdAt": "2024-09-10T11:00:00Z",
+      "updatedAt": "2024-11-19T15:00:00Z"
+    },
+    {
+      "id": "listing-007",
+      "sellerId": "seller-001",
+      "type": "product",
+      "title": "Cotton Table Runner - Block Printed",
+      "description": "Elegant hand block printed table runner featuring a traditional geometric pattern in earthy tones. Made from premium cotton fabric with natural dyes, it adds a touch of Indian craftsmanship to your dining table.",
+      "category": "Home & Living",
+      "categoryId": "cat-002",
+      "subcategory": "Table Linen",
+      "images": [
+        "/images/products/table-runner-1.jpg"
+      ],
+      "video": null,
+      "price": 449,
+      "compareAtPrice": null,
+      "currency": "INR",
+      "inventory": {
+        "quantity": 18,
+        "lowStockThreshold": 5,
+        "sku": "PCS-TBR-BLK-007"
+      },
+      "variants": [
+        { "name": "Length", "options": ["4 feet", "6 feet"] }
+      ],
+      "specifications": {
+        "Material": "100% Cotton",
+        "Width": "14 inches",
+        "Care": "Machine wash cold"
+      },
+      "tags": ["table runner", "block print", "dining", "home decor"],
+      "status": "active",
+      "featured": false,
+      "views": 234,
+      "wishlistCount": 19,
+      "soldCount": 41,
+      "rating": 4.5,
+      "reviewCount": 8,
+      "shippingWeight": 200,
+      "ondcCategoryId": "Home:TableLinen",
+      "createdAt": "2024-10-01T10:00:00Z",
+      "updatedAt": "2024-11-10T12:00:00Z"
+    },
+    {
+      "id": "listing-008",
+      "sellerId": "seller-001",
+      "type": "product",
+      "title": "Handmade Potli Bags - Set of 3",
+      "description": "Set of 3 beautiful handmade potli bags in different sizes, perfect for gifting, wedding favors, or storing small items. Each bag features intricate embroidery with mirror work and drawstring closure.",
+      "category": "Fashion & Textiles",
+      "categoryId": "cat-001",
+      "subcategory": "Bags",
+      "images": [
+        "/images/products/potli-bags-1.jpg",
+        "/images/products/potli-bags-2.jpg"
+      ],
+      "video": null,
+      "price": 399,
+      "compareAtPrice": 499,
+      "currency": "INR",
+      "inventory": {
+        "quantity": 35,
+        "lowStockThreshold": 10,
+        "sku": "PCS-POT-SET-008"
+      },
+      "variants": [
+        { "name": "Color Set", "options": ["Royal Mix", "Pastel Mix", "Traditional Mix"] }
+      ],
+      "specifications": {
+        "Material": "Silk with embroidery",
+        "Sizes": "Small (4in), Medium (6in), Large (8in)",
+        "Closure": "Drawstring"
+      },
+      "tags": ["potli bags", "gift bags", "wedding", "embroidery", "set"],
+      "status": "draft",
+      "featured": false,
+      "views": 0,
+      "wishlistCount": 0,
+      "soldCount": 0,
+      "rating": 0,
+      "reviewCount": 0,
+      "shippingWeight": 150,
+      "ondcCategoryId": "Fashion:Bags",
+      "createdAt": "2024-11-20T16:00:00Z",
+      "updatedAt": "2024-11-20T16:00:00Z"
+    }
+  ],
+  "videos": [
+    {
+      "id": "video-001",
+      "sellerId": "seller-001",
+      "listingId": "listing-001",
+      "title": "Making of Indigo Block Print Saree",
+      "description": "Watch the traditional process of creating our signature indigo block printed saree",
+      "thumbnailUrl": "/images/videos/thumb-saree-making.jpg",
+      "videoUrl": "/videos/feed/saree-making.mp4",
+      "duration": 45,
+      "views": 12500,
+      "likes": 890,
+      "comments": 67,
+      "shares": 234,
+      "isLive": false,
+      "products": ["listing-001"],
+      "createdAt": "2024-10-15T14:00:00Z"
+    },
+    {
+      "id": "video-002",
+      "sellerId": "seller-001",
+      "listingId": "listing-003",
+      "title": "Block Printing Workshop Highlights",
+      "description": "See what you'll learn in our online block printing workshop!",
+      "thumbnailUrl": "/images/videos/thumb-workshop.jpg",
+      "videoUrl": "/videos/feed/workshop-highlights.mp4",
+      "duration": 32,
+      "views": 8900,
+      "likes": 567,
+      "comments": 89,
+      "shares": 156,
+      "isLive": false,
+      "products": ["listing-003"],
+      "createdAt": "2024-10-20T11:00:00Z"
+    },
+    {
+      "id": "video-003",
+      "sellerId": "seller-001",
+      "listingId": "listing-006",
+      "title": "Unboxing Handmade Jewelry Box",
+      "description": "A customer shares her unboxing experience of our embroidered jewelry box",
+      "thumbnailUrl": "/images/videos/thumb-unboxing.jpg",
+      "videoUrl": "/videos/feed/jewelry-unboxing.mp4",
+      "duration": 28,
+      "views": 5600,
+      "likes": 445,
+      "comments": 34,
+      "shares": 89,
+      "isLive": false,
+      "products": ["listing-006"],
+      "createdAt": "2024-11-01T09:00:00Z"
+    },
+    {
+      "id": "video-004",
+      "sellerId": "seller-001",
+      "listingId": null,
+      "title": "My Journey as an Artisan",
+      "description": "From learning from my grandmother to building Priya's Creations - my entrepreneurial story",
+      "thumbnailUrl": "/images/videos/thumb-story.jpg",
+      "videoUrl": "/videos/feed/my-story.mp4",
+      "duration": 120,
+      "views": 23400,
+      "likes": 2100,
+      "comments": 189,
+      "shares": 567,
+      "isLive": false,
+      "products": [],
+      "createdAt": "2024-09-15T16:00:00Z"
+    },
+    {
+      "id": "video-005",
+      "sellerId": "seller-001",
+      "listingId": "listing-002",
+      "title": "How Mirror Work Embroidery is Done",
+      "description": "Traditional Rajasthani mirror work technique for our cushion covers",
+      "thumbnailUrl": "/images/videos/thumb-mirror.jpg",
+      "videoUrl": "/videos/feed/mirror-work.mp4",
+      "duration": 55,
+      "views": 7800,
+      "likes": 623,
+      "comments": 45,
+      "shares": 178,
+      "isLive": false,
+      "products": ["listing-002"],
+      "createdAt": "2024-10-28T13:00:00Z"
+    },
+    {
+      "id": "video-006",
+      "sellerId": "seller-001",
+      "listingId": "listing-004",
+      "title": "Fabric Quality Check - Natural Dyes",
+      "description": "How we ensure our block print fabrics are 100% natural and eco-friendly",
+      "thumbnailUrl": "/images/videos/thumb-quality.jpg",
+      "videoUrl": "/videos/feed/quality-check.mp4",
+      "duration": 38,
+      "views": 4200,
+      "likes": 312,
+      "comments": 28,
+      "shares": 67,
+      "isLive": false,
+      "products": ["listing-004"],
+      "createdAt": "2024-11-05T10:00:00Z"
+    }
+  ],
+  "orders": [
+    {
+      "id": "order-001",
+      "orderNumber": "SHK-2024-78542",
+      "sellerId": "seller-001",
+      "buyerId": "buyer-101",
+      "buyerName": "Anjali Mehta",
+      "buyerEmail": "anjali.m@email.com",
+      "buyerPhone": "+919876543211",
+      "items": [
+        {
+          "listingId": "listing-001",
+          "title": "Hand Block Printed Cotton Saree - Indigo Blue",
+          "variant": "Indigo Blue",
+          "quantity": 1,
+          "price": 1299,
+          "image": "/images/products/saree-indigo-1.jpg"
+        }
+      ],
+      "subtotal": 1299,
+      "shipping": 0,
+      "discount": 0,
+      "couponCode": null,
+      "total": 1299,
+      "currency": "INR",
+      "paymentMethod": "UPI",
+      "paymentStatus": "paid",
+      "status": "delivered",
+      "shippingAddress": {
+        "name": "Anjali Mehta",
+        "line1": "42, Vasant Kunj",
+        "line2": "Sector C",
+        "city": "New Delhi",
+        "state": "Delhi",
+        "pincode": "110070",
+        "phone": "+919876543211"
+      },
+      "tracking": {
+        "carrier": "Delhivery",
+        "trackingNumber": "DL789456123",
+        "estimatedDelivery": "2024-11-18",
+        "currentStatus": "Delivered",
+        "lastUpdate": "2024-11-17T14:30:00Z"
+      },
+      "timeline": [
+        { "status": "placed", "timestamp": "2024-11-14T10:30:00Z" },
+        { "status": "confirmed", "timestamp": "2024-11-14T11:00:00Z" },
+        { "status": "shipped", "timestamp": "2024-11-15T09:00:00Z" },
+        { "status": "out_for_delivery", "timestamp": "2024-11-17T08:00:00Z" },
+        { "status": "delivered", "timestamp": "2024-11-17T14:30:00Z" }
+      ],
+      "createdAt": "2024-11-14T10:30:00Z"
+    },
+    {
+      "id": "order-002",
+      "orderNumber": "SHK-2024-78601",
+      "sellerId": "seller-001",
+      "buyerId": "buyer-102",
+      "buyerName": "Ritu Singh",
+      "buyerEmail": "ritu.s@email.com",
+      "buyerPhone": "+919876543212",
+      "items": [
+        {
+          "listingId": "listing-002",
+          "title": "Embroidered Cushion Covers - Set of 2",
+          "variant": "16x16 inch",
+          "quantity": 2,
+          "price": 599,
+          "image": "/images/products/cushion-embroidery-1.jpg"
+        },
+        {
+          "listingId": "listing-007",
+          "title": "Cotton Table Runner - Block Printed",
+          "variant": "6 feet",
+          "quantity": 1,
+          "price": 449,
+          "image": "/images/products/table-runner-1.jpg"
+        }
+      ],
+      "subtotal": 1647,
+      "shipping": 0,
+      "discount": 165,
+      "couponCode": "DIWALI10",
+      "total": 1482,
+      "currency": "INR",
+      "paymentMethod": "Card",
+      "paymentStatus": "paid",
+      "status": "shipped",
+      "shippingAddress": {
+        "name": "Ritu Singh",
+        "line1": "15, MG Road",
+        "line2": "Koramangala",
+        "city": "Bangalore",
+        "state": "Karnataka",
+        "pincode": "560034",
+        "phone": "+919876543212"
+      },
+      "tracking": {
+        "carrier": "BlueDart",
+        "trackingNumber": "BD456789012",
+        "estimatedDelivery": "2024-11-24",
+        "currentStatus": "In Transit",
+        "lastUpdate": "2024-11-21T16:00:00Z"
+      },
+      "timeline": [
+        { "status": "placed", "timestamp": "2024-11-19T15:00:00Z" },
+        { "status": "confirmed", "timestamp": "2024-11-19T15:30:00Z" },
+        { "status": "shipped", "timestamp": "2024-11-20T10:00:00Z" }
+      ],
+      "createdAt": "2024-11-19T15:00:00Z"
+    },
+    {
+      "id": "order-003",
+      "orderNumber": "SHK-2024-78623",
+      "sellerId": "seller-001",
+      "buyerId": "buyer-103",
+      "buyerName": "Kavita Sharma",
+      "buyerEmail": "kavita.s@email.com",
+      "buyerPhone": "+919876543213",
+      "items": [
+        {
+          "listingId": "listing-003",
+          "title": "Custom Block Printing Workshop - Online",
+          "variant": "Weekend Batch",
+          "quantity": 1,
+          "price": 1499,
+          "image": "/images/services/workshop-block-1.jpg"
+        }
+      ],
+      "subtotal": 1499,
+      "shipping": 99,
+      "discount": 0,
+      "couponCode": null,
+      "total": 1598,
+      "currency": "INR",
+      "paymentMethod": "UPI",
+      "paymentStatus": "paid",
+      "status": "processing",
+      "shippingAddress": {
+        "name": "Kavita Sharma",
+        "line1": "78, Andheri West",
+        "line2": "Near Metro Station",
+        "city": "Mumbai",
+        "state": "Maharashtra",
+        "pincode": "400053",
+        "phone": "+919876543213"
+      },
+      "tracking": null,
+      "timeline": [
+        { "status": "placed", "timestamp": "2024-11-21T12:00:00Z" },
+        { "status": "confirmed", "timestamp": "2024-11-21T12:15:00Z" },
+        { "status": "processing", "timestamp": "2024-11-21T14:00:00Z", "note": "Workshop kit being prepared" }
+      ],
+      "createdAt": "2024-11-21T12:00:00Z"
+    },
+    {
+      "id": "order-004",
+      "orderNumber": "SHK-2024-78589",
+      "sellerId": "seller-001",
+      "buyerId": "buyer-104",
+      "buyerName": "Deepa Patel",
+      "buyerEmail": "deepa.p@email.com",
+      "buyerPhone": "+919876543214",
+      "items": [
+        {
+          "listingId": "listing-006",
+          "title": "Handmade Jewelry Box - Wooden with Embroidery",
+          "variant": "Maroon & Gold",
+          "quantity": 1,
+          "price": 1199,
+          "image": "/images/products/jewelry-box-1.jpg"
+        }
+      ],
+      "subtotal": 1199,
+      "shipping": 0,
+      "discount": 0,
+      "couponCode": null,
+      "total": 1199,
+      "currency": "INR",
+      "paymentMethod": "COD",
+      "paymentStatus": "pending",
+      "status": "confirmed",
+      "shippingAddress": {
+        "name": "Deepa Patel",
+        "line1": "23, Satellite Road",
+        "line2": "",
+        "city": "Ahmedabad",
+        "state": "Gujarat",
+        "pincode": "380015",
+        "phone": "+919876543214"
+      },
+      "tracking": null,
+      "timeline": [
+        { "status": "placed", "timestamp": "2024-11-22T09:00:00Z" },
+        { "status": "confirmed", "timestamp": "2024-11-22T09:30:00Z" }
+      ],
+      "createdAt": "2024-11-22T09:00:00Z"
+    },
+    {
+      "id": "order-005",
+      "orderNumber": "SHK-2024-78456",
+      "sellerId": "seller-001",
+      "buyerId": "buyer-105",
+      "buyerName": "Meera Reddy",
+      "buyerEmail": "meera.r@email.com",
+      "buyerPhone": "+919876543215",
+      "items": [
+        {
+          "listingId": "listing-005",
+          "title": "Block Printing Pattern Templates - Digital Download",
+          "variant": null,
+          "quantity": 1,
+          "price": 299,
+          "image": "/images/digital/patterns-preview-1.jpg"
+        }
+      ],
+      "subtotal": 299,
+      "shipping": 0,
+      "discount": 0,
+      "couponCode": null,
+      "total": 299,
+      "currency": "INR",
+      "paymentMethod": "Wallet",
+      "paymentStatus": "paid",
+      "status": "completed",
+      "shippingAddress": null,
+      "tracking": null,
+      "timeline": [
+        { "status": "placed", "timestamp": "2024-11-10T18:00:00Z" },
+        { "status": "completed", "timestamp": "2024-11-10T18:00:00Z", "note": "Digital download link sent" }
+      ],
+      "createdAt": "2024-11-10T18:00:00Z"
+    },
+    {
+      "id": "order-006",
+      "orderNumber": "SHK-2024-78398",
+      "sellerId": "seller-001",
+      "buyerId": "buyer-106",
+      "buyerName": "Sunita Joshi",
+      "buyerEmail": "sunita.j@email.com",
+      "buyerPhone": "+919876543216",
+      "items": [
+        {
+          "listingId": "listing-001",
+          "title": "Hand Block Printed Cotton Saree - Indigo Blue",
+          "variant": "Maroon",
+          "quantity": 1,
+          "price": 1299,
+          "image": "/images/products/saree-indigo-1.jpg"
+        }
+      ],
+      "subtotal": 1299,
+      "shipping": 0,
+      "discount": 0,
+      "couponCode": null,
+      "total": 1299,
+      "currency": "INR",
+      "paymentMethod": "UPI",
+      "paymentStatus": "refunded",
+      "status": "returned",
+      "shippingAddress": {
+        "name": "Sunita Joshi",
+        "line1": "56, Civil Lines",
+        "line2": "",
+        "city": "Lucknow",
+        "state": "Uttar Pradesh",
+        "pincode": "226001",
+        "phone": "+919876543216"
+      },
+      "tracking": null,
+      "timeline": [
+        { "status": "placed", "timestamp": "2024-11-01T14:00:00Z" },
+        { "status": "confirmed", "timestamp": "2024-11-01T14:30:00Z" },
+        { "status": "shipped", "timestamp": "2024-11-02T09:00:00Z" },
+        { "status": "delivered", "timestamp": "2024-11-05T11:00:00Z" },
+        { "status": "return_requested", "timestamp": "2024-11-06T10:00:00Z", "note": "Color different from expectation" },
+        { "status": "returned", "timestamp": "2024-11-10T15:00:00Z" }
+      ],
+      "createdAt": "2024-11-01T14:00:00Z"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "review-001",
+      "listingId": "listing-001",
+      "orderId": "order-001",
+      "buyerId": "buyer-101",
+      "buyerName": "Anjali M.",
+      "rating": 5,
+      "title": "Absolutely beautiful saree!",
+      "content": "The quality exceeded my expectations. The block printing is so intricate and the colors are vibrant yet subtle. Wore it for a family function and received so many compliments. Priya also included a handwritten thank you note which was such a lovely touch!",
+      "images": [
+        "/images/reviews/review-001-1.jpg",
+        "/images/reviews/review-001-2.jpg"
+      ],
+      "helpfulCount": 24,
+      "verified": true,
+      "sellerResponse": {
+        "content": "Thank you so much Anjali! I'm thrilled you loved the saree. It was made with extra care especially for you. Looking forward to serving you again!",
+        "timestamp": "2024-11-18T10:00:00Z"
+      },
+      "createdAt": "2024-11-18T09:00:00Z"
+    },
+    {
+      "id": "review-002",
+      "listingId": "listing-003",
+      "orderId": "order-workshop-001",
+      "buyerId": "buyer-107",
+      "buyerName": "Priyanka S.",
+      "rating": 5,
+      "title": "Best online workshop I've attended!",
+      "content": "Priya is an amazing teacher. She explained each step so clearly and was patient with all our questions. The kit arrived well-packed and had everything we needed. I've already started my own block printing projects at home. Highly recommend for anyone wanting to learn this beautiful art form.",
+      "images": [
+        "/images/reviews/review-002-1.jpg"
+      ],
+      "helpfulCount": 18,
+      "verified": true,
+      "sellerResponse": {
+        "content": "Priyanka, seeing your creations made my day! You picked up the technique so quickly. Can't wait to see more of your work!",
+        "timestamp": "2024-10-25T14:00:00Z"
+      },
+      "createdAt": "2024-10-25T11:00:00Z"
+    },
+    {
+      "id": "review-003",
+      "listingId": "listing-002",
+      "orderId": "order-cushion-001",
+      "buyerId": "buyer-108",
+      "buyerName": "Geeta R.",
+      "rating": 4,
+      "title": "Beautiful work, minor delay in shipping",
+      "content": "The cushion covers are gorgeous - the mirror work catches light beautifully. Only giving 4 stars because shipping took a bit longer than expected. But the quality definitely makes up for it.",
+      "images": [],
+      "helpfulCount": 8,
+      "verified": true,
+      "sellerResponse": {
+        "content": "Thank you for your feedback Geeta. I apologize for the shipping delay - we had high demand during the festive season. I'm glad you love the cushion covers!",
+        "timestamp": "2024-10-15T16:00:00Z"
+      },
+      "createdAt": "2024-10-15T12:00:00Z"
+    },
+    {
+      "id": "review-004",
+      "listingId": "listing-005",
+      "orderId": "order-digital-001",
+      "buyerId": "buyer-109",
+      "buyerName": "Archana K.",
+      "rating": 5,
+      "title": "Perfect for my DIY projects",
+      "content": "These pattern templates are exactly what I was looking for. High quality PDFs with clear lines. I've already made 3 printing blocks using these designs. Great value for money!",
+      "images": [
+        "/images/reviews/review-004-1.jpg",
+        "/images/reviews/review-004-2.jpg",
+        "/images/reviews/review-004-3.jpg"
+      ],
+      "helpfulCount": 31,
+      "verified": true,
+      "sellerResponse": null,
+      "createdAt": "2024-09-20T08:00:00Z"
+    },
+    {
+      "id": "review-005",
+      "listingId": "listing-006",
+      "orderId": "order-jewelry-001",
+      "buyerId": "buyer-110",
+      "buyerName": "Nisha T.",
+      "rating": 5,
+      "title": "Perfect gift for my mom",
+      "content": "Bought this as a birthday gift for my mother and she absolutely loved it. The embroidery work is stunning and the velvet interior is so soft. The box is much more beautiful in person than in photos. Will definitely order more as gifts!",
+      "images": [
+        "/images/reviews/review-005-1.jpg"
+      ],
+      "helpfulCount": 15,
+      "verified": true,
+      "sellerResponse": {
+        "content": "That's so sweet Nisha! Wishing your mom a very happy birthday. Thank you for choosing Priya's Creations for this special gift!",
+        "timestamp": "2024-11-08T11:00:00Z"
+      },
+      "createdAt": "2024-11-07T19:00:00Z"
+    },
+    {
+      "id": "review-006",
+      "listingId": "listing-001",
+      "orderId": "order-saree-002",
+      "buyerId": "buyer-111",
+      "buyerName": "Lakshmi V.",
+      "rating": 5,
+      "title": "Authentic Rajasthani craftsmanship",
+      "content": "As someone from Rajasthan, I can vouch for the authenticity of Priya's work. The block printing technique is traditional Bagru style and the natural dyes give it that distinctive earthy smell. Reminds me of my grandmother's sarees!",
+      "images": [],
+      "helpfulCount": 42,
+      "verified": true,
+      "sellerResponse": null,
+      "createdAt": "2024-10-02T16:00:00Z"
+    },
+    {
+      "id": "review-007",
+      "listingId": "listing-003",
+      "orderId": "order-workshop-002",
+      "buyerId": "buyer-112",
+      "buyerName": "Divya M.",
+      "rating": 4,
+      "title": "Great learning experience",
+      "content": "Really enjoyed the workshop. The kit was comprehensive and Priya was very helpful. Would have liked slightly longer session time to practice more, but overall a wonderful experience. The recordings shared after were very useful.",
+      "images": [
+        "/images/reviews/review-007-1.jpg"
+      ],
+      "helpfulCount": 11,
+      "verified": true,
+      "sellerResponse": {
+        "content": "Thank you Divya! Based on feedback like yours, we're planning an advanced workshop with longer practice sessions. Would love to have you join!",
+        "timestamp": "2024-09-18T10:00:00Z"
+      },
+      "createdAt": "2024-09-17T14:00:00Z"
+    },
+    {
+      "id": "review-008",
+      "listingId": "listing-007",
+      "orderId": "order-runner-001",
+      "buyerId": "buyer-113",
+      "buyerName": "Smita D.",
+      "rating": 5,
+      "title": "Elegant addition to my dining table",
+      "content": "Simple yet elegant table runner. The geometric pattern goes well with my modern furniture. Washes well without fading. Very happy with the purchase.",
+      "images": [],
+      "helpfulCount": 6,
+      "verified": true,
+      "sellerResponse": null,
+      "createdAt": "2024-11-12T09:00:00Z"
+    },
+    {
+      "id": "review-009",
+      "listingId": "listing-002",
+      "orderId": "order-cushion-002",
+      "buyerId": "buyer-114",
+      "buyerName": "Rekha P.",
+      "rating": 5,
+      "title": "Stunning mirror work!",
+      "content": "The photos don't do justice to how beautiful these cushion covers are. The mirror work sparkles in the light. My living room looks so much more vibrant now. Already planning to order more in different colors!",
+      "images": [
+        "/images/reviews/review-009-1.jpg",
+        "/images/reviews/review-009-2.jpg"
+      ],
+      "helpfulCount": 19,
+      "verified": true,
+      "sellerResponse": {
+        "content": "Rekha, your styling is gorgeous! Thank you for sharing. We have new colors coming next month - will keep you posted!",
+        "timestamp": "2024-10-30T15:00:00Z"
+      },
+      "createdAt": "2024-10-29T11:00:00Z"
+    },
+    {
+      "id": "review-010",
+      "listingId": "listing-005",
+      "orderId": "order-digital-002",
+      "buyerId": "buyer-115",
+      "buyerName": "Anu B.",
+      "rating": 3,
+      "title": "Good patterns but expected more variety",
+      "content": "The quality of the PDFs is good and the patterns are nice. However, I was hoping for more variety in the motifs. Most are traditional - would have liked some contemporary designs too. Still useful for my projects though.",
+      "images": [],
+      "helpfulCount": 5,
+      "verified": true,
+      "sellerResponse": {
+        "content": "Thank you for the honest feedback Anu! We're working on a contemporary collection that will have modern geometric and abstract patterns. Stay tuned!",
+        "timestamp": "2024-08-22T12:00:00Z"
+      },
+      "createdAt": "2024-08-21T17:00:00Z"
+    }
+  ],
+  "categories": [
+    {
+      "id": "cat-001",
+      "name": "Fashion & Textiles",
+      "slug": "fashion-textiles",
+      "icon": "shirt",
+      "description": "Clothing, sarees, fabrics, and fashion accessories",
+      "subcategories": ["Sarees", "Fabric", "Bags", "Accessories"],
+      "productCount": 1245,
+      "image": "/images/categories/fashion.jpg"
+    },
+    {
+      "id": "cat-002",
+      "name": "Home & Living",
+      "slug": "home-living",
+      "icon": "home",
+      "description": "Home decor, furnishing, and lifestyle products",
+      "subcategories": ["Cushion Covers", "Table Linen", "Storage & Organization", "Wall Decor"],
+      "productCount": 892,
+      "image": "/images/categories/home.jpg"
+    },
+    {
+      "id": "cat-003",
+      "name": "Services",
+      "slug": "services",
+      "icon": "briefcase",
+      "description": "Workshops, consultations, and skilled services",
+      "subcategories": ["Workshops", "Custom Orders", "Consultations", "Rentals"],
+      "productCount": 456,
+      "image": "/images/categories/services.jpg"
+    },
+    {
+      "id": "cat-004",
+      "name": "Digital Products",
+      "slug": "digital-products",
+      "icon": "download",
+      "description": "Digital downloads, templates, and e-courses",
+      "subcategories": ["Templates", "Patterns", "E-books", "Video Courses"],
+      "productCount": 234,
+      "image": "/images/categories/digital.jpg"
+    },
+    {
+      "id": "cat-005",
+      "name": "Food & Beverages",
+      "slug": "food-beverages",
+      "icon": "utensils",
+      "description": "Homemade food, pickles, snacks, and beverages",
+      "subcategories": ["Pickles & Chutneys", "Snacks", "Sweets", "Spices"],
+      "productCount": 567,
+      "image": "/images/categories/food.jpg"
+    },
+    {
+      "id": "cat-006",
+      "name": "Beauty & Wellness",
+      "slug": "beauty-wellness",
+      "icon": "sparkles",
+      "description": "Beauty services, handmade cosmetics, and wellness products",
+      "subcategories": ["Mehndi Services", "Skincare", "Haircare", "Aromatherapy"],
+      "productCount": 345,
+      "image": "/images/categories/beauty.jpg"
+    },
+    {
+      "id": "cat-007",
+      "name": "Jewelry & Accessories",
+      "slug": "jewelry-accessories",
+      "icon": "gem",
+      "description": "Handmade jewelry, traditional ornaments, and accessories",
+      "subcategories": ["Necklaces", "Earrings", "Bangles", "Hair Accessories"],
+      "productCount": 678,
+      "image": "/images/categories/jewelry.jpg"
+    },
+    {
+      "id": "cat-008",
+      "name": "Art & Crafts",
+      "slug": "art-crafts",
+      "icon": "palette",
+      "description": "Handmade art, paintings, and craft supplies",
+      "subcategories": ["Paintings", "Sculptures", "Craft Supplies", "Stationery"],
+      "productCount": 432,
+      "image": "/images/categories/art.jpg"
+    }
+  ],
+  "coupons": [
+    {
+      "id": "coupon-001",
+      "code": "DIWALI10",
+      "type": "percentage",
+      "value": 10,
+      "minOrderValue": 500,
+      "maxDiscount": 200,
+      "description": "Diwali Special: 10% off on orders above ₹500",
+      "usageLimit": 100,
+      "usedCount": 67,
+      "validFrom": "2024-10-20T00:00:00Z",
+      "validUntil": "2024-11-30T23:59:59Z",
+      "status": "active",
+      "applicableListings": "all"
+    },
+    {
+      "id": "coupon-002",
+      "code": "FIRSTORDER",
+      "type": "percentage",
+      "value": 15,
+      "minOrderValue": 0,
+      "maxDiscount": 300,
+      "description": "15% off on your first order!",
+      "usageLimit": null,
+      "usedCount": 156,
+      "validFrom": "2024-01-01T00:00:00Z",
+      "validUntil": "2024-12-31T23:59:59Z",
+      "status": "active",
+      "applicableListings": "all"
+    },
+    {
+      "id": "coupon-003",
+      "code": "FREESHIP",
+      "type": "free_shipping",
+      "value": 0,
+      "minOrderValue": 799,
+      "maxDiscount": 99,
+      "description": "Free shipping on orders above ₹799",
+      "usageLimit": null,
+      "usedCount": 234,
+      "validFrom": "2024-01-01T00:00:00Z",
+      "validUntil": "2024-12-31T23:59:59Z",
+      "status": "active",
+      "applicableListings": "all"
+    },
+    {
+      "id": "coupon-004",
+      "code": "WORKSHOP20",
+      "type": "percentage",
+      "value": 20,
+      "minOrderValue": 0,
+      "maxDiscount": 500,
+      "description": "20% off on all workshops",
+      "usageLimit": 50,
+      "usedCount": 50,
+      "validFrom": "2024-09-01T00:00:00Z",
+      "validUntil": "2024-10-31T23:59:59Z",
+      "status": "expired",
+      "applicableListings": ["listing-003"]
+    }
+  ],
+  "liveStreams": [
+    {
+      "id": "live-001",
+      "sellerId": "seller-001",
+      "title": "Live: New Saree Collection Reveal!",
+      "description": "Join me as I unveil our winter collection of hand block printed sarees. Exclusive live discounts!",
+      "thumbnailUrl": "/images/live/saree-collection-thumb.jpg",
+      "status": "live",
+      "viewerCount": 234,
+      "likeCount": 89,
+      "startedAt": "2024-11-22T15:00:00Z",
+      "scheduledDuration": 60,
+      "featuredProducts": ["listing-001", "listing-004"],
+      "chatEnabled": true
+    },
+    {
+      "id": "live-002",
+      "sellerId": "seller-001",
+      "title": "Upcoming: Behind the Scenes - Block Printing Process",
+      "description": "Ever wondered how block printing is done? Watch me create a new design from scratch!",
+      "thumbnailUrl": "/images/live/bts-thumb.jpg",
+      "status": "scheduled",
+      "viewerCount": 0,
+      "likeCount": 0,
+      "scheduledAt": "2024-11-25T11:00:00Z",
+      "scheduledDuration": 45,
+      "featuredProducts": ["listing-004", "listing-005"],
+      "chatEnabled": true,
+      "reminderCount": 56
+    }
+  ],
+  "analyticsSummary": {
+    "period": "last_30_days",
+    "overview": {
+      "totalViews": 4567,
+      "viewsChange": 12.5,
+      "totalOrders": 89,
+      "ordersChange": 8.3,
+      "totalRevenue": 78450,
+      "revenueChange": 15.2,
+      "conversionRate": 1.95,
+      "conversionChange": 0.3
+    },
+    "topProducts": [
+      { "listingId": "listing-001", "title": "Hand Block Printed Cotton Saree", "sales": 34, "revenue": 44166 },
+      { "listingId": "listing-002", "title": "Embroidered Cushion Covers", "sales": 67, "revenue": 40133 },
+      { "listingId": "listing-003", "title": "Block Printing Workshop", "sales": 45, "revenue": 67455 }
+    ],
+    "trafficSources": [
+      { "source": "ONDC Network", "percentage": 35 },
+      { "source": "Direct", "percentage": 28 },
+      { "source": "Social Media", "percentage": 22 },
+      { "source": "Search", "percentage": 15 }
+    ],
+    "revenueByDay": [
+      { "date": "2024-11-15", "revenue": 2450 },
+      { "date": "2024-11-16", "revenue": 3200 },
+      { "date": "2024-11-17", "revenue": 1890 },
+      { "date": "2024-11-18", "revenue": 4560 },
+      { "date": "2024-11-19", "revenue": 3780 },
+      { "date": "2024-11-20", "revenue": 2340 },
+      { "date": "2024-11-21", "revenue": 5670 }
+    ],
+    "aiInsights": [
+      {
+        "type": "opportunity",
+        "title": "High demand for sarees this week",
+        "description": "Saree searches are up 45% due to wedding season. Consider featuring your saree collection.",
+        "action": "Promote Sarees"
+      },
+      {
+        "type": "alert",
+        "title": "Low stock alert",
+        "description": "Block Print Fabric is out of stock with 56 wishlist saves. Restock to capture potential sales.",
+        "action": "Restock Now"
+      },
+      {
+        "type": "suggestion",
+        "title": "Price optimization",
+        "description": "Your cushion covers are priced 15% below market average. Consider a small price increase.",
+        "action": "Review Pricing"
+      }
+    ],
+    "keywordRankings": [
+      { "keyword": "block print saree", "rank": 3, "change": 2, "searchVolume": 12000 },
+      { "keyword": "handmade cushion covers", "rank": 5, "change": -1, "searchVolume": 8500 },
+      { "keyword": "rajasthani crafts", "rank": 8, "change": 4, "searchVolume": 6200 },
+      { "keyword": "block printing workshop", "rank": 1, "change": 0, "searchVolume": 3400 }
+    ]
+  },
+  "cartItems": [
+    {
+      "id": "cart-001",
+      "listingId": "listing-001",
+      "sellerId": "seller-001",
+      "title": "Hand Block Printed Cotton Saree - Indigo Blue",
+      "variant": "Mustard Yellow",
+      "image": "/images/products/saree-indigo-1.jpg",
+      "price": 1299,
+      "quantity": 1
+    },
+    {
+      "id": "cart-002",
+      "listingId": "listing-006",
+      "sellerId": "seller-001",
+      "title": "Handmade Jewelry Box - Wooden with Embroidery",
+      "variant": "Blue & Silver",
+      "image": "/images/products/jewelry-box-1.jpg",
+      "price": 1199,
+      "quantity": 2
+    }
+  ]
+}

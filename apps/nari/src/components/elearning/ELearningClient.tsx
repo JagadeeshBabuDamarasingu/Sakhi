@@ -54,7 +54,7 @@ export function ELearningClient({ data }: { data: ELearningData }) {
   }, [])
 
   const handleViewCourse = useCallback((courseId: string) => {
-    router.push(`/elearning/courses/${courseId}`)
+    router.push(`/learn/courses/${courseId}`)
   }, [router])
 
   const handleEnrollCourse = useCallback(async (courseId: string) => {
@@ -66,11 +66,11 @@ export function ELearningClient({ data }: { data: ELearningData }) {
   }, [])
 
   const handleContinueCourse = useCallback((courseId: string) => {
-    router.push(`/elearning/courses/${courseId}/play`)
+    router.push(`/learn/courses/${courseId}/play`)
   }, [router])
 
   const handleViewSession = useCallback((sessionId: string) => {
-    router.push(`/elearning/sessions/${sessionId}`)
+    router.push(`/learn/sessions/${sessionId}`)
   }, [router])
 
   const handleRegisterSession = useCallback(async (sessionId: string) => {
@@ -103,7 +103,7 @@ export function ELearningClient({ data }: { data: ELearningData }) {
   }, [data.badges])
 
   const handleOpenCalendar = useCallback(() => {
-    router.push('/elearning/calendar')
+    router.push('/learn/calendar')
   }, [router])
 
   return (
@@ -121,7 +121,7 @@ export function ELearningClient({ data }: { data: ELearningData }) {
               {coachRec.message}
             </p>
             <button
-              onClick={() => router.push(`/elearning/courses/${coachRec.courseId}`)}
+              onClick={() => router.push(`/learn/courses/${coachRec.courseId}`)}
               className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
             >
               Start {coachRec.title}

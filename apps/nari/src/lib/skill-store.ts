@@ -1,4 +1,4 @@
-import sampleData from '../../product-plan/sections/skill-discovery/sample-data.json'
+import sampleData from '@/data/skill-data.json'
 import type {
   Skill,
   SkillCategory,

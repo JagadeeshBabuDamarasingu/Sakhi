@@ -1,4 +1,4 @@
-import sampleData from '../../product-plan/sections/marketplace/sample-data.json'
+import sampleData from '@/data/marketplace-data.json'
 import type {
   AnalyticsSummary,
   Listing,

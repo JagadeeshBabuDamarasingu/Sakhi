@@ -56,15 +56,15 @@ const TOOL_DEFINITIONS: Record<
     requiresConfirmation: boolean
   }
 > = {
-  suggest_skill: { riskLevel: 'low', targetSection: 'skill-discovery', requiresConfirmation: false },
-  add_skill: { riskLevel: 'medium', targetSection: 'skill-discovery', requiresConfirmation: true },
-  recommend_course: { riskLevel: 'low', targetSection: 'elearning', requiresConfirmation: false },
-  enroll_course: { riskLevel: 'medium', targetSection: 'elearning', requiresConfirmation: true },
+  suggest_skill: { riskLevel: 'low', targetSection: 'skills', requiresConfirmation: false },
+  add_skill: { riskLevel: 'medium', targetSection: 'skills', requiresConfirmation: true },
+  recommend_course: { riskLevel: 'low', targetSection: 'learn', requiresConfirmation: false },
+  enroll_course: { riskLevel: 'medium', targetSection: 'learn', requiresConfirmation: true },
   draft_listing: { riskLevel: 'low', targetSection: 'marketplace', requiresConfirmation: false },
   publish_listing: { riskLevel: 'high', targetSection: 'marketplace', requiresConfirmation: true },
   create_marketplace_insight: { riskLevel: 'low', targetSection: 'marketplace', requiresConfirmation: false },
-  suggest_loan_type: { riskLevel: 'low', targetSection: 'financing', requiresConfirmation: false },
-  start_loan_application: { riskLevel: 'high', targetSection: 'financing', requiresConfirmation: true },
+  suggest_loan_type: { riskLevel: 'low', targetSection: 'finance', requiresConfirmation: false },
+  start_loan_application: { riskLevel: 'high', targetSection: 'finance', requiresConfirmation: true },
   create_dashboard_recommendation: { riskLevel: 'low', targetSection: 'dashboard', requiresConfirmation: false },
 }
 
@@ -547,8 +547,8 @@ function buildSystemPrompt(purpose: AiPurpose, language: string, context: unknow
 
 function actionTypeForSection(section: AiTargetSection) {
   if (section === 'marketplace') return 'listing' as const
-  if (section === 'elearning') return 'course' as const
-  if (section === 'financing') return 'financing' as const
+  if (section === 'learn') return 'course' as const
+  if (section === 'finance') return 'financing' as const
   return 'assessment' as const
 }
 

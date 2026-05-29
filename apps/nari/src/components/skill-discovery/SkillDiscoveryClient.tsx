@@ -100,7 +100,7 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
     setLoading(true)
 
     try {
-      const res = await fetch('/api/ai/skill-discovery', {
+      const res = await fetch('/api/ai/skills', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: userMsg }),
@@ -344,10 +344,10 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
         onDismissSuggestion={(id) =>
           setSkillSuggestions((prev) => prev.filter((s) => s.id !== id))
         }
-        onNavigateToLearning={() => router.push('/elearning')}
-        onViewCourse={(id) => router.push(`/elearning/courses/${id}`)}
+        onNavigateToLearning={() => router.push('/learn')}
+        onViewCourse={(id) => router.push(`/learn/courses/${id}`)}
         onViewListing={(id) => router.push(`/marketplace/listings/${id}`)}
-        onViewSkill={(id) => router.push(`/skill-discovery/${id}`)}
+        onViewSkill={(id) => router.push(`/skills/${id}`)}
         onDeleteSkill={handleDeleteSkill}
         onValidateSkill={handleOpenValidation}
         onEditSkill={handleOpenEdit}
@@ -373,8 +373,8 @@ export function SkillDiscoveryClient({ data }: { data: SkillDiscoveryData }) {
           }
           setSkills((prev) => [newSkill, ...prev])
         }}
-        onBrowseCategory={(catId) => router.push(`/skill-discovery?category=${catId}`)}
-        onSearchSkill={(q) => router.push(`/skill-discovery?q=${encodeURIComponent(q)}`)}
+        onBrowseCategory={(catId) => router.push(`/skills?category=${catId}`)}
+        onSearchSkill={(q) => router.push(`/skills?q=${encodeURIComponent(q)}`)}
       />
 
       {/* ──────────────── AI Chat Modal ──────────────── */}

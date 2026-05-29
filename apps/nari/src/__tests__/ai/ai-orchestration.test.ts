@@ -179,7 +179,7 @@ describe('AI orchestration', () => {
     await sendAiMessage(first.id, 'create a recommendation', {
       requestedTool: {
         toolName: 'create_dashboard_recommendation',
-        arguments: { message: 'Try product photography', ctaLabel: 'View Course', targetSection: 'elearning' },
+        arguments: { message: 'Try product photography', ctaLabel: 'View Course', targetSection: 'learn' },
       },
     })
 
@@ -187,7 +187,7 @@ describe('AI orchestration', () => {
     const response = await sendAiMessage(second.id, 'create another recommendation', {
       requestedTool: {
         toolName: 'create_dashboard_recommendation',
-        arguments: { message: 'Try WhatsApp Business', ctaLabel: 'View Course', targetSection: 'elearning' },
+        arguments: { message: 'Try WhatsApp Business', ctaLabel: 'View Course', targetSection: 'learn' },
       },
     })
 

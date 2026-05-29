@@ -30,7 +30,7 @@ export function FinancingClient({ data }: { data: FinancingData }) {
   const [confirmLoading, setConfirmLoading] = useState(false)
 
   useEffect(() => {
-    fetch('/api/ai/financing/coach', { method: 'POST' })
+    fetch('/api/ai/finance/coach', { method: 'POST' })
       .then((res) => (res.ok ? res.json() : null))
       .then((result: CoachResult | null) => {
         if (result?.message) setCoachResult(result)
@@ -39,7 +39,7 @@ export function FinancingClient({ data }: { data: FinancingData }) {
   }, [])
 
   const handleApplyForLoan = useCallback(async (type: LoanType) => {
-    const res = await fetch('/api/financing/apply', {
+    const res = await fetch('/api/finance/apply', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ type }),
@@ -47,24 +47,24 @@ export function FinancingClient({ data }: { data: FinancingData }) {
     if (!res.ok) return
 
     const { applicationId } = await res.json()
-    router.push(`/financing/apply/${applicationId}`)
+    router.push(`/finance/apply/${applicationId}`)
   }, [router])
 
   const handlePayEmi = useCallback(async (loanId: string) => {
-    const res = await fetch(`/api/financing/loans/${loanId}/pay`, { method: 'POST' })
+    const res = await fetch(`/api/finance/loans/${loanId}/pay`, { method: 'POST' })
     if (res.ok) router.refresh()
   }, [router])
 
   const handleEarlyRepayment = useCallback((loanId: string) => {
-    router.push(`/financing/loans/${loanId}/close`)
+    router.push(`/finance/loans/${loanId}/close`)
   }, [router])
 
   const handleManageMandate = useCallback((loanId: string) => {
-    router.push(`/financing/loans/${loanId}/mandate`)
+    router.push(`/finance/loans/${loanId}/mandate`)
   }, [router])
 
   const handleDownloadDocument = useCallback(async (loanId: string, type: 'statement' | 'noc') => {
-    const res = await fetch(`/api/financing/loans/${loanId}/${type}`)
+    const res = await fetch(`/api/finance/loans/${loanId}/${type}`)
     if (!res.ok) return
 
     const blob = await res.blob()
@@ -77,12 +77,12 @@ export function FinancingClient({ data }: { data: FinancingData }) {
   }, [])
 
   const handleCheckEligibility = useCallback(async () => {
-    const res = await fetch('/api/financing/eligibility')
-    if (res.ok) router.push('/financing/eligibility')
+    const res = await fetch('/api/finance/eligibility')
+    if (res.ok) router.push('/finance/eligibility')
   }, [router])
 
   const handleAcceptCreditLadder = useCallback(async () => {
-    const res = await fetch('/api/financing/profile', { method: 'POST' })
+    const res = await fetch('/api/finance/profile', { method: 'POST' })
     if (res.ok) router.refresh()
   }, [router])
 

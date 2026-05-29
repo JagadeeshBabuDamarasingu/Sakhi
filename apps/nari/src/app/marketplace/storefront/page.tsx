@@ -1,18 +1,8 @@
 import { StorefrontClient } from './StorefrontClient'
-
-const BASE = process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:3000'
-
-async function getStorefrontData() {
-  const [profileRes, listingsRes] = await Promise.all([
-    fetch(`${BASE}/api/seller/profile`, { cache: 'no-store' }),
-    fetch(`${BASE}/api/seller/listings`, { cache: 'no-store' }),
-  ])
-  const sellerProfile = profileRes.ok ? await profileRes.json() : null
-  const listings = listingsRes.ok ? await listingsRes.json() : []
-  return { sellerProfile, listings }
-}
+import { getSellerProfile, getSellerListings } from '@/lib/marketplace-store'
 
 export default async function StorefrontPage() {
-  const data = await getStorefrontData()
-  return <StorefrontClient data={data} />
+  const sellerProfile = getSellerProfile()
+  const listings = getSellerListings()
+  return <StorefrontClient data={{ sellerProfile, listings }} />
 }

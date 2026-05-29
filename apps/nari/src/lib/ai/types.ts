@@ -15,7 +15,7 @@ export type AiPurpose =
 export type AiSessionStatus = 'active' | 'closed'
 export type AiToolCallStatus = 'proposed' | 'pending_confirmation' | 'executed' | 'cancelled' | 'failed'
 export type AiRiskLevel = 'low' | 'medium' | 'high'
-export type AiTargetSection = 'dashboard' | 'skill-discovery' | 'marketplace' | 'elearning' | 'financing'
+export type AiTargetSection = 'dashboard' | 'skills' | 'marketplace' | 'learn' | 'finance'
 
 export interface AiSession {
   id: string

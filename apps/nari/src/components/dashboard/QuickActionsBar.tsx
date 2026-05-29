@@ -8,7 +8,7 @@ const ACTIONS = [
   {
     Icon: LuBookOpen,
     label: 'Resume course',
-    section: 'elearning',
+    section: 'learn',
     color: 'text-primary',
     bg: 'bg-primary/10',
     hoverBg: 'hover:bg-primary/15',
@@ -24,7 +24,7 @@ const ACTIONS = [
   {
     Icon: LuLandmark,
     label: 'Check loan',
-    section: 'financing',
+    section: 'finance',
     color: 'text-success',
     bg: 'bg-success/15',
     hoverBg: 'hover:bg-success/20',
@@ -32,7 +32,7 @@ const ACTIONS = [
   {
     Icon: LuSparkles,
     label: 'Assess skills',
-    section: 'skill-discovery',
+    section: 'skills',
     color: 'text-info',
     bg: 'bg-info/15',
     hoverBg: 'hover:bg-info/20',

@@ -31,10 +31,10 @@ export function AppShell({
 
   const navigationItems = [
     { label: t('nav.dashboard'), href: '/dashboard', icon: <HiOutlineSquares2X2 className="w-5 h-5" />, isActive: currentPath === '/dashboard' },
-    { label: t('nav.elearning'), href: '/elearning', icon: <HiOutlineAcademicCap className="w-5 h-5" />, isActive: currentPath === '/elearning' },
+    { label: t('nav.learn'), href: '/learn', icon: <HiOutlineAcademicCap className="w-5 h-5" />, isActive: currentPath === '/learn' },
     { label: t('nav.marketplace'), href: '/marketplace', icon: <HiOutlineBuildingStorefront className="w-5 h-5" />, isActive: currentPath === '/marketplace' },
-    { label: t('nav.financing'), href: '/financing', icon: <HiOutlineWallet className="w-5 h-5" />, isActive: currentPath === '/financing' },
-    { label: t('nav.ai-orchestration'), href: '/ai-orchestration', icon: <HiOutlineCpuChip className="w-5 h-5" />, isActive: currentPath === '/ai-orchestration' },
+    { label: t('nav.finance'), href: '/finance', icon: <HiOutlineWallet className="w-5 h-5" />, isActive: currentPath === '/finance' },
+    { label: t('nav.ai'), href: '/ai', icon: <HiOutlineCpuChip className="w-5 h-5" />, isActive: currentPath === '/ai' },
   ]
 
   return (

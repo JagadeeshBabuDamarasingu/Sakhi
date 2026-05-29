@@ -1,4 +1,4 @@
-import sampleData from '../../product-plan/sections/financing/sample-data.json'
+import sampleData from '@/data/financing-data.json'
 import type {
   LenderOffer,
   Loan,

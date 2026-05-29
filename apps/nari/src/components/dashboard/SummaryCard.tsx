@@ -41,7 +41,7 @@ export function SummaryCard({ metrics, agentActions, streak, onNavigateTo }: Sum
       sub: 'active actions',
       color: 'text-violet-600 dark:text-violet-400',
       bg: 'bg-violet-50 dark:bg-violet-950/40',
-      section: 'ai-orchestration',
+      section: 'ai',
     },
     {
       icon: <LuBookOpen className="w-4 h-4" />,
@@ -50,7 +50,7 @@ export function SummaryCard({ metrics, agentActions, streak, onNavigateTo }: Sum
       sub: 'in progress',
       color: 'text-secondary',
       bg: 'bg-secondary/10',
-      section: 'elearning',
+      section: 'learn',
     },
     {
       icon: <LuShoppingBag className="w-4 h-4" />,
