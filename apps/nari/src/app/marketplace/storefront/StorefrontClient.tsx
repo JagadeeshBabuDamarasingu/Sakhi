@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
 import {
   HiOutlineArrowLeft,
@@ -28,17 +29,20 @@ function StarRating({ rating }: { rating: number }) {
 }
 
 function ListingCard({ listing }: { listing: Listing }) {
+  const [imgIndex, setImgIndex] = useState(0)
+  const images = listing.images.slice(0, 5)
   const hasDiscount = listing.compareAtPrice && listing.compareAtPrice > listing.price
   const discountPct = hasDiscount
     ? Math.round(((listing.compareAtPrice! - listing.price) / listing.compareAtPrice!) * 100)
     : 0
+  const totalMedia = images.length + (listing.video ? 1 : 0)
 
   return (
     <div className="bg-base-100 rounded-2xl overflow-hidden ring-1 ring-base-300 hover:shadow-md hover:ring-stone-200 dark:hover:ring-stone-700 transition-all group cursor-pointer">
       <div className="relative aspect-square bg-base-200 overflow-hidden">
-        {listing.images[0] ? (
+        {images[imgIndex] ? (
           <img
-            src={listing.images[0]}
+            src={images[imgIndex]}
             alt={listing.title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
@@ -60,6 +64,23 @@ function ListingCard({ listing }: { listing: Listing }) {
         <button className="absolute bottom-2 right-2 w-8 h-8 bg-white/90/90 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-sm">
           <HiOutlineHeart className="w-4 h-4 text-rose-500" />
         </button>
+        {/* Dot indicators for multiple images/video */}
+        {totalMedia > 1 && (
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-1">
+            {images.map((_, i) => (
+              <button
+                key={i}
+                onClick={(e) => { e.stopPropagation(); setImgIndex(i) }}
+                className={`w-1.5 h-1.5 rounded-full transition-all ${
+                  imgIndex === i ? 'bg-white scale-125' : 'bg-white/50'
+                }`}
+              />
+            ))}
+            {listing.video && (
+              <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
+            )}
+          </div>
+        )}
       </div>
       <div className="p-3">
         <p className="text-xs text-base-content/40 mb-0.5">{listing.category}</p>

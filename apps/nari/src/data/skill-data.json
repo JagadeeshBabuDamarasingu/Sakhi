@@ -321,7 +321,7 @@
     {
       "id": "course-001",
       "title": "Advanced Boutique Tailoring",
-      "thumbnail": "/images/courses/tailoring-advanced.jpg",
+      "thumbnail": "https://picsum.photos/seed/course-tailoring/800/450",
       "duration": "6 weeks",
       "level": "Advanced",
       "rating": 4.8,
@@ -330,7 +330,7 @@
     {
       "id": "course-002",
       "title": "Digital Literacy Fundamentals",
-      "thumbnail": "/images/courses/digital-literacy.jpg",
+      "thumbnail": "https://picsum.photos/seed/course-digital-literacy/800/450",
       "duration": "4 weeks",
       "level": "Beginner",
       "rating": 4.6,
@@ -339,7 +339,7 @@
     {
       "id": "course-003",
       "title": "Bridal Mehndi Masterclass",
-      "thumbnail": "/images/courses/mehndi-bridal.jpg",
+      "thumbnail": "https://picsum.photos/seed/course-mehndi/800/450",
       "duration": "3 weeks",
       "level": "Intermediate",
       "rating": 4.9,
@@ -348,7 +348,7 @@
     {
       "id": "course-004",
       "title": "Start Your Tiffin Business",
-      "thumbnail": "/images/courses/tiffin-business.jpg",
+      "thumbnail": "https://picsum.photos/seed/course-tiffin-biz/800/450",
       "duration": "2 weeks",
       "level": "Beginner",
       "rating": 4.7,

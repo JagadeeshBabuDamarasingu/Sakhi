@@ -29,8 +29,8 @@
     "storeName": "Priya's Creations",
     "tagline": "Handcrafted with love from Jaipur",
     "bio": "I'm Priya, a third-generation artisan from Jaipur specializing in traditional block printing and embroidery. What started as learning from my grandmother has now become my passion and livelihood. Every piece I create carries the essence of Rajasthani craftsmanship passed down through generations.",
-    "profileImage": "/images/sellers/priya-profile.jpg",
-    "coverImage": "/images/sellers/priya-cover.jpg",
+    "profileImage": "https://picsum.photos/seed/priya-profile/400/400",
+    "coverImage": "https://picsum.photos/seed/priya-cover/1200/400",
     "skills": ["Block Printing", "Embroidery", "Fabric Dyeing", "Traditional Crafts"],
     "location": {
       "city": "Jaipur",
@@ -68,9 +68,9 @@
       "categoryId": "cat-001",
       "subcategory": "Sarees",
       "images": [
-        "/images/products/saree-indigo-1.jpg",
-        "/images/products/saree-indigo-2.jpg",
-        "/images/products/saree-indigo-3.jpg"
+        "https://picsum.photos/seed/saree-indigo-front/800/600",
+        "https://picsum.photos/seed/saree-indigo-drape/800/600",
+        "https://picsum.photos/seed/saree-indigo-detail/800/600"
       ],
       "video": "/videos/products/saree-indigo-demo.mp4",
       "price": 1299,
@@ -113,8 +113,8 @@
       "categoryId": "cat-002",
       "subcategory": "Cushion Covers",
       "images": [
-        "/images/products/cushion-embroidery-1.jpg",
-        "/images/products/cushion-embroidery-2.jpg"
+        "https://picsum.photos/seed/cushion-embroidery-1/800/600",
+        "https://picsum.photos/seed/cushion-embroidery-2/800/600"
       ],
       "video": null,
       "price": 599,
@@ -156,8 +156,8 @@
       "categoryId": "cat-003",
       "subcategory": "Workshops",
       "images": [
-        "/images/services/workshop-block-1.jpg",
-        "/images/services/workshop-block-2.jpg"
+        "https://picsum.photos/seed/block-printing-craft/800/600",
+        "https://picsum.photos/seed/craft-workshop-group/800/600"
       ],
       "video": "/videos/services/workshop-preview.mp4",
       "price": 1499,
@@ -200,8 +200,8 @@
       "categoryId": "cat-001",
       "subcategory": "Fabric",
       "images": [
-        "/images/products/fabric-floral-1.jpg",
-        "/images/products/fabric-floral-2.jpg"
+        "https://picsum.photos/seed/fabric-floral-1/800/600",
+        "https://picsum.photos/seed/fabric-floral-2/800/600"
       ],
       "video": null,
       "price": 899,
@@ -244,8 +244,8 @@
       "categoryId": "cat-004",
       "subcategory": "Templates",
       "images": [
-        "/images/digital/patterns-preview-1.jpg",
-        "/images/digital/patterns-preview-2.jpg"
+        "https://picsum.photos/seed/block-printing-craft/800/600",
+        "https://picsum.photos/seed/fabric-floral-1/800/600"
       ],
       "video": null,
       "price": 299,
@@ -286,9 +286,9 @@
       "categoryId": "cat-002",
       "subcategory": "Storage & Organization",
       "images": [
-        "/images/products/jewelry-box-1.jpg",
-        "/images/products/jewelry-box-2.jpg",
-        "/images/products/jewelry-box-3.jpg"
+        "https://picsum.photos/seed/jewelry-box-1/800/600",
+        "https://picsum.photos/seed/jewelry-box-2/800/600",
+        "https://picsum.photos/seed/jewelry-box-3/800/600"
       ],
       "video": "/videos/products/jewelry-box-demo.mp4",
       "price": 1199,
@@ -331,7 +331,7 @@
       "categoryId": "cat-002",
       "subcategory": "Table Linen",
       "images": [
-        "/images/products/table-runner-1.jpg"
+        "https://picsum.photos/seed/table-runner/800/600"
       ],
       "video": null,
       "price": 449,
@@ -373,8 +373,8 @@
       "categoryId": "cat-001",
       "subcategory": "Bags",
       "images": [
-        "/images/products/potli-bags-1.jpg",
-        "/images/products/potli-bags-2.jpg"
+        "https://picsum.photos/seed/potli-bag-1/800/600",
+        "https://picsum.photos/seed/potli-bag-2/800/600"
       ],
       "video": null,
       "price": 399,
@@ -414,7 +414,7 @@
       "listingId": "listing-001",
       "title": "Making of Indigo Block Print Saree",
       "description": "Watch the traditional process of creating our signature indigo block printed saree",
-      "thumbnailUrl": "/images/videos/thumb-saree-making.jpg",
+      "thumbnailUrl": "https://picsum.photos/seed/saree-indigo-front/800/600",
       "videoUrl": "/videos/feed/saree-making.mp4",
       "duration": 45,
       "views": 12500,
@@ -431,7 +431,7 @@
       "listingId": "listing-003",
       "title": "Block Printing Workshop Highlights",
       "description": "See what you'll learn in our online block printing workshop!",
-      "thumbnailUrl": "/images/videos/thumb-workshop.jpg",
+      "thumbnailUrl": "https://picsum.photos/seed/craft-workshop-group/800/600",
       "videoUrl": "/videos/feed/workshop-highlights.mp4",
       "duration": 32,
       "views": 8900,
@@ -448,7 +448,7 @@
       "listingId": "listing-006",
       "title": "Unboxing Handmade Jewelry Box",
       "description": "A customer shares her unboxing experience of our embroidered jewelry box",
-      "thumbnailUrl": "/images/videos/thumb-unboxing.jpg",
+      "thumbnailUrl": "https://picsum.photos/seed/unboxing-video/800/600",
       "videoUrl": "/videos/feed/jewelry-unboxing.mp4",
       "duration": 28,
       "views": 5600,
@@ -465,7 +465,7 @@
       "listingId": null,
       "title": "My Journey as an Artisan",
       "description": "From learning from my grandmother to building Priya's Creations - my entrepreneurial story",
-      "thumbnailUrl": "/images/videos/thumb-story.jpg",
+      "thumbnailUrl": "https://picsum.photos/seed/founder-story/800/600",
       "videoUrl": "/videos/feed/my-story.mp4",
       "duration": 120,
       "views": 23400,
@@ -482,7 +482,7 @@
       "listingId": "listing-002",
       "title": "How Mirror Work Embroidery is Done",
       "description": "Traditional Rajasthani mirror work technique for our cushion covers",
-      "thumbnailUrl": "/images/videos/thumb-mirror.jpg",
+      "thumbnailUrl": "https://picsum.photos/seed/mirror-work/800/600",
       "videoUrl": "/videos/feed/mirror-work.mp4",
       "duration": 55,
       "views": 7800,
@@ -499,7 +499,7 @@
       "listingId": "listing-004",
       "title": "Fabric Quality Check - Natural Dyes",
       "description": "How we ensure our block print fabrics are 100% natural and eco-friendly",
-      "thumbnailUrl": "/images/videos/thumb-quality.jpg",
+      "thumbnailUrl": "https://picsum.photos/seed/quality-check/800/600",
       "videoUrl": "/videos/feed/quality-check.mp4",
       "duration": 38,
       "views": 4200,
@@ -527,7 +527,7 @@
           "variant": "Indigo Blue",
           "quantity": 1,
           "price": 1299,
-          "image": "/images/products/saree-indigo-1.jpg"
+          "image": "https://picsum.photos/seed/saree-indigo-front/800/600"
         }
       ],
       "subtotal": 1299,
@@ -579,7 +579,7 @@
           "variant": "16x16 inch",
           "quantity": 2,
           "price": 599,
-          "image": "/images/products/cushion-embroidery-1.jpg"
+          "image": "https://picsum.photos/seed/cushion-embroidery-1/800/600"
         },
         {
           "listingId": "listing-007",
@@ -587,7 +587,7 @@
           "variant": "6 feet",
           "quantity": 1,
           "price": 449,
-          "image": "/images/products/table-runner-1.jpg"
+          "image": "https://picsum.photos/seed/table-runner/800/600"
         }
       ],
       "subtotal": 1647,
@@ -637,7 +637,7 @@
           "variant": "Weekend Batch",
           "quantity": 1,
           "price": 1499,
-          "image": "/images/services/workshop-block-1.jpg"
+          "image": "https://picsum.photos/seed/block-printing-craft/800/600"
         }
       ],
       "subtotal": 1499,
@@ -681,7 +681,7 @@
           "variant": "Maroon & Gold",
           "quantity": 1,
           "price": 1199,
-          "image": "/images/products/jewelry-box-1.jpg"
+          "image": "https://picsum.photos/seed/jewelry-box-1/800/600"
         }
       ],
       "subtotal": 1199,
@@ -724,7 +724,7 @@
           "variant": null,
           "quantity": 1,
           "price": 299,
-          "image": "/images/digital/patterns-preview-1.jpg"
+          "image": "https://picsum.photos/seed/block-printing-craft/800/600"
         }
       ],
       "subtotal": 299,
@@ -759,7 +759,7 @@
           "variant": "Maroon",
           "quantity": 1,
           "price": 1299,
-          "image": "/images/products/saree-indigo-1.jpg"
+          "image": "https://picsum.photos/seed/saree-indigo-front/800/600"
         }
       ],
       "subtotal": 1299,
@@ -803,8 +803,8 @@
       "title": "Absolutely beautiful saree!",
       "content": "The quality exceeded my expectations. The block printing is so intricate and the colors are vibrant yet subtle. Wore it for a family function and received so many compliments. Priya also included a handwritten thank you note which was such a lovely touch!",
       "images": [
-        "/images/reviews/review-001-1.jpg",
-        "/images/reviews/review-001-2.jpg"
+        "https://picsum.photos/seed/saree-indigo-drape/800/600",
+        "https://picsum.photos/seed/saree-indigo-front/800/600"
       ],
       "helpfulCount": 24,
       "verified": true,
@@ -824,7 +824,7 @@
       "title": "Best online workshop I've attended!",
       "content": "Priya is an amazing teacher. She explained each step so clearly and was patient with all our questions. The kit arrived well-packed and had everything we needed. I've already started my own block printing projects at home. Highly recommend for anyone wanting to learn this beautiful art form.",
       "images": [
-        "/images/reviews/review-002-1.jpg"
+        "https://picsum.photos/seed/block-printing-craft/800/600"
       ],
       "helpfulCount": 18,
       "verified": true,
@@ -862,9 +862,9 @@
       "title": "Perfect for my DIY projects",
       "content": "These pattern templates are exactly what I was looking for. High quality PDFs with clear lines. I've already made 3 printing blocks using these designs. Great value for money!",
       "images": [
-        "/images/reviews/review-004-1.jpg",
-        "/images/reviews/review-004-2.jpg",
-        "/images/reviews/review-004-3.jpg"
+        "https://picsum.photos/seed/fabric-floral-1/800/600",
+        "https://picsum.photos/seed/block-printing-craft/800/600",
+        "https://picsum.photos/seed/fabric-floral-2/800/600"
       ],
       "helpfulCount": 31,
       "verified": true,
@@ -881,7 +881,7 @@
       "title": "Perfect gift for my mom",
       "content": "Bought this as a birthday gift for my mother and she absolutely loved it. The embroidery work is stunning and the velvet interior is so soft. The box is much more beautiful in person than in photos. Will definitely order more as gifts!",
       "images": [
-        "/images/reviews/review-005-1.jpg"
+        "https://picsum.photos/seed/jewelry-box-1/800/600"
       ],
       "helpfulCount": 15,
       "verified": true,
@@ -916,7 +916,7 @@
       "title": "Great learning experience",
       "content": "Really enjoyed the workshop. The kit was comprehensive and Priya was very helpful. Would have liked slightly longer session time to practice more, but overall a wonderful experience. The recordings shared after were very useful.",
       "images": [
-        "/images/reviews/review-007-1.jpg"
+        "https://picsum.photos/seed/craft-workshop-group/800/600"
       ],
       "helpfulCount": 11,
       "verified": true,
@@ -951,8 +951,8 @@
       "title": "Stunning mirror work!",
       "content": "The photos don't do justice to how beautiful these cushion covers are. The mirror work sparkles in the light. My living room looks so much more vibrant now. Already planning to order more in different colors!",
       "images": [
-        "/images/reviews/review-009-1.jpg",
-        "/images/reviews/review-009-2.jpg"
+        "https://picsum.photos/seed/cushion-embroidery-1/800/600",
+        "https://picsum.photos/seed/cushion-embroidery-2/800/600"
       ],
       "helpfulCount": 19,
       "verified": true,
@@ -990,7 +990,7 @@
       "description": "Clothing, sarees, fabrics, and fashion accessories",
       "subcategories": ["Sarees", "Fabric", "Bags", "Accessories"],
       "productCount": 1245,
-      "image": "/images/categories/fashion.jpg"
+      "image": "https://picsum.photos/seed/cat-fashion/800/600"
     },
     {
       "id": "cat-002",
@@ -1000,7 +1000,7 @@
       "description": "Home decor, furnishing, and lifestyle products",
       "subcategories": ["Cushion Covers", "Table Linen", "Storage & Organization", "Wall Decor"],
       "productCount": 892,
-      "image": "/images/categories/home.jpg"
+      "image": "https://picsum.photos/seed/cat-home/800/600"
     },
     {
       "id": "cat-003",
@@ -1010,7 +1010,7 @@
       "description": "Workshops, consultations, and skilled services",
       "subcategories": ["Workshops", "Custom Orders", "Consultations", "Rentals"],
       "productCount": 456,
-      "image": "/images/categories/services.jpg"
+      "image": "https://picsum.photos/seed/craft-workshop-group/800/600"
     },
     {
       "id": "cat-004",
@@ -1020,7 +1020,7 @@
       "description": "Digital downloads, templates, and e-courses",
       "subcategories": ["Templates", "Patterns", "E-books", "Video Courses"],
       "productCount": 234,
-      "image": "/images/categories/digital.jpg"
+      "image": "https://picsum.photos/seed/cat-digital/800/600"
     },
     {
       "id": "cat-005",
@@ -1030,7 +1030,7 @@
       "description": "Homemade food, pickles, snacks, and beverages",
       "subcategories": ["Pickles & Chutneys", "Snacks", "Sweets", "Spices"],
       "productCount": 567,
-      "image": "/images/categories/food.jpg"
+      "image": "https://picsum.photos/seed/cat-food-spices/800/600"
     },
     {
       "id": "cat-006",
@@ -1040,7 +1040,7 @@
       "description": "Beauty services, handmade cosmetics, and wellness products",
       "subcategories": ["Mehndi Services", "Skincare", "Haircare", "Aromatherapy"],
       "productCount": 345,
-      "image": "/images/categories/beauty.jpg"
+      "image": "https://picsum.photos/seed/cat-beauty/800/600"
     },
     {
       "id": "cat-007",
@@ -1050,7 +1050,7 @@
       "description": "Handmade jewelry, traditional ornaments, and accessories",
       "subcategories": ["Necklaces", "Earrings", "Bangles", "Hair Accessories"],
       "productCount": 678,
-      "image": "/images/categories/jewelry.jpg"
+      "image": "https://picsum.photos/seed/cat-jewelry/800/600"
     },
     {
       "id": "cat-008",
@@ -1060,7 +1060,7 @@
       "description": "Handmade art, paintings, and craft supplies",
       "subcategories": ["Paintings", "Sculptures", "Craft Supplies", "Stationery"],
       "productCount": 432,
-      "image": "/images/categories/art.jpg"
+      "image": "https://picsum.photos/seed/cat-art/800/600"
     }
   ],
   "coupons": [
@@ -1131,7 +1131,7 @@
       "sellerId": "seller-001",
       "title": "Live: New Saree Collection Reveal!",
       "description": "Join me as I unveil our winter collection of hand block printed sarees. Exclusive live discounts!",
-      "thumbnailUrl": "/images/live/saree-collection-thumb.jpg",
+      "thumbnailUrl": "https://picsum.photos/seed/saree-indigo-detail/800/600",
       "status": "live",
       "viewerCount": 234,
       "likeCount": 89,
@@ -1145,7 +1145,7 @@
       "sellerId": "seller-001",
       "title": "Upcoming: Behind the Scenes - Block Printing Process",
       "description": "Ever wondered how block printing is done? Watch me create a new design from scratch!",
-      "thumbnailUrl": "/images/live/bts-thumb.jpg",
+      "thumbnailUrl": "https://picsum.photos/seed/block-printing-craft/800/600",
       "status": "scheduled",
       "viewerCount": 0,
       "likeCount": 0,
@@ -1222,7 +1222,7 @@
       "sellerId": "seller-001",
       "title": "Hand Block Printed Cotton Saree - Indigo Blue",
       "variant": "Mustard Yellow",
-      "image": "/images/products/saree-indigo-1.jpg",
+      "image": "https://picsum.photos/seed/saree-indigo-front/800/600",
       "price": 1299,
       "quantity": 1
     },
@@ -1232,7 +1232,7 @@
       "sellerId": "seller-001",
       "title": "Handmade Jewelry Box - Wooden with Embroidery",
       "variant": "Blue & Silver",
-      "image": "/images/products/jewelry-box-1.jpg",
+      "image": "https://picsum.photos/seed/jewelry-box-1/800/600",
       "price": 1199,
       "quantity": 2
     }

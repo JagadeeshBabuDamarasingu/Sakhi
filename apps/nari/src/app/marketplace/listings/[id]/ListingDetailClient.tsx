@@ -12,6 +12,9 @@ import {
   HiOutlineEye,
   HiOutlineHeart,
   HiOutlineShoppingBag,
+  HiOutlinePlayCircle,
+  HiOutlineChevronLeft,
+  HiOutlineChevronRight,
 } from 'react-icons/hi2'
 import type { Listing, ListingStatus } from '@/components/marketplace/types'
 
@@ -25,6 +28,22 @@ const STATUS_STYLES: Record<ListingStatus, { badge: string; label: string }> = {
 export function ListingDetailClient({ listing: initial }: { listing: Listing }) {
   const router = useRouter()
   const [listing, setListing] = useState(initial)
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [showVideo, setShowVideo] = useState(false)
+  const media = listing.images.slice(0, 5)
+  const totalSlides = media.length + (listing.video ? 1 : 0)
+
+  function prevSlide() {
+    if (showVideo) { setShowVideo(false); setActiveIndex(media.length - 1); return }
+    setActiveIndex((i) => (i - 1 + media.length) % media.length)
+  }
+  function nextSlide() {
+    const atLast = activeIndex === media.length - 1
+    if (atLast && listing.video && !showVideo) { setShowVideo(true); return }
+    if (showVideo) { setShowVideo(false); setActiveIndex(0); return }
+    setActiveIndex((i) => (i + 1) % media.length)
+  }
+
   const [form, setForm] = useState({
     title: initial.title,
     description: initial.description,
@@ -95,13 +114,84 @@ export function ListingDetailClient({ listing: initial }: { listing: Listing }) 
           Back to Listings
         </Link>
 
-        {/* Hero */}
+        {/* Hero — image/video gallery */}
         <div className="bg-base-100 rounded-2xl overflow-hidden shadow-sm ring-1 ring-base-300 mb-5">
-          {listing.images[0] && (
-            <div className="aspect-video bg-base-200 overflow-hidden">
-              <img src={listing.images[0]} alt={listing.title} className="w-full h-full object-cover" />
+          {totalSlides > 0 && (
+            <div className="relative aspect-video bg-base-200 overflow-hidden group">
+              {/* Main view */}
+              {showVideo ? (
+                <video
+                  src={listing.video!}
+                  className="w-full h-full object-cover"
+                  controls
+                  autoPlay
+                />
+              ) : media[activeIndex] ? (
+                <img
+                  src={media[activeIndex]}
+                  alt={`${listing.title} — image ${activeIndex + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              ) : null}
+
+              {/* Prev / Next arrows — only when more than one slide */}
+              {totalSlides > 1 && (
+                <>
+                  <button
+                    onClick={prevSlide}
+                    className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                    aria-label="Previous"
+                  >
+                    <HiOutlineChevronLeft className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={nextSlide}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                    aria-label="Next"
+                  >
+                    <HiOutlineChevronRight className="w-4 h-4" />
+                  </button>
+                </>
+              )}
+
+              {/* Slide counter pill */}
+              {totalSlides > 1 && (
+                <span className="absolute top-2 right-2 bg-black/50 text-white text-[10px] font-semibold px-2 py-0.5 rounded-full">
+                  {showVideo ? `${totalSlides}/${totalSlides}` : `${activeIndex + 1}/${totalSlides}`}
+                </span>
+              )}
             </div>
           )}
+
+          {/* Thumbnail strip — shown when there are 2+ slides */}
+          {totalSlides > 1 && (
+            <div className="flex gap-1.5 px-3 py-2.5 overflow-x-auto scrollbar-none">
+              {media.map((src, i) => (
+                <button
+                  key={i}
+                  onClick={() => { setShowVideo(false); setActiveIndex(i) }}
+                  className={`relative flex-shrink-0 w-14 h-14 rounded-lg overflow-hidden ring-2 transition-all ${
+                    !showVideo && activeIndex === i
+                      ? 'ring-rose-500 opacity-100'
+                      : 'ring-transparent opacity-60 hover:opacity-90'
+                  }`}
+                >
+                  <img src={src} alt={`Thumbnail ${i + 1}`} className="w-full h-full object-cover" />
+                </button>
+              ))}
+              {listing.video && (
+                <button
+                  onClick={() => setShowVideo(true)}
+                  className={`relative flex-shrink-0 w-14 h-14 rounded-lg overflow-hidden ring-2 bg-base-300 flex items-center justify-center transition-all ${
+                    showVideo ? 'ring-rose-500 opacity-100' : 'ring-transparent opacity-60 hover:opacity-90'
+                  }`}
+                >
+                  <HiOutlinePlayCircle className="w-6 h-6 text-base-content/60" />
+                </button>
+              )}
+            </div>
+          )}
+
           <div className="p-5">
             <div className="flex items-center gap-3 mb-4">
               <span className={`text-[10px] font-semibold px-2.5 py-1 rounded-full ${style.badge}`}>{style.label}</span>
