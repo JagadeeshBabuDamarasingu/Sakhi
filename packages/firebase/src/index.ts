@@ -12,6 +12,13 @@ const firebaseConfig = {
 
 export const firebaseApp = getApps().length ? getApp() : initializeApp(firebaseConfig);
 
-export { getAuth } from "firebase/auth";
+export {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged,
+  type User,
+} from "firebase/auth";
 export { getFirestore } from "firebase/firestore";
 export { getStorage } from "firebase/storage";

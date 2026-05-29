@@ -3,20 +3,25 @@
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { LandingPage } from '@/components/landing/LandingPage'
+import { useAuth } from '@/providers/AuthProvider'
 
 export default function HomePage() {
+  const { user, loading } = useAuth()
   const router = useRouter()
 
   useEffect(() => {
-    if (localStorage.getItem('sakhi_user')) {
+    if (!loading && user) {
       router.replace('/dashboard')
     }
-  }, [router])
+  }, [user, loading, router])
 
-  const handleGetStarted = () => {
-    localStorage.setItem('sakhi_user', JSON.stringify({ name: 'Priya Sharma' }))
-    router.push('/dashboard')
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-base-100">
+        <span className="loading loading-spinner loading-lg text-primary" />
+      </div>
+    )
   }
 
-  return <LandingPage onGetStarted={handleGetStarted} />
+  return <LandingPage onGetStarted={() => router.push('/login')} />
 }

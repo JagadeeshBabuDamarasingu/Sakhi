@@ -13,6 +13,7 @@ import './globals.css'
 import { AppShellWrapper } from '@/components/AppShellWrapper'
 import { ThemeProvider } from '@/providers/ThemeProvider'
 import { I18nProvider } from '@/providers/I18nProvider'
+import { AuthProvider } from '@/providers/AuthProvider'
 import { ReactNode } from 'react'
 
 const poppins = Poppins({
@@ -57,7 +58,9 @@ export default function RootLayout({
       <body className="min-h-full">
         <ThemeProvider>
           <I18nProvider>
-            <AppShellWrapper>{children}</AppShellWrapper>
+            <AuthProvider>
+              <AppShellWrapper>{children}</AppShellWrapper>
+            </AuthProvider>
           </I18nProvider>
         </ThemeProvider>
       </body>
